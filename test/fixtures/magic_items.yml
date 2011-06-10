@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  magic_item_category: 
+  army: 
+  label: MyString
+  value_points: 
+
+two:
+  magic_item_category: 
+  army: 
+  label: MyString
+  value_points: 

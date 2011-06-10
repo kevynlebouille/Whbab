@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  troop_type: 
+  label: MyString
+  is_character: false
+  is_special: false
+  value_points: 
+  M: 
+  WS: 
+  BS: 
+  S: 
+  T: 
+  W: 
+  I: 
+  A: 
+  LD: 
+
+two:
+  troop_type: 
+  label: MyString
+  is_character: false
+  is_special: false
+  value_points: 
+  M: 
+  WS: 
+  BS: 
+  S: 
+  T: 
+  W: 
+  I: 
+  A: 
+  LD: 

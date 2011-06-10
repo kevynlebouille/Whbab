@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  unit: 
+  unit_option: 
+  label: MyString
+  value_points: 
+  position: 
+  is_per_model: 
+
+two:
+  unit: 
+  unit_option: 
+  label: MyString
+  value_points: 
+  position: 
+  is_per_model: 

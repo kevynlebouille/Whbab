@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  army: 
+  unit_category: 
+  label: MyString
+  min_size: 
+  max_size: 
+  magic_items_value_points: 
+
+two:
+  army: 
+  unit_category: 
+  label: MyString
+  min_size: 
+  max_size: 
+  magic_items_value_points: 
