@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Army list:</b>
+  <%= @army_list_choice.army_list %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%= @army_list_choice.unit %>
+</p>
+
+<p>
+  <b>Unit category:</b>
+  <%= @army_list_choice.unit_category %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @army_list_choice.name %>
+</p>
+
+<p>
+  <b>Value points:</b>
+  <%= @army_list_choice.value_points %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @army_list_choice.size %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @army_list_choice.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_army_list_choice_path(@army_list_choice) %> |
+<%= link_to 'Back', army_list_choices_path %>

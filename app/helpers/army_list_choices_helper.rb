@@ -1,0 +1,2 @@
+module ArmyListChoicesHelper
+end

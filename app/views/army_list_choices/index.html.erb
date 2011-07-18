@@ -1,0 +1,35 @@
+<h1>Listing army_list_choices</h1>
+
+<table>
+  <tr>
+    <th>Army list</th>
+    <th>Unit</th>
+    <th>Unit category</th>
+    <th>Name</th>
+    <th>Value points</th>
+    <th>Size</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @army_list_choices.each do |army_list_choice| %>
+  <tr>
+    <td><%= army_list_choice.army_list %></td>
+    <td><%= army_list_choice.unit %></td>
+    <td><%= army_list_choice.unit_category %></td>
+    <td><%= army_list_choice.name %></td>
+    <td><%= army_list_choice.value_points %></td>
+    <td><%= army_list_choice.size %></td>
+    <td><%= army_list_choice.position %></td>
+    <td><%= link_to 'Show', army_list_choice %></td>
+    <td><%= link_to 'Edit', edit_army_list_choice_path(army_list_choice) %></td>
+    <td><%= link_to 'Destroy', army_list_choice, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Army list choice', new_army_list_choice_path %>

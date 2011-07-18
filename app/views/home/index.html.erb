@@ -1,0 +1,31 @@
+<h1>Warhammer Battle Army Builder</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<h2>S'identifier</h2>
+
+<%= form_for @user, :url => session_path(:user) do |f| %>
+  <p><%= f.label :email, 'Email :' %><br />
+  <%= f.email_field :email, :placeholder => 'Email' %></p>
+
+  <p><%= f.label :password, 'Mot de passe :' %><br />
+  <%= f.password_field :password, :placeholder => 'Mot de passe' %></p>
+
+  <p><%= f.check_box :remember_me %> <%= f.label :remember_me, 'Se souvenir de moi' %></p>
+
+  <p><%= f.submit 'Valider' %></p>
+<% end %>
+
+<h2>S'inscrire</h2>
+
+<%= form_for @user, :as => :registration, :url => registration_path(:user) do |f| %>
+  <p><%= f.label :email, 'Email :' %><br />
+  <%= f.email_field :email, :placeholder => 'Email' %></p>
+
+  <p><%= f.label :password, 'Mot de passe :' %><br />
+  <%= f.password_field :password, :placeholder => 'Mot de passe' %></p>
+
+  <p><%= f.label :password_confirmation, 'Confirmation du mot de passe' %><br />
+  <%= f.password_field :password_confirmation, :placeholder => 'Confirmation du mot de passe' %></p>
+
+  <p><%= f.submit 'Valider' %></p>
+<% end %>

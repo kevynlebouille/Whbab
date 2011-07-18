@@ -1,0 +1,45 @@
+<%= form_for(@army_list_choice) do |f| %>
+  <% if @army_list_choice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@army_list_choice.errors.count, "error") %> prohibited this army_list_choice from being saved:</h2>
+
+      <ul>
+      <% @army_list_choice.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :army_list %><br />
+    <%= f.text_field :army_list %>
+  </div>
+  <div class="field">
+    <%= f.label :unit %><br />
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_category %><br />
+    <%= f.text_field :unit_category %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value_points %><br />
+    <%= f.text_field :value_points %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

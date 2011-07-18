@@ -1,0 +1,2 @@
+module ArmyListsHelper
+end

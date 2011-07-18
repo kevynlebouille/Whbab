@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Army:</b>
+  <%= @army_list.army %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @army_list.user %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @army_list.name %>
+</p>
+
+<p>
+  <b>Value points:</b>
+  <%= @army_list.value_points %>
+</p>
+
+
+<%= link_to 'Edit', edit_army_list_path(@army_list) %> |
+<%= link_to 'Back', army_lists_path %>

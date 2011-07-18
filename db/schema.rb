@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610195716) do
+ActiveRecord::Schema.define(:version => 20110619131444) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -49,6 +49,42 @@ ActiveRecord::Schema.define(:version => 20110610195716) do
     t.string "name", :null => false
   end
 
+  create_table "army_list_choices", :force => true do |t|
+    t.integer  "army_list_id"
+    t.integer  "unit_id"
+    t.integer  "unit_category_id"
+    t.string   "name"
+    t.integer  "value_points"
+    t.integer  "size"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "army_list_choices", ["army_list_id"], :name => "index_army_list_choices_on_army_list_id"
+  add_index "army_list_choices", ["unit_category_id"], :name => "index_army_list_choices_on_unit_category_id"
+  add_index "army_list_choices", ["unit_id"], :name => "index_army_list_choices_on_unit_id"
+
+  create_table "army_list_choices_magic_items", :id => false, :force => true do |t|
+    t.integer "army_list_choice_id", :null => false
+    t.integer "magic_item_id",       :null => false
+  end
+
+  add_index "army_list_choices_magic_items", ["army_list_choice_id"], :name => "index_army_list_choices_magic_items_on_army_list_choice_id"
+  add_index "army_list_choices_magic_items", ["magic_item_id"], :name => "index_army_list_choices_magic_items_on_magic_item_id"
+
+  create_table "army_lists", :force => true do |t|
+    t.integer  "army_id",      :null => false
+    t.integer  "user_id",      :null => false
+    t.string   "name",         :null => false
+    t.integer  "value_points", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "army_lists", ["army_id"], :name => "index_army_lists_on_army_id"
+  add_index "army_lists", ["user_id"], :name => "index_army_lists_on_user_id"
+
   create_table "equipments", :force => true do |t|
     t.integer "unit_id",  :null => false
     t.string  "name",     :null => false
@@ -63,7 +99,7 @@ ActiveRecord::Schema.define(:version => 20110610195716) do
 
   create_table "magic_items", :force => true do |t|
     t.integer "magic_item_category_id", :null => false
-    t.integer "army_id",                :null => false
+    t.integer "army_id"
     t.string  "name",                   :null => false
     t.integer "value_points",           :null => false
   end
