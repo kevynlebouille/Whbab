@@ -4,4 +4,6 @@ class Army < ActiveRecord::Base
   has_many :units, :dependent => :destroy
 
   validates_presence_of :name
+
+  default_scope order('name')
 end

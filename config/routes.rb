@@ -1,4 +1,6 @@
 Whbab::Application.routes.draw do
+  get "index/index"
+
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
@@ -6,7 +8,7 @@ Whbab::Application.routes.draw do
   resources :army_lists
   resources :army_list_choices
 
-  get 'home/index'
+  get 'index/index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,7 +59,7 @@ Whbab::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'index#index'
 
   # See how all your routes lay out with "rake routes"
 

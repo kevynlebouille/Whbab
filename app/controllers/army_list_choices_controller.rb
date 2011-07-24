@@ -1,4 +1,6 @@
 class ArmyListChoicesController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /army_list_choices
   # GET /army_list_choices.xml
   def index

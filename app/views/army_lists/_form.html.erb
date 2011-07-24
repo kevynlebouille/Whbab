@@ -12,20 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :army %><br />
-    <%= f.text_field :army %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%= f.label :army_id %><br />
+    <%= f.collection_select :army_id, Army.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :value_points %><br />
-    <%= f.text_field :value_points %>
   </div>
   <div class="actions">
     <%= f.submit %>

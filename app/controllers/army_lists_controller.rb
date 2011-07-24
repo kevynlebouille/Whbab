@@ -1,8 +1,10 @@
 class ArmyListsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /army_lists
   # GET /army_lists.xml
   def index
-    @army_lists = ArmyList.all
+    @army_lists = ArmyList.includes(:army).where(:user_id => current_user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class ArmyListsController < ApplicationController
   # GET /army_lists/1
   # GET /army_lists/1.xml
   def show
-    @army_list = ArmyList.find(params[:id])
+    @army_list = ArmyList.find_by_id_and_user_id!(params[:id], current_user)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,13 +36,15 @@ class ArmyListsController < ApplicationController
 
   # GET /army_lists/1/edit
   def edit
-    @army_list = ArmyList.find(params[:id])
+    @army_list = ArmyList.find_by_id_and_user_id!(params[:id], current_user)
   end
 
   # POST /army_lists
   # POST /army_lists.xml
   def create
     @army_list = ArmyList.new(params[:army_list])
+    @army_list.user = current_user
+    @army_list.value_points = 0
 
     respond_to do |format|
       if @army_list.save
@@ -56,7 +60,7 @@ class ArmyListsController < ApplicationController
   # PUT /army_lists/1
   # PUT /army_lists/1.xml
   def update
-    @army_list = ArmyList.find(params[:id])
+    @army_list = ArmyList.find_by_id_and_user_id!(params[:id], current_user)
 
     respond_to do |format|
       if @army_list.update_attributes(params[:army_list])
@@ -72,7 +76,7 @@ class ArmyListsController < ApplicationController
   # DELETE /army_lists/1
   # DELETE /army_lists/1.xml
   def destroy
-    @army_list = ArmyList.find(params[:id])
+    @army_list = ArmyList.find_by_id_and_user_id!(params[:id], current_user)
     @army_list.destroy
 
     respond_to do |format|
