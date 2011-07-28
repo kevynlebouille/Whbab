@@ -34,6 +34,6 @@ production:
   reconnect: false
   database: whbab_production
   pool: 5
-  username: root
-  password:
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  socket: /var/run/mysqld/mysqld.sock
