@@ -11,6 +11,10 @@ ActiveAdmin.register Unit do
     link_to "New Unit", new_admin_unit_path
   end
 
+  filter :army
+  filter :name
+  filter :value_points
+
   index do
     column :id
     column :army

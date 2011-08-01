@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801230555) do
+ActiveRecord::Schema.define(:version => 20110801234530) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20110801230555) do
     t.integer "min_size",         :default => 1, :null => false
     t.integer "max_size"
     t.integer "value_points"
+    t.string  "magic"
   end
 
   add_index "units", ["army_id"], :name => "index_units_on_army_id"
