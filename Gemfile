@@ -10,6 +10,7 @@ gem 'mysql2', '~> 0.2.7'
 gem 'activeadmin'
 gem 'jquery-rails'
 gem 'seedbank'
+gem 'acts_as_list', '~> 0.1.4'
 
 # Use unicorn as the web server
 # gem 'unicorn'
