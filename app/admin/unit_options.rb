@@ -1,10 +1,32 @@
 ActiveAdmin.register UnitOption do
   menu :label => "(5) - Unit Options"
 
+  controller do
+    def create
+      create! { new_admin_unit_option_url }
+    end
+  end
+
+  action_item :only => :show do
+    link_to "New Unit Option", new_admin_unit_option_path
+  end
+
   filter :unit
   filter :parent, :collection => proc { UnitOption.includes(:unit).where('value_points IS NULL').collect { |r| [r.unit.name + ' - ' + r.name.slice(0..15) + '...', r.id] } }
   filter :name
   filter :value_points
+
+  index do
+    column :id
+    column :unit
+    column :name
+    column :value_points
+    column :is_per_model
+    column :is_magic_items
+    column :is_magic_standards
+    column :position
+    default_actions
+  end
 
   form do |f|
     f.inputs do
