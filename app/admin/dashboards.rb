@@ -1,4 +1,13 @@
 ActiveAdmin::Dashboards.build do
+  section "How to create a full stack Unit" do
+    ol do
+      li link_to("New Unit", new_admin_unit_path)
+      li link_to("New Troop", new_admin_troop_path)
+      li link_to("New Equipment", new_admin_equipment_path)
+      li link_to("New Special Rule", new_admin_special_rule_path)
+      li link_to("New Unit Option", new_admin_unit_option_path)
+    end
+  end
 
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just
@@ -32,5 +41,4 @@ ActiveAdmin::Dashboards.build do
   #   section "Recent User", :priority => 1
   #
   # Will render the "Recent Users" then the "Recent Posts" sections on the dashboard.
-
 end
