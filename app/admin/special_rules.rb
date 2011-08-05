@@ -13,7 +13,7 @@ ActiveAdmin.register SpecialRule do
 
   index do
     column :id
-    column :unit
+    column :unit, :sortable => :unit_id
     column :name
     column :position
     default_actions

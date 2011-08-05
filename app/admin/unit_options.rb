@@ -18,7 +18,7 @@ ActiveAdmin.register UnitOption do
 
   index do
     column :id
-    column :unit
+    column :unit, :sortable => :unit_id
     column :name
     column :value_points
     column :is_per_model

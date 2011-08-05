@@ -18,8 +18,8 @@ ActiveAdmin.register Unit do
 
   index do
     column :id
-    column :army
-    column :unit_category
+    column :army, :sortable => :army_id
+    column :unit_category, :sortable => :unit_category_id
     column :name
     column :min_size
     column :max_size

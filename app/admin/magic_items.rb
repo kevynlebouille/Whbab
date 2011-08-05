@@ -11,8 +11,8 @@ ActiveAdmin.register MagicItem do
 
   index do
     column :id
-    column :army
-    column :magic_item_category
+    column :army, :sortable => :army_id
+    column :magic_item_category, :sortable => :magic_item_category_id
     column :name
     column :value_points
     default_actions
