@@ -12,5 +12,5 @@ class Unit < ActiveRecord::Base
   validates_numericality_of :max_size, :greater_than_or_equal_to => :min_size, :allow_nil => true
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true
 
-  default_scope order('name')
+  default_scope order('id DESC')
 end
