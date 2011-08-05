@@ -12,12 +12,14 @@ ActiveAdmin.register Unit do
   end
 
   filter :army
+  filter :unit_category
   filter :name
   filter :value_points
 
   index do
     column :id
     column :army
+    column :unit_category
     column :name
     column :min_size
     column :max_size
