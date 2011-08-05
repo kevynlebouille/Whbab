@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801234530) do
+ActiveRecord::Schema.define(:version => 20110805091226) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -148,13 +148,13 @@ ActiveRecord::Schema.define(:version => 20110801234530) do
   create_table "unit_options", :force => true do |t|
     t.integer "unit_id",            :null => false
     t.integer "parent_id"
+    t.integer "master_id"
     t.string  "name",               :null => false
     t.integer "value_points"
     t.integer "position",           :null => false
     t.boolean "is_per_model",       :null => false
     t.boolean "is_magic_items",     :null => false
     t.boolean "is_magic_standards", :null => false
-    t.integer "master_id"
   end
 
   add_index "unit_options", ["master_id"], :name => "index_unit_options_on_master_id"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20110801234530) do
     t.integer "max_size"
     t.integer "value_points"
     t.string  "magic"
+    t.text    "notes"
   end
 
   add_index "units", ["army_id"], :name => "index_units_on_army_id"
