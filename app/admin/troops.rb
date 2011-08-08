@@ -31,8 +31,6 @@ ActiveAdmin.register Troop do
     # column :I
     # column :A
     # column :LD
-    column :is_character
-    column :is_special
     column :position
     default_actions
   end
