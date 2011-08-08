@@ -11,6 +11,7 @@ gem 'activeadmin'
 gem 'jquery-rails'
 gem 'seedbank'
 gem 'acts_as_list', '~> 0.1.4'
+gem 'client_side_validations', '~> 3.0.11'
 
 # Use unicorn as the web server
 # gem 'unicorn'
