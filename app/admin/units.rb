@@ -36,6 +36,7 @@ ActiveAdmin.register Unit do
     column :min_size
     column :max_size
     column :value_points
+    column :is_unique
     default_actions
   end
 

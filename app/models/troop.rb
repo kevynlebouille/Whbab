@@ -5,8 +5,6 @@ class Troop < ActiveRecord::Base
   validates_presence_of :unit_id, :name
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true
   validates_numericality_of :position, :greater_than_or_equal_to => 1, :only_integer => true, :allow_nil => true
-  validates_inclusion_of :is_character, :in => [true, false]
-  validates_inclusion_of :is_special, :in => [true, false]
 
   acts_as_list :scope => :unit
 end
