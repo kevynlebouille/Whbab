@@ -12,7 +12,7 @@ ActiveAdmin.register UnitOption do
   end
 
   filter :unit
-  filter :parent, :collection => proc { UnitOption.includes(:unit).where('value_points IS NULL').collect { |r| [r.unit.name + ' - ' + r.name.slice(0..15) + '...', r.id] } }
+  filter :parent, :collection => proc { UnitOption.includes(:unit).where('value_points IS NULL').collect { |r| [r.unit.name + ' - ' + r.name, r.id] } }
   filter :name
   filter :value_points
 
