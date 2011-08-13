@@ -54,47 +54,55 @@ ActiveAdmin.register Unit do
       row :is_unique
     end
 
-    div :class => 'unit_troops_details' do
-      table_for unit.troops do
-        column :id
-        column :troop_type
-        column :name
-        column :M
-        column :WS
-        column :BS
-        column :S
-        column :T
-        column :W
-        column :I
-        column :A
-        column :LD
-        column :value_points
-        column :position
+    panel "Troops details" do
+      div :class => "unit_troops_details" do
+        table_for unit.troops do
+          column :id
+          column :troop_type
+          column :name
+          column :M
+          column :WS
+          column :BS
+          column :S
+          column :T
+          column :W
+          column :I
+          column :A
+          column :LD
+          column :value_points
+          column :position
+        end
       end
     end
 
-    div :class => 'unit_equipments_details' do
-      table_for unit.equipments do
-        column :id, { :class => 'azerty' }
-        column :name
-        column :position
+    panel "Equipments Details" do
+      div :class => "unit_equipments_details" do
+        table_for unit.equipments do
+          column :id, { :class => "azerty" }
+          column :name
+          column :position
+        end
       end
     end
 
-    div :class => 'unit_special_rules_details' do
-      table_for unit.special_rules do
-        column :id
-        column :name
-        column :position
+    panel "Special Rules Details" do
+      div :class => "unit_special_rules_details" do
+        table_for unit.special_rules do
+          column :id
+          column :name
+          column :position
+        end
       end
     end
 
-    div :class => 'unit_unit_options_details' do
-      table_for unit.unit_options do
-        column :id
-        column :name
-        column :value_points
-        column :position
+    panel "Options Details" do
+      div :class => "unit_unit_options_details" do
+        table_for unit.unit_options do
+          column :id
+          column :name
+          column :value_points
+          column :position
+        end
       end
     end
 
