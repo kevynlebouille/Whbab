@@ -7,11 +7,11 @@ gem 'mysql2', '~> 0.2.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'activeadmin'
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
 gem 'jquery-rails'
 gem 'seedbank'
 gem 'acts_as_list', '~> 0.1.4'
-gem 'client_side_validations', '~> 3.0.11'
+gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'

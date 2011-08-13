@@ -1,5 +1,5 @@
 ActiveAdmin.register Troop do
-  menu :label => "(2) - Troops"
+  menu :label => "(2) - Troop"
 
   controller do
     def create

@@ -1,3 +1,3 @@
 ActiveAdmin.register MagicItemCategory do
-  menu :parent => "Magic Items"
+  menu :parent => "Magic item"
 end

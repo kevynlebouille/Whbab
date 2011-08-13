@@ -1,5 +1,5 @@
 ActiveAdmin.register UnitOption do
-  menu :label => "(5) - Unit Options"
+  menu :label => "(5) - Unit Option"
 
   controller do
     def create

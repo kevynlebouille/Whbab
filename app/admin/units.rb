@@ -1,5 +1,5 @@
 ActiveAdmin.register Unit do
-  menu :label => "(1) - Units"
+  menu :label => "(1) - Unit"
 
   controller do
     def create
