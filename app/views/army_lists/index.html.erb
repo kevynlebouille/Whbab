@@ -1,27 +1,29 @@
-<h1>Listing army_lists</h1>
+<div class="grid_14 prefix_1 suffix_1">
+  <h1>Listing army_lists</h1>
 
-<table>
-  <tr>
-    <th>Army</th>
-    <th>Name</th>
-    <th>Value points</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Army</th>
+      <th>Name</th>
+      <th>Value points</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @army_lists.each do |army_list| %>
-  <tr>
-    <td><%= army_list.army.name %></td>
-    <td><%= army_list.name %></td>
-    <td><%= army_list.value_points %></td>
-    <td><%= link_to 'Show', army_list %></td>
-    <td><%= link_to 'Edit', edit_army_list_path(army_list) %></td>
-    <td><%= link_to 'Destroy', army_list, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <% @army_lists.each do |army_list| %>
+    <tr>
+      <td><%= army_list.army.name %></td>
+      <td><%= army_list.name %></td>
+      <td><%= army_list.value_points %></td>
+      <td><%= link_to 'Show', army_list %></td>
+      <td><%= link_to 'Edit', edit_army_list_path(army_list) %></td>
+      <td><%= link_to 'Destroy', army_list, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Army list', new_army_list_path %>
+  <%= link_to 'New Army list', new_army_list_path %>
+</div>

@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>Whbab</title>
-  <%= stylesheet_link_tag 'scaffold', 'application' %>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Whbab • Bienvenue</title>
+  <%= stylesheet_link_tag 'reset', 'formalize', '960', 'application' %>
   <%= javascript_include_tag :defaults, 'rails.validations' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<%= yield %>
+<div id="wrapper">
+  <div id="header" class="container_16">
+    <h1 class="grid_3 suffix_8">
+      <a href="<%= root_path %>">Warhammer Battle<br />
+      <em>Army Builder</em></a>
+    </h1>
+    <div class="grid_5 welcome">
+      <% if user_signed_in? %>
+      Bienvenue <%= current_user.name %> &darr;
+      <% else %>
+      <%= link_to "Se connecter", new_session_path(resource_name) %> -
+      <%= link_to "S'inscrire", new_registration_path(resource_name) %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+    <ul class="menu" style="display:none">
+      <li><a href="#">Préférence</a></li>
+      <li><%= link_to "Mes listes d'armée", army_lists_path %></li>
+      <li><%= link_to "Déconnexion", destroy_user_session_path %></li>
+      <li><a href="maito:support@whbab.com">Aide</a></li>
+    </ul>
+    <% end %>
+  </div>
+
+  <div class="container_16">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

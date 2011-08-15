@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Whbab • Bienvenue</title>
+  <%= stylesheet_link_tag 'reset', 'formalize', '960', 'application' %>
+  <%= javascript_include_tag :defaults, 'rails.validations' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="wrapper">
+  <%= yield %>
+</div>
+
+</body>
+</html>

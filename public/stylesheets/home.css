@@ -1,0 +1,110 @@
+.home {
+  padding-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 400px;
+  background: #470b03 url(../images/bg_home.jpg) no-repeat;
+  color: #fff;
+}
+
+.home .signin input[type=email], .home input[type=password] {
+  width: 120px;
+}
+
+.home .signin input, .home .signup input {
+  height: 30px;
+}
+
+.home .signin input[type=submit] {
+  float: right;
+  font-size: 11px;
+}
+
+.home #user_remember_me {
+  top: -6px;
+}
+
+.home label[for=user_remember_me] {
+  font-size: 10px;
+  opacity: 0.90;
+}
+
+.home .signin a {
+  margin-left: 13px;
+  font-size: 10px;
+  color: #fff;
+  opacity: 0.90;
+}
+
+.home h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.home h1 em {
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.home h2 {
+  font: 50px GodOfWar, Arial, sans-serif;
+  font-weight: normal;
+}
+
+.home h2 span {
+  font-size: 38px;
+}
+
+.home h2 em {
+  font-size: 38px;
+  color: #ffb129;
+  font-style: normal;
+}
+
+.home .catcher {
+  margin-top: 90px;
+}
+
+.home .signup {
+  margin-top: 76px;
+}
+
+.home .signup strong {
+  display: block;
+  font-size: 16px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+.home .signup p {
+  margin-top: 8px;
+}
+
+.home .signup input[type=text], .home .signup input[type=email], .home .signup input[type=password] {
+  width: 100%;
+}
+
+.home .signup input[type=submit] {
+  float: right;
+  font-size: 16px;
+}
+
+.home .disclaimer {
+  margin-top: 160px;
+  padding-left: 100px;
+  width: 840px;
+  background: url(../images/pict_home.png) no-repeat;
+  color: #470b03;
+}
+
+.home .disclaimer strong {
+  font-size: 20px;
+  color: #a01e14;
+}
+
+.home .links {
+  margin-top: 20px;
+  padding-left: 100px;
+  width: 840px;
+  color: #470b03;
+}

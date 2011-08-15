@@ -1,3 +1,6 @@
+@import 'common.css';
+@import 'home.css';
+
 .error_messages {
   width: 400px;
   border: 2px solid #CF0000;
