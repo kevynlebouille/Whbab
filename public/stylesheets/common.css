@@ -1,5 +1,12 @@
+@font-face {
+  font-family: "GodOfWar";
+  font-style: normal;
+  font-weight: normal;
+  src: local("God Of War"), local("GodOfWar"), url("../fonts/GodOfWar.ttf") format("truetype");
+}
+
 body {
-  font: 13px 'Lucida Grande', 'Helvetica Neue', Arial, sans-serif;
+  font: 13px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
   color: #470b03;
 }
 
@@ -73,10 +80,8 @@ a:hover {
   border-bottom-left-radius: 5px;
 }
 
-
-
-
-
-
-
-
+#footer {
+  margin-top: 50px;
+  height: 80px;
+  background: url(../images/bg_footer.png) 50% 50% no-repeat;
+}
