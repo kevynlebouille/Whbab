@@ -4,6 +4,9 @@ class ArmyListsController < ApplicationController
   # GET /army_lists
   # GET /army_lists.xml
   def index
+    @search = params[:search] || {}
+
+    @armies = Army.all
     @army_lists = ArmyList.includes(:army).where(:user_id => current_user)
 
     respond_to do |format|

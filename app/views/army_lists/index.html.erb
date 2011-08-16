@@ -1,4 +1,56 @@
-<div class="grid_14 prefix_1 suffix_1">
+<% title "Mes listes d'armée" %>
+
+<div id="subheader" class="grid_14">
+  <%= form_tag army_lists_path, :method => "get" do -%>
+    <p>
+      <label for="filter_army_id">Filtrer par</label> <%= select_tag "search[army_id]", options_from_collection_for_select(@armies, :id, :name, @search[:army_id]), :include_blank => true %>
+
+      <label for="search_min_value_points">de</label> <%= text_field_tag "search[min_value_points]", @search[:min_value_points] %>
+      <label for="search_max_value_points">a</label> <%= text_field_tag "search[max_value_points]", @search[:max_value_points] %>
+      <label for="search_max_value_points">points</label>
+
+      <%= submit_tag "Valider" %>
+    </p>
+  <% end -%>
+</div>
+
+<% @army_lists.each_with_index do |army_list, i| %>
+
+<div class="grid_4 <%= alternate_cell_class(i) %>">
+  <div class="army_list_row">
+    <p><%= image_tag "thumb_army.png", :size => "220x132" %></p>
+    <p><%= army_list.army.name %></p>
+    <p class="actions"><button>Editer</button></p>
+  </div>
+</div>
+
+<% end %>
+
+<% @army_lists.each_with_index do |army_list, i| %>
+
+<div class="grid_4 <%= alternate_cell_class(i) %>">
+  <div class="army_list_row">
+    <p><%= image_tag "thumb_army.png", :size => "220x132" %></p>
+    <p><%= army_list.army.name %></p>
+    <p class="actions"><button>Editer</button></p>
+  </div>
+</div>
+
+<% end %>
+
+<% @army_lists.each_with_index do |army_list, i| %>
+
+<div class="grid_4 <%= alternate_cell_class(i) %>">
+  <div class="army_list_row">
+    <p><%= image_tag "thumb_army.png", :size => "220x132" %></p>
+    <p><%= army_list.army.name %></p>
+    <p class="actions"><button>Editer</button></p>
+  </div>
+</div>
+
+<% end %>
+
+<!-- <div class="grid_14 prefix_1 suffix_1">
   <h1>Listing army_lists</h1>
 
   <table>
@@ -26,4 +78,4 @@
   <br />
 
   <%= link_to 'New Army list', new_army_list_path %>
-</div>
+</div> -->

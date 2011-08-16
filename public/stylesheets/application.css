@@ -34,3 +34,53 @@
   padding-left: 5px;
   font-size: 12px;
 }
+
+#subheader label {
+  position: relative;
+  top: 2px;
+}
+
+#subheader #search_army_id {
+  margin-left: 20px;
+  margin-right: 100px;
+  width: 220px;
+}
+
+#subheader #search_min_value_points, #subheader #search_max_value_points {
+  margin: 0 5px;
+  width: 60px;
+}
+
+#subheader input[type=submit] {
+  float: right;
+}
+
+.army_list_row {
+  margin-bottom: 10px;
+  height: 180px;
+}
+
+.army_list_row img {
+  opacity: 0.7;
+}
+
+.army_list_row p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+.army_list_row:hover {
+  cursor: pointer;
+}
+
+.army_list_row .actions {
+  display: none;
+}
+
+.army_list_row:hover .actions {
+  display: block;
+}
+
+.army_list_row:hover img {
+  opacity: 1;
+}

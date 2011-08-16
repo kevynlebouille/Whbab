@@ -1,46 +1,38 @@
-<div class="container_16 home">
-  <h1 class="grid_4 suffix_6">
-    Warhammer Battle<br />
-    <em>Army Builder</em>
-  </h1>
-  <div class="grid_6 signin">
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-      <p><%= f.email_field :email, :placeholder => "Email" %>
-      <%= f.password_field :password, :placeholder => "Mot de passe" %>
-      <%= f.submit "se connecter" %></p>
-      <p><%= f.check_box :remember_me %> <%= f.label :remember_me, "Se souvenir de moi" %> <%= link_to "Oublié ?", new_password_path(resource_name) %></p>
-    <% end %>
-  </div>
-  <div class="clear"></div>
+<h1 class="grid_4 suffix_6">
+  Warhammer Battle<br />
+  <em>Army Builder</em>
+</h1>
+<div class="grid_6 signin">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <p><%= f.email_field :email, :placeholder => "Email" %>
+    <%= f.password_field :password, :placeholder => "Mot de passe" %>
+    <%= f.submit "se connecter" %></p>
+    <p><%= f.check_box :remember_me %> <%= f.label :remember_me, "Se souvenir de moi" %> <%= link_to "Oublié ?", new_password_path(resource_name) %></p>
+  <% end %>
+</div>
 
-  <h2 class="grid_10 catcher">
-    Composez<span> et </span>archivez<br />
-    <em>vos armees favorites !</em>
-  </h2>
-  <div class="grid_6 signup">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-      <strong>Rejoignez-nous</strong>
-      <p><%= f.text_field :name, :placeholder => "Nom" %></p>
-      <p><%= f.email_field :email, :placeholder => "Email" %></p>
-      <p><%= f.password_field :password, :placeholder => "Mot de passe" %></p>
-      <p><%= f.hidden_field :password_confirmation %></p>
-      <p><%= f.submit "s'inscrire" %></p>
-    <% end %>
-  </div>
-  <div class="clear"></div>
+<h2 class="grid_10 catcher">
+  Composez<span> et </span>archivez<br />
+  <em>vos armees favorites !</em>
+</h2>
+<div class="grid_6 signup">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <strong>Rejoignez-nous</strong>
+    <p><%= f.text_field :name, :placeholder => "Nom" %></p>
+    <p><%= f.email_field :email, :placeholder => "Email" %></p>
+    <p><%= f.password_field :password, :placeholder => "Mot de passe" %></p>
+    <p><%= f.hidden_field :password_confirmation %></p>
+    <p><%= f.submit "s'inscrire" %></p>
+  <% end %>
+</div>
 
-  <div class="grid_16 disclaimer">
-    <strong>Attention !</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-  <div class="clear"></div>
-  <div class="grid_16 links">
-    <a href="http://www.games-workshop.com" target="_blank">www.games-workshop.com</a> •
-    <a href="http://www.warhammer-forum.com/" target="_blank">www.warhammer-forum.com</a> •
-    <a href="http://www.warbuilder.net" target="_blank">www.warbuilder.net</a> •
-    <a href="mailto:support@whbab.com">aide</a>
-  </div>
-  <div class="clear"></div>
+<div class="grid_16 disclaimer">
+  <strong>Attention !</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
 
-  <div id="footer" class="grid_16"></div>
-  <div class="clear"></div>
+<div class="grid_16 links">
+  <a href="http://www.games-workshop.com" target="_blank">www.games-workshop.com</a> <%= image_tag "pict_links.png", :size => "18x11" %>
+  <a href="http://www.warhammer-forum.com/" target="_blank">www.warhammer-forum.com</a> <%= image_tag "pict_links.png", :size => "18x11" %>
+  <a href="http://www.warbuilder.net" target="_blank">www.warbuilder.net</a> <%= image_tag "pict_links.png", :size => "18x11" %>
+  <a href="mailto:support@whbab.com">aide</a>
 </div>

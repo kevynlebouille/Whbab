@@ -8,32 +8,31 @@
 body {
   font: 13px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
   color: #470b03;
+  background: url(../images/bg_body.jpg) 50% 0 repeat;
 }
 
 a {
   color: #470b03;
-  text-decoration: underline;
-}
-
-a:hover {
   text-decoration: none;
 }
 
+a:hover {
+  color: #a01e14;
+  text-decoration: underline;
+}
+
+.container_16 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 #wrapper {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1020px;
-  height: 100%;
-  min-height: 750px;
-  background: url(../images/bg_wrapper.jpg) repeat-y;
+  background: url(../images/bg_header.png) 50% 0 repeat-x;
 }
 
 #header {
-  padding-left: 30px;
-  padding-right: 30px;
+  position: relative;
   height: 44px;
-  background: url(../images/bg_header.png) no-repeat;
   color: #fff;
 }
 
@@ -53,24 +52,62 @@ a:hover {
   text-decoration: none;
 }
 
-#header .welcome {
-  margin-top: 8px;
+#header .welcome strong {
+  float: right;
+  display: block;
+  padding: 8px 10px 0 10px;
+  height: 30px;
   font-size: 13px;
-  text-align: right;
+  font-weight: normal;
+}
+
+#header .welcome strong:hover, #header .welcome strong.over {
+  cursor: pointer;
+  background-color: #6c3c35;
 }
 
 #header .welcome a {
   color: #fff;
 }
 
+#header .welcome img {
+  position: relative;
+  top: -2px;
+}
+
 #header .menu {
   display: block;
   position: absolute;
-  top: 40px;
-  right: 0;
+  top: 38px;
+  right: 40px;
   list-style: none;
-  padding: 10px 20px;
-  width: 120px;
+  padding: 5px 10px;
+  background-color: #6c3c35;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  z-index: 100;
+}
+
+#header .menu li {
+  margin: 5px 0;
+}
+
+#header .menu a {
+  color: #fff;
+}
+
+#subheader {
+  margin: 0 50px;
+  margin-top: -2px;
+  margin-bottom: 40px;
+  padding: 8px 20px;
+  height: 24px;
+  font: 18px GodOfWar;
+
   background-color: rgba(71, 11, 3, 0.2);
   -webkit-border-bottom-right-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -81,7 +118,8 @@ a:hover {
 }
 
 #footer {
-  margin-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   height: 80px;
   background: url(../images/bg_footer.png) 50% 50% no-repeat;
 }

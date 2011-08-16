@@ -101,19 +101,24 @@ input[type="reset"],
 input[type="submit"],
 input[type="button"] {
   -webkit-appearance: none;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
-  background: #ddd url(../images/button.png) repeat-x;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #ddd));
-  background: -moz-linear-gradient(top center, #fff 0%, #ddd 100%);
+  background: #cdc8c7 url(../images/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ece6e5), color-stop(1, #cdc8c7));
+  background: -moz-linear-gradient(top center, #ece6e5 0%, #cdc8c7 100%);
+  /*background: #ddd url(../images/button.png) repeat-x;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #ddd));
+    background: -moz-linear-gradient(top center, #fff 0%, #ddd 100%);*/
   border: 1px solid;
-  border-color: #ddd #bbb #999;
+  /*border-color: #ddd #bbb #999;*/
+  border-color: #cdc8c7 #ada9a8 #8e8a89;
   cursor: pointer;
-  color: #333;
+  /*color: #333;*/
+  color: #2f2e2e;
   /*
     Helvetica Neue present, because it works better
     for line-height on buttons than Arial, on OS X.
@@ -187,17 +192,17 @@ input[type="week"] {
   Cannot stack with WebKit's.
 */
 ::-webkit-input-placeholder {
-  color: #888;
+  color: #aaa;
 }
 
 input:-moz-placeholder,
 textarea:-moz-placeholder {
-  color: #888;
+  color: #aaa;
 }
 
 input.placeholder_text,
 textarea.placeholder_text {
-  color: #888;
+  color: #aaa;
 }
 
 :invalid {

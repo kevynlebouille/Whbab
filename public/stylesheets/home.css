@@ -1,9 +1,10 @@
+#wrapper_home {
+  background: url(../images/bg_home.jpg) repeat-x;
+}
+
 .home {
   padding-top: 25px;
-  padding-left: 30px;
-  padding-right: 30px;
   height: 400px;
-  background: #470b03 url(../images/bg_home.jpg) no-repeat;
   color: #fff;
 }
 
@@ -103,8 +104,15 @@
 }
 
 .home .links {
-  margin-top: 20px;
+  margin: 20px 0;
   padding-left: 100px;
   width: 840px;
   color: #470b03;
 }
+
+.home .links img {
+  position: relative;
+  top: -2px;
+  margin: 0 10px;
+}
+
