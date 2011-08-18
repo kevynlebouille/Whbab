@@ -18,4 +18,13 @@ jQuery(function($) {
     evt.stopPropagation();
   });
 
+  $('.popin').colorbox({
+    close: '',
+    opacity: 0.4,
+    returnFocus: false,
+    scrolling: false,
+    initialWidth: 300,
+    initialHeight: 200
+  });
+
 });

@@ -6,14 +6,17 @@
   <p><%= f.label :email %><br />
   <%= f.email_field :email %></p>
 
+  <p><%= f.label :name %><br />
+  <%= f.text_field :name %></p>
+
+  <p><%= f.label :favorite_army_id %><br />
+  <%= f.collection_select :favorite_army_id, Army.all, :id, :name, :include_blank => true %></p>
+
   <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password %></p>
 
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
 
   <p><%= f.submit "Update" %></p>
 <% end %>

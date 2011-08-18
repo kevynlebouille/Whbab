@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'seedbank'
 gem 'acts_as_list', '~> 0.1.4'
 gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
+gem 'meta_search'
 
 # Use unicorn as the web server
 # gem 'unicorn'

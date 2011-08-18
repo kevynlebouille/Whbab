@@ -11,15 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :army_id %><br />
-    <%= f.collection_select :army_id, Army.all, :id, :name %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <p><%= f.collection_select :army_id, Army.all, :id, :name %></p>
+  <p class="field"><%= f.text_field :name, :placeholder => 'Nom' %></p>
+  <p class="actions"><%= f.submit "Valider" %></p>
 <% end %>

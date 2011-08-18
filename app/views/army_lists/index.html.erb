@@ -1,17 +1,15 @@
 <% title "Mes listes d'armée" %>
 
 <div id="subheader" class="grid_14">
-  <%= form_tag army_lists_path, :method => "get" do -%>
+  <%# form_tag army_lists_path, :method => "get" do -%>
+  <%= form_for @search, :url => army_lists_path, :html => {:method => :get} do |f| %>
     <p>
-      <label for="filter_army_id">Filtrer par</label> <%= select_tag "search[army_id]", options_from_collection_for_select(@armies, :id, :name, @search[:army_id]), :include_blank => true %>
-
-      <label for="search_min_value_points">de</label> <%= text_field_tag "search[min_value_points]", @search[:min_value_points] %>
-      <label for="search_max_value_points">a</label> <%= text_field_tag "search[max_value_points]", @search[:max_value_points] %>
-      <label for="search_max_value_points">points</label>
-
-      <%= submit_tag "Valider" %>
+      <%= f.label :army_id_eq, "Filtrer par" %> <%= f.collection_select :army_id_eq, Army.all, :id, :name, :include_blank => true %>
+      <%= f.label :value_points_gte, "de" %> <%= f.text_field :value_points_gte %>
+      <%= f.label :value_points_lte, "a" %> <%= f.text_field :value_points_lte %> <%= f.label :value_points_lte, "points" %>
+      <%= f.submit "Valider" %>
     </p>
-  <% end -%>
+  <% end %>
 </div>
 
 <% @army_lists.each_with_index do |army_list, i| %>
@@ -19,36 +17,19 @@
 <div class="grid_4 <%= alternate_cell_class(i) %>">
   <div class="army_list_row">
     <p><%= image_tag "thumb_army.png", :size => "220x132" %></p>
-    <p><%= army_list.army.name %></p>
+    <p><%= army_list.name %></p>
     <p class="actions"><button>Editer</button></p>
   </div>
 </div>
 
 <% end %>
 
-<% @army_lists.each_with_index do |army_list, i| %>
-
-<div class="grid_4 <%= alternate_cell_class(i) %>">
+<div class="grid_4 <%= @army_lists.any? ? alternate_cell_class(@army_lists.length) : "suffix_6 prefix_6" %>">
   <div class="army_list_row">
-    <p><%= image_tag "thumb_army.png", :size => "220x132" %></p>
-    <p><%= army_list.army.name %></p>
-    <p class="actions"><button>Editer</button></p>
+    <p><a href="<%= new_army_list_path %>" class="popin"><%= image_tag "bt_new_army_list.png", :size => "220x132" %></a></p>
+    <p>Créer une nouvelle liste d'armée</p>
   </div>
 </div>
-
-<% end %>
-
-<% @army_lists.each_with_index do |army_list, i| %>
-
-<div class="grid_4 <%= alternate_cell_class(i) %>">
-  <div class="army_list_row">
-    <p><%= image_tag "thumb_army.png", :size => "220x132" %></p>
-    <p><%= army_list.army.name %></p>
-    <p class="actions"><button>Editer</button></p>
-  </div>
-</div>
-
-<% end %>
 
 <!-- <div class="grid_14 prefix_1 suffix_1">
   <h1>Listing army_lists</h1>

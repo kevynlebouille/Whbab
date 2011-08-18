@@ -40,13 +40,13 @@
   top: 2px;
 }
 
-#subheader #search_army_id {
+#subheader #search_army_id_eq {
   margin-left: 20px;
   margin-right: 100px;
   width: 220px;
 }
 
-#subheader #search_min_value_points, #subheader #search_max_value_points {
+#subheader #search_value_points_gte, #subheader #search_value_points_lte {
   margin: 0 5px;
   width: 60px;
 }

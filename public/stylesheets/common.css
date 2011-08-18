@@ -123,3 +123,23 @@ a:hover {
   height: 80px;
   background: url(../images/bg_footer.png) 50% 50% no-repeat;
 }
+
+.small_popin {
+  padding-top: 30px;
+  padding-left: 60px;
+  width: 288px;
+  height: 298px;
+  background: url(../images/bg_small_popin.png) no-repeat;
+}
+
+.small_popin h1 {
+  margin-bottom: 20px;
+  font: 22px GodOfWar;
+  font-weight: normal;
+  color: #470b03;
+}
+
+.small_popin p {
+  margin: 10px 0;
+}
+
