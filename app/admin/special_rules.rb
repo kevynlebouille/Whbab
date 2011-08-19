@@ -1,5 +1,5 @@
 ActiveAdmin.register SpecialRule do
-  menu :label => "(4) - Special Rule"
+  menu :label => "(4) - Special Rules"
 
   controller do
     def create

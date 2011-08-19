@@ -6,6 +6,7 @@ ActiveAdmin.register User do
     column :id
     column :email
     column :name
+    column :favorite_army, :sortable => :favorite_army_id
     column :created_at
     column :updated_at
     default_actions

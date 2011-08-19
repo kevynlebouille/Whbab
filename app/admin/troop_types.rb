@@ -1,3 +1,3 @@
 ActiveAdmin.register TroopType do
-  menu :parent => "(2) - Troop"
+  menu :parent => "(2) - Troops"
 end
