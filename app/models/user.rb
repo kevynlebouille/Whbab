@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :favorite_army_id
 
   def update_with_password(params={})
-    params.delete(:current_password)
-    self.update_without_password(params)
+    params.delete :current_password
+    self.update_without_password params
   end
 end

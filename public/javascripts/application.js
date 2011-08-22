@@ -24,7 +24,10 @@ jQuery(function($) {
     returnFocus: false,
     scrolling: false,
     initialWidth: 300,
-    initialHeight: 200
+    initialHeight: 200,
+    onComplete: function() {
+      $('#cboxLoadedContent form[data-validate]').validate();
+    }
   });
 
 });

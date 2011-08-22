@@ -33,10 +33,10 @@ class ArmyListsController < ApplicationController
   # GET /army_lists/new.xml
   def new
     @army_list = ArmyList.new
-    @army_list.army = current_user.favorite_army
+    @army_list.army_id = params[:army_id] || current_user.favorite_army.try(:id)
 
     respond_to do |format|
-      format.html { render :layout => nil } # new.html.erb
+      format.html # new.html.erb
       format.xml  { render :xml => @army_list }
     end
   end

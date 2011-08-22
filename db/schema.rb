@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818221012) do
+ActiveRecord::Schema.define(:version => 20110822221450) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20110818221012) do
     t.integer  "unit_id"
     t.integer  "unit_category_id"
     t.string   "name"
-    t.integer  "value_points"
+    t.decimal  "value_points",     :precision => 5, :scale => 1
     t.integer  "size"
     t.integer  "position"
     t.datetime "created_at"
@@ -74,10 +74,10 @@ ActiveRecord::Schema.define(:version => 20110818221012) do
   add_index "army_list_choices_magic_items", ["magic_item_id"], :name => "index_army_list_choices_magic_items_on_magic_item_id"
 
   create_table "army_lists", :force => true do |t|
-    t.integer  "army_id",      :null => false
-    t.integer  "user_id",      :null => false
-    t.string   "name",         :null => false
-    t.integer  "value_points", :null => false
+    t.integer  "army_id",                                    :null => false
+    t.integer  "user_id",                                    :null => false
+    t.string   "name",                                       :null => false
+    t.decimal  "value_points", :precision => 5, :scale => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(:version => 20110818221012) do
   end
 
   create_table "magic_items", :force => true do |t|
-    t.integer "magic_item_category_id", :null => false
+    t.integer "magic_item_category_id",                               :null => false
     t.integer "army_id"
-    t.string  "name",                   :null => false
-    t.integer "value_points",           :null => false
+    t.string  "name",                                                 :null => false
+    t.decimal "value_points",           :precision => 5, :scale => 1, :null => false
   end
 
   add_index "magic_items", ["army_id"], :name => "index_magic_items_on_army_id"
@@ -120,11 +120,11 @@ ActiveRecord::Schema.define(:version => 20110818221012) do
   end
 
   create_table "troops", :force => true do |t|
-    t.integer "unit_id",                    :null => false
+    t.integer "unit_id",                                                  :null => false
     t.integer "troop_type_id"
-    t.string  "name",                       :null => false
-    t.integer "value_points"
-    t.integer "position",                   :null => false
+    t.string  "name",                                                     :null => false
+    t.decimal "value_points",               :precision => 5, :scale => 1
+    t.integer "position",                                                 :null => false
     t.string  "M",             :limit => 5
     t.string  "WS",            :limit => 5
     t.string  "BS",            :limit => 5
@@ -144,14 +144,14 @@ ActiveRecord::Schema.define(:version => 20110818221012) do
   end
 
   create_table "unit_options", :force => true do |t|
-    t.integer "unit_id",            :null => false
+    t.integer "unit_id",                                          :null => false
     t.integer "parent_id"
-    t.string  "name",               :null => false
-    t.integer "value_points"
-    t.integer "position",           :null => false
-    t.boolean "is_per_model",       :null => false
-    t.boolean "is_magic_items",     :null => false
-    t.boolean "is_magic_standards", :null => false
+    t.string  "name",                                             :null => false
+    t.decimal "value_points",       :precision => 5, :scale => 1
+    t.integer "position",                                         :null => false
+    t.boolean "is_per_model",                                     :null => false
+    t.boolean "is_magic_items",                                   :null => false
+    t.boolean "is_magic_standards",                               :null => false
     t.integer "master_id"
   end
 
@@ -160,15 +160,15 @@ ActiveRecord::Schema.define(:version => 20110818221012) do
   add_index "unit_options", ["unit_id"], :name => "index_unit_options_on_unit_id"
 
   create_table "units", :force => true do |t|
-    t.integer "army_id",                             :null => false
-    t.integer "unit_category_id",                    :null => false
-    t.string  "name",                                :null => false
-    t.integer "min_size",         :default => 1,     :null => false
+    t.integer "army_id",                                                           :null => false
+    t.integer "unit_category_id",                                                  :null => false
+    t.string  "name",                                                              :null => false
+    t.integer "min_size",                                       :default => 1,     :null => false
     t.integer "max_size"
-    t.integer "value_points"
+    t.decimal "value_points",     :precision => 5, :scale => 1
     t.string  "magic"
     t.text    "notes"
-    t.boolean "is_unique",        :default => false, :null => false
+    t.boolean "is_unique",                                      :default => false, :null => false
   end
 
   add_index "units", ["army_id"], :name => "index_units_on_army_id"

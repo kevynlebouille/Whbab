@@ -56,12 +56,17 @@
 }
 
 .army_list_row {
+  position: relative;
   margin-bottom: 10px;
   height: 180px;
 }
 
-.army_list_row img {
+.army_list_row .thumb {
   opacity: 0.7;
+}
+
+.army_list_row:hover .thumb, .army_list_row:hover .value_points  {
+  opacity: 1;
 }
 
 .army_list_row p {
@@ -81,6 +86,14 @@
   display: block;
 }
 
-.army_list_row:hover img {
-  opacity: 1;
+.army_list_row .value_points {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  font: 40px GodOfWar;
+  line-height: 20px;
+  color: #fff;
+  text-align: right;
+  text-shadow: -1px 0 #470b03, 0 1px #470b03, 1px 0 #470b03, 0 -1px #470b03;
+  opacity: 0.8;
 }

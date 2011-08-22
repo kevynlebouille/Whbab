@@ -1,7 +1,6 @@
 <% title "Mes listes d'armée" %>
 
 <div id="subheader" class="grid_14">
-  <%# form_tag army_lists_path, :method => "get" do -%>
   <%= form_for @search, :url => army_lists_path, :html => {:method => :get} do |f| %>
     <p>
       <%= f.label :army_id_eq, "Filtrer par" %> <%= f.collection_select :army_id_eq, Army.all, :id, :name, :include_blank => true %>
@@ -16,9 +15,10 @@
 
 <div class="grid_4 <%= alternate_cell_class(i) %>">
   <div class="army_list_row">
-    <p><%= image_tag "thumb_army.png", :size => "220x132" %></p>
+    <p class="thumb"><a href="<%= army_list_path(army_list, :format => 'pdf') %>"><%= image_tag "/system/armies/#{army_list.army.id}/thumb.png", :size => "220x132" %></a></p>
+    <p class="value_points"><%= number_with_precision(army_list.value_points, :strip_insignificant_zeros => true) %><br /><small style="font-size:20px">points</small></p>
     <p><%= army_list.name %></p>
-    <p class="actions"><button>Editer</button></p>
+    <p class="actions"><button onclick="location = '<%= army_list_path(army_list) %>'">Editer</button></p>
   </div>
 </div>
 
@@ -26,7 +26,7 @@
 
 <div class="grid_4 <%= @army_lists.any? ? alternate_cell_class(@army_lists.length) : "suffix_6 prefix_6" %>">
   <div class="army_list_row">
-    <p><a href="<%= new_army_list_path %>" class="popin"><%= image_tag "bt_new_army_list.png", :size => "220x132" %></a></p>
+    <p><a href="<%= new_army_list_path(:army_id => @search.army_id_eq) %>" class="popin"><%= image_tag "bt_new_army_list.png", :size => "220x132" %></a></p>
     <p>Créer une nouvelle liste d'armée</p>
   </div>
 </div>
