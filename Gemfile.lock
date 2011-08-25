@@ -1,14 +1,14 @@
 GIT
   remote: git://github.com/bcardarella/client_side_validations.git
-  revision: 82ebd07a5fa1ef0b291da5787612a6b4c480dc9d
+  revision: 633854a9335b0413299d96def4d45d552dac5b79
   specs:
     client_side_validations (3.1.0)
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 44b9b2515b043a616cf8f866a33620c6e3181e42
+  revision: e6135441b27ade0e8e31c7199448555f8aeb77ea
   specs:
-    activeadmin (0.2.2)
+    activeadmin (0.3.0)
       devise (>= 1.1.2)
       fastercsv
       formtastic (>= 1.1.0)
@@ -107,7 +107,7 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rdoc (3.9.2)
+    rdoc (3.9.3)
     responders (0.6.4)
     sass (3.1.7)
     seedbank (0.0.7)
