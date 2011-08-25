@@ -9,7 +9,7 @@ class ArmyListsController < ApplicationController
       params[:search][:army_id_eq] = current_user.favorite_army.try(:id)
     end
 
-    @search = current_user.army_lists.includes(:army).search(params[:search])
+    @search = current_user.army_lists.includes(:army).order('value_points DESC').search(params[:search])
     @army_lists = @search.relation
 
     respond_to do |format|
