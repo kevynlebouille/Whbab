@@ -20,7 +20,7 @@
       <% if user_signed_in? %>
       <strong>Bienvenue <%= current_user.name %> <%= image_tag "menu_arrow.png", :size => "11x9" %></strong>
       <% else %>
-      <%= link_to "Se connecter", new_session_path(resource_name) %> •
+      <%= link_to "Se connecter", new_session_path(resource_name) %>
       <%= link_to "S'inscrire", new_registration_path(resource_name) %>
       <% end %>
     </div>

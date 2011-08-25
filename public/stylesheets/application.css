@@ -61,14 +61,6 @@
   height: 180px;
 }
 
-.army_list_row .thumb {
-  opacity: 0.7;
-}
-
-.army_list_row:hover .thumb, .army_list_row:hover .value_points  {
-  opacity: 1;
-}
-
 .army_list_row p {
   margin: 5px 0;
   text-align: center;
@@ -94,6 +86,5 @@
   line-height: 20px;
   color: #fff;
   text-align: right;
-  text-shadow: -1px 0 #470b03, 0 1px #470b03, 1px 0 #470b03, 0 -1px #470b03;
-  opacity: 0.8;
+  text-shadow: -2px 0 #470b03, 0 2px #470b03, 2px 0 #470b03, 0 -2px #470b03;
 }

@@ -52,22 +52,27 @@ a:hover {
   text-decoration: none;
 }
 
-#header .welcome strong {
+#header .welcome {
+  text-align: right;
+}
+
+#header .welcome strong, #header .welcome a {
   float: right;
   display: block;
-  padding: 8px 10px 0 10px;
-  height: 30px;
+  padding: 10px 10px 0 10px;
+  height: 28px;
   font-size: 13px;
   font-weight: normal;
 }
 
-#header .welcome strong:hover, #header .welcome strong.over {
+#header .welcome strong:hover, #header .welcome strong.over, #header .welcome a:hover {
   cursor: pointer;
   background-color: #6c3c35;
 }
 
 #header .welcome a {
   color: #fff;
+  text-decoration: none;
 }
 
 #header .welcome img {
