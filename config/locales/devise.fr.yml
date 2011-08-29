@@ -48,11 +48,11 @@ fr:
       change_my_password: "Changer mon mot de passe"
       send_reset_password_instructions: "Envoyez moi les instructions de réinitialisation du mot de passe"
       send_instructions: "Vous allez recevoir un email contenant les instructions pour réinitialiser votre mot de passe dans quelques instants."
-      updated: "Votre mot de passe a été modifié avec succès, vous êtes à présent connecté."
+      updated: "Votre mot de passe a été modifié avec succès. Vous êtes à présent connecté."
     confirmations:
       resend_instructions: "Ré-envoyer les instructions de confirmation"
       send_instructions: "Vous allez recevoir un email contenant les instructions pour confirmer votre compte dans quelques instants."
-      confirmed: "Votre compte a été confirmé avec succès, vous êtes à présent connecté."
+      confirmed: "Votre compte a été confirmé avec succès. Vous êtes à présent connecté."
     registrations:
       signed_up: "Bienvenue, vous êtes connectés avec succès"
       edit: "Editer %{resourcename}"
@@ -65,7 +65,7 @@ fr:
       back: "Retour"
       inactive_signed_up: "Vous vous êtes connectés avec succès. Cependant, nous n'avons pas pu vous identifier car votre compte est %{reason}."
       updated: "Votre compte a été modifié avec succès."
-      destroyed: "Au revoir! Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt."
+      destroyed: "Au revoir! Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt."
     unlocks:
       resend_instructions: "Ré-envoyer les instructions de débloquage"
       send_instructions: "Vous allez recevoir contenant les instructions nécessaires au débloquage de votre compte dans quelques minutes"
