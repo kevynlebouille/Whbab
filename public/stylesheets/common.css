@@ -130,9 +130,8 @@ a:hover {
 }
 
 .small_popin {
-  padding-top: 30px;
-  padding-left: 60px;
-  width: 288px;
+  padding: 30px 40px 0 40px;
+  width: 268px;
   height: 298px;
   background: url(../images/bg_small_popin.png) no-repeat;
 }
@@ -146,4 +145,9 @@ a:hover {
 
 .small_popin p {
   margin: 10px 0;
+}
+
+.small_popin p.close {
+  margin-top: 20px;
+  text-align: center;
 }

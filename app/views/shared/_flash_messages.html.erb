@@ -1,0 +1,21 @@
+<% if flash[:notice] and !flash[:notice].blank? %>
+<div style="display:none">
+  <div id="flash_messages" class="small_popin">
+    <h1>Confirmation</h1>
+
+    <p><%= flash[:notice].html_safe %></p>
+    <p class="close"><button onclick="$.colorbox.close()">Fermer</button></p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  jQuery(function($) {
+    $.colorbox({
+      inline:true,
+      href:"#flash_messages",
+      close: '',
+      opacity: 0.4,
+    });
+  })
+</script>
+<% end %>

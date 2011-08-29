@@ -1,17 +1,7 @@
-<%= form_for(@army_list) do |f| %>
-  <% if @army_list.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@army_list.errors.count, "error") %> prohibited this army_list from being saved:</h2>
-
-      <ul>
-      <% @army_list.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @army_list do |f| %>
+  <%= render "shared/form_errors", :object => @army_list %>
 
   <p><%= f.collection_select :army_id, Army.all, :id, :name %></p>
-  <p class="field"><%= f.text_field :name, :placeholder => 'Nom' %></p>
+  <p class="field"><%= f.text_field :name, :placeholder => "Nom" %></p>
   <p class="actions"><%= f.submit "Valider" %></p>
 <% end %>
