@@ -1,17 +1,19 @@
-<h2>Sign in</h2>
+<% title "Se connecter" -%>
+
+<h2>Se connecter</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <p><%= f.email_field :email, :placeholder => "Email" %></p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <p><%= f.password_field :password, :placeholder => "Mot de passe" %></p>
 
   <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+  <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
 
-  <p><%= f.submit "Sign in" %></p>
+  <p><%= f.submit "Valider" %></p>
 <% end %>
 
-<%= render :partial => "users/shared/links" %>
+<%= link_to "J'ai perdu mon mot de passe !", new_password_path(resource_name) %><br />
+<%= link_to "Je n'ai pas reçu d'email de confirmation", new_confirmation_path(resource_name) %><br />
+Pour toutes questions n'hésitez pas à consulter l'<a href="mailto:support@whbab.com">aide en ligne</a>

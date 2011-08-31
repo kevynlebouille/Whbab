@@ -13,12 +13,12 @@ body {
 
 a {
   color: #470b03;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:hover {
   color: #a01e14;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .container_16 {
@@ -85,6 +85,7 @@ a:hover {
   position: absolute;
   top: 38px;
   right: 40px;
+  min-width: 120px;
   list-style: none;
   padding: 5px 10px;
   background-color: #6c3c35;

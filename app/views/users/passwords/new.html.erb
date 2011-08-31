@@ -1,12 +1,12 @@
-<h2>Forgot your password?</h2>
+<% title "J'ai perdu mon mot de passe" -%>
+
+<h2>J'ai perdu mon mot de passe</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <p><%= f.email_field :email, :placeholder => "Email" %></p>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.submit "Send me reset password instructions" %></p>
+  <p><%= f.submit "Valider" %></p>
 <% end %>
 
-<%= render :partial => "users/shared/links" %>
+<%= link_to "Je n'ai pas reçu d'email de confirmation", new_confirmation_path(resource_name) %><br />
+Pour toutes questions n'hésitez pas à consulter l'<a href="mailto:support@whbab.com">aide en ligne</a>

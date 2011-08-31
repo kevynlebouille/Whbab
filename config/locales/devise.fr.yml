@@ -63,7 +63,7 @@ fr:
       cancel_my_account: "Annuler mon compte"
       confirm: "Etes vous sur?"
       back: "Retour"
-      inactive_signed_up: "Vous vous êtes connectés avec succès. Cependant, nous n'avons pas pu vous identifier car votre compte est %{reason}."
+      inactive_signed_up: ""
       updated: "Votre compte a été modifié avec succès."
       destroyed: "Au revoir! Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt."
     unlocks:

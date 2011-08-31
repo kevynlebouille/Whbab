@@ -1,18 +1,19 @@
-<h2>Sign up</h2>
+<% title "S'inscrire" -%>
+
+<h2>S'inscrire</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f| %>
-  <%# devise_error_messages! %>
+  <p><%= f.text_field :name, :placeholder => "Nom ou pseudo", :validate => true %></p>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email, :validate => true %></p>
+  <p><%= f.email_field :email, :placeholder => "Adresse email", :validate => true %></p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password, :validate => true %></p>
+  <p><%= f.password_field :password, :placeholder => "Mot de passe", :validate => true %></p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, :validate => true %></p>
+  <p><%= f.password_field :password_confirmation, :placeholder => "Confirmation du mot de passe", :validate => true %></p>
 
-  <p><%= f.submit "Sign up" %></p>
+  <p><%= f.submit "Valider" %></p>
 <% end %>
 
-<%= render :partial => "users/shared/links" %>
+<%= link_to "J'ai perdu mon mot de passe !", new_password_path(resource_name) %><br />
+<%= link_to "Je n'ai pas reçu d'email de confirmation", new_confirmation_path(resource_name) %><br />
+Pour toutes questions n'hésitez pas à consulter l'<a href="mailto:support@whbab.com">aide en ligne</a>

@@ -1,16 +1,16 @@
-<h2>Change your password</h2>
+<% title "Changer votre mot de passe" -%>
+
+<h2>Changer votre mot de passe</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+  <p><%= f.password_field :password, :placeholder => "Mot de passe" %></p>
 
-  <p><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></p>
+  <p><%= f.password_field :password_confirmation, :placeholder => "Confirmation du mot de passe" %></p>
 
-  <p><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Change my password" %></p>
+  <p><%= f.submit "Valider" %>
+  <%= f.hidden_field :reset_password_token %></p>
 <% end %>
 
-<%= render :partial => "users/shared/links" %>
+<%= link_to "J'ai perdu mon mot de passe !", new_password_path(resource_name) %><br />
+<%= link_to "Je n'ai pas reçu d'email de confirmation", new_confirmation_path(resource_name) %><br />
+Pour toutes questions n'hésitez pas à consulter l'<a href="mailto:support@whbab.com">aide en ligne</a>
