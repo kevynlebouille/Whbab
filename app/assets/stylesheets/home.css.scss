@@ -1,5 +1,5 @@
 #wrapper_home {
-  background: url(../images/bg_home.jpg) repeat-x;
+  background: image-url("bg_home.jpg") repeat-x;
 }
 
 .home {
@@ -96,7 +96,7 @@
   margin-top: 150px;
   padding-left: 100px;
   width: 840px;
-  background: url(../images/pict_home.png) no-repeat;
+  background: image-url("pict_home.png") no-repeat;
   color: #470b03;
 }
 

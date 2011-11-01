@@ -8,7 +8,7 @@
 body {
   font: 13px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
   color: #470b03;
-  background: url(../images/bg_body.jpg) 50% 0 repeat;
+  background: image-url("bg_body.jpg") 50% 0 repeat;
 }
 
 a {
@@ -31,7 +31,7 @@ form.button_to, form.button_to div {
 }
 
 #wrapper {
-  background: url(../images/bg_header.png) 50% 0 repeat-x;
+  background: image-url("bg_header.png") 50% 0 repeat-x;
 }
 
 #header {
@@ -140,14 +140,14 @@ form.button_to, form.button_to div {
   padding-top: 20px;
   padding-bottom: 20px;
   height: 80px;
-  background: url(../images/bg_footer.png) 50% 50% no-repeat;
+  background: image-url("bg_footer.png") 50% 50% no-repeat;
 }
 
 .small_popin {
   padding: 30px 40px 0 40px;
   width: 268px;
   height: 298px;
-  background: url(../images/bg_small_popin.png) no-repeat;
+  background: image-url("bg_small_popin.png") no-repeat;
 }
 
 .small_popin h1 {

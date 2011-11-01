@@ -13,5 +13,9 @@ class Unit < ActiveRecord::Base
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true
   validates_inclusion_of :is_unique, :in => [true, false]
 
-  default_scope order('id DESC')
+  def self.for_select(army)
+    UnitCategory.all.map do |unit_category|
+      [unit_category.name, unit_category.units.where(:army_id => army).order("is_unique", "name").map { |u| [u.name, u.id] }]
+    end
+  end
 end

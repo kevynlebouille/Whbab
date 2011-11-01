@@ -12,16 +12,13 @@
 </div>
 
 <ol class="army_list_choices_overview">
+  <% @army_list.army_list_choices.each do |army_list_choice| %>
   <li>
     <div class="army_list_choice_overview">
-      
+      <%= army_list_choice.name %> (<%= value_points army_list_choice.value_points %> pts)
     </div>
   </li>
-  <li>
-    <div class="army_list_choice_overview">
-      
-    </div>
-  </li>
+  <% end %>
 </ol>
 
 <div class="army_list_value_points">

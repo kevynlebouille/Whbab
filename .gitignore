@@ -5,3 +5,4 @@ tmp/
 .DS_Store
 db/seeds
 public/system
+.sass-cache

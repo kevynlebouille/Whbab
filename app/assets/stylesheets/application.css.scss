@@ -1,5 +1,12 @@
-@import 'common.css';
-@import 'home.css';
+/*
+*= require reset
+*= require 960
+*= require formalize
+*= require colorbox
+*= require common
+*= require home
+*= require_self
+*/
 
 .error_messages {
   width: 400px;
@@ -127,7 +134,7 @@
   padding: 15px 7px;
   width: 166px;
   height: 122px;
-  background: url(../images/bg_army_list_value_points.png) no-repeat;
+  background: image-url("bg_army_list_value_points.png") no-repeat;
 }
 
 .army_list_value_points h3 {
@@ -168,7 +175,7 @@
   font-weight: bold;
   text-align: right;
   text-decoration: none;
-  background: url(../images/bt_new_army_list_choice.png) no-repeat;
+  background: image-url("bt_new_army_list_choice.png") no-repeat;
 }
 
 .army_list_choices_overview {
@@ -183,7 +190,7 @@
 .army_list_choice_overview {
   width: 725px;
   height: 55px;
-  background: url(../images/bg_army_list_choice_overview.png) no-repeat;
+  background: image-url("bg_army_list_choice_overview.png") no-repeat;
 }
 
 #new_army_list_choice #army_list_choice_unit_id {

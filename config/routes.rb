@@ -7,7 +7,6 @@ Whbab::Application.routes.draw do
     resources :army_list_choices
   end
 
-  get 'home/index'
   #get 'army_lists/:army_name/:id/:army_list_id' => 'army_list#show', :as => :army_list
 
   # The priority is based upon order of creation:

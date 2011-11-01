@@ -1,3 +1,9 @@
+//= require jquery
+//= require jquery_ujs
+//= require rails.validations
+//= require jquery.colorbox.min
+//= require_self
+
 jQuery(function($) {
 
   $('.home .signup #user_new').change(function() {

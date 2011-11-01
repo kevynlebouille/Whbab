@@ -1,15 +1,12 @@
 <%= form_for [@army_list, @army_list_choice] do |f| %>
   <%= render "shared/form_errors", :object => @army_list_choice %>
 
-  <p><%= f.collection_select :unit_id, @army_list.army.units, :id, :name %></p>
+  <p><%= f.select :unit_id, grouped_options_for_select(Unit.for_select(@army_list.army)) %></p>
 
   <% if @army_list_choice.persisted? %>
   <p><%= f.collection_select :unit_category_id, UnitCategory.all, :id, :name %></p>
   <% end %>
 
-  <p>
-    <%= f.text_field :name, :placeholder => "Nom", :size => 22 %>
-    <%= f.text_field :size, :placeholder => "Taille", :size => 1 %>
-  </p>
+  <p><%= f.text_field :name, :placeholder => "Nom" %></p>
   <p><%= f.submit "Valider" %></p>
 <% end %>

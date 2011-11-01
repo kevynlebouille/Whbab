@@ -1,7 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
-gem 'mysql2', '~> 0.2.7'
+gem 'rails', '3.1'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', '~> 3.1.0'
+  gem 'coffee-rails', '~> 3.1.0'
+  gem 'uglifier'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -22,10 +29,11 @@ gem 'mysql2', '~> 0.2.7'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
 gem 'jquery-rails'
+gem 'mysql2'
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
 gem 'seedbank'
-gem 'acts_as_list', '~> 0.1.4'
+gem 'acts_as_list'
 gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
 gem 'meta_search'
 

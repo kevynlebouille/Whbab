@@ -48,7 +48,7 @@ class ArmyListChoicesController < ApplicationController
 
     respond_to do |format|
       if @army_list_choice.save
-        format.html { redirect_to(@army_list_choice, :notice => 'Army list choice was successfully created.') }
+        format.html { redirect_to(@army_list, :notice => 'Army list choice was successfully created.') }
         format.xml  { render :xml => @army_list_choice, :status => :created, :location => @army_list_choice }
       else
         format.html { render :action => "new" }

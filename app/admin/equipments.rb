@@ -1,5 +1,5 @@
 ActiveAdmin.register Equipment do
-  menu :label => "(3) - Equipments"
+  menu :priority => 3
 
   controller do
     def create
