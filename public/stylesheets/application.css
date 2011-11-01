@@ -35,23 +35,23 @@
   font-size: 12px;
 }
 
-#subheader label {
+#army_list_search label {
   position: relative;
   top: 2px;
 }
 
-#subheader #search_army_id_eq {
+#army_list_search #search_army_id_eq {
   margin-left: 20px;
   margin-right: 100px;
   width: 220px;
 }
 
-#subheader #search_value_points_gte, #subheader #search_value_points_lte {
+#army_list_search #search_value_points_gte, #army_list_search #search_value_points_lte {
   margin: 0 5px;
   width: 60px;
 }
 
-#subheader input[type=submit] {
+#army_list_search input[type=submit] {
   float: right;
 }
 
@@ -87,4 +87,109 @@
   color: #fff;
   text-align: right;
   text-shadow: -2px 0 #470b03, 0 2px #470b03, 2px 0 #470b03, 0 -2px #470b03;
+}
+
+.army_list_portrait {
+  position: absolute;
+  top: -35px;
+  left: 300px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+.army_list_portrait img {
+  float: left;
+  margin-right: 5px;
+}
+
+.army_list_portrait h2, .army_list_portrait h2 a {
+  font: 18px GodOfWar;
+  line-height: 35px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.army_list_portrait h1 {
+  font: 25px GodOfWar;
+  line-height: 30px;
+  color: #470b03;
+}
+
+#subheader.army_list button, #subheader.army_list input[type=submit] {
+  float: right;
+  margin-left: 10px;
+}
+
+.army_list_value_points {
+  float: right;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  padding: 15px 7px;
+  width: 166px;
+  height: 122px;
+  background: url(../images/bg_army_list_value_points.png) no-repeat;
+}
+
+.army_list_value_points h3 {
+  margin-bottom: 15px;
+  font: 18px GodOfWar;
+  color: #470b03;
+  text-align: center;
+}
+
+.army_list_value_points ul li {
+  list-style: none;
+  padding: 1px 2px;
+}
+
+.army_list_value_points ul li.red {
+  background: rgba(192, 4, 24, .3);
+}
+
+.army_list_value_points ul li.green {
+  background: rgba(177, 200, 0, .3);
+}
+
+.army_list_value_points em {
+  float: right;
+  font-style: normal;
+}
+
+.army_list_choice_new {
+  clear: right;
+  float: right;
+  display: block;
+  margin-right: 10px;
+  padding-top: 45px;
+  padding-right: 10px;
+  width: 170px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  text-decoration: none;
+  background: url(../images/bt_new_army_list_choice.png) no-repeat;
+}
+
+.army_list_choices_overview {
+  float: left;
+}
+
+.army_list_choices_overview li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.army_list_choice_overview {
+  width: 725px;
+  height: 55px;
+  background: url(../images/bg_army_list_choice_overview.png) no-repeat;
+}
+
+#new_army_list_choice #army_list_choice_unit_id {
+  width: 219px;
+}
+
+#new_army_list_choice #army_list_choice_size {
+  width: 44px;
 }

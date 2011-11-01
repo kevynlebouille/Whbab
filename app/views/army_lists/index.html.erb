@@ -16,9 +16,9 @@
 <div class="grid_4 <%= alternate_cell_class(i) %>">
   <div class="army_list_row">
     <p class="thumb"><a href="<%= army_list_path(army_list, :format => 'pdf') %>"><%= image_tag "/system/armies/#{army_list.army.id}/thumb.png", :size => "220x132" %></a></p>
-    <p class="value_points"><%= number_with_precision(army_list.value_points, :strip_insignificant_zeros => true) %><br /><small style="font-size:20px">points</small></p>
+    <p class="value_points"><%= value_points army_list.value_points %><br /><small style="font-size:20px">points</small></p>
     <p><%= army_list.name %></p>
-    <p class="actions"><button onclick="location = '<%= army_list_path(army_list) %>'">Editer</button></p>
+    <p class="actions"><button onclick="location = '<%= army_list_path(army_list) %>'">Détails</button></p>
   </div>
 </div>
 

@@ -1,20 +1,38 @@
-<p id="notice"><%= notice %></p>
+<% title "Mes listes d'armée • #{@army_list.name}" %>
 
-<p>
-  <b>Army:</b>
-  <%= @army_list.army.name %>
-</p>
+<div class="army_list_portrait">
+  <%= image_tag "/system/armies/#{@army_list.army.id}/portrait.png", :size => "65x64" %>
+  <h2><%= link_to @army_list.army.name, army_lists_path({'search[army_id_eq]' => @army_list.army}) %></h2>
+  <h1><%= @army_list.name %></h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @army_list.name %>
-</p>
+<div id="subheader" class="grid_14 army_list">
+  <%= button_to "Suppr.", { :id => @army_list }, :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
+  <button class="popin" data-href="<%= edit_army_list_path @army_list %>">Editer</button>
+</div>
 
-<p>
-  <b>Value points:</b>
-  <%= @army_list.value_points %>
-</p>
+<ol class="army_list_choices_overview">
+  <li>
+    <div class="army_list_choice_overview">
+      
+    </div>
+  </li>
+  <li>
+    <div class="army_list_choice_overview">
+      
+    </div>
+  </li>
+</ol>
 
+<div class="army_list_value_points">
+  <h3><%= value_points @army_list.value_points %> points</h3>
+  <ul>
+    <li><em><%= value_points 1000 %>pts</em> <strong>Seigneurs</strong> x1</li>
+    <li class="red"><em><%= value_points 1000 %>pts</em> <strong>Héros</strong> x3</li>
+    <li><em><%= value_points 1000 %>pts</em> <strong>Base</strong> x4</li>
+    <li><em><%= value_points 1000 %>pts</em> <strong>Spéciale</strong> x2</li>
+    <li class="red"><em><%= value_points 1000 %>pts</em> <strong>Rare</strong> x1</li>
+  </ul>
+</div>
 
-<%= link_to 'Edit', edit_army_list_path(@army_list) %> |
-<%= link_to 'Back', army_lists_path %>
+<a href="<%= new_army_list_army_list_choice_path @army_list %>" class="army_list_choice_new popin">Ajouter une unité</a>

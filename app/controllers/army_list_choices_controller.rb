@@ -23,10 +23,11 @@ class ArmyListChoicesController < ApplicationController
     end
   end
 
-  # GET /army_list_choices/new
-  # GET /army_list_choices/new.xml
+  # GET /army_list/1/army_list_choices/new
+  # GET /army_list/1/army_list_choices/new.xml
   def new
-    @army_list_choice = ArmyListChoice.new
+    @army_list = current_user.army_lists.find(params[:army_list_id])
+    @army_list_choice = @army_list.army_list_choices.build()
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,10 +40,11 @@ class ArmyListChoicesController < ApplicationController
     @army_list_choice = ArmyListChoice.find(params[:id])
   end
 
-  # POST /army_list_choices
-  # POST /army_list_choices.xml
+  # POST /army_list/1/army_list_choices
+  # POST /army_list/1/army_list_choices.xml
   def create
-    @army_list_choice = ArmyListChoice.new(params[:army_list_choice])
+    @army_list = current_user.army_lists.find(params[:army_list_id])
+    @army_list_choice = @army_list.army_list_choices.build(params[:army_list_choice])
 
     respond_to do |format|
       if @army_list_choice.save

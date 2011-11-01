@@ -3,8 +3,9 @@ Whbab::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
-  resources :army_lists
-  resources :army_list_choices
+  resources :army_lists do
+    resources :army_list_choices
+  end
 
   get 'home/index'
   #get 'army_lists/:army_name/:id/:army_list_id' => 'army_list#show', :as => :army_list

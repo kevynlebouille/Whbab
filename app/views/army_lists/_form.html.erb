@@ -1,7 +1,12 @@
-<%= form_for @army_list do |f| %>
+<%= form_for @army_list, :validate => @army_list.persisted? do |f| %>
   <%= render "shared/form_errors", :object => @army_list %>
 
+  <% if @army_list.persisted? %>
+  <p><%= text_field_tag :army_namy, @army_list.army.name, :disabled => true %></p>
+  <% else %>
   <p><%= f.collection_select :army_id, Army.all, :id, :name %></p>
-  <p class="field"><%= f.text_field :name, :placeholder => "Nom" %></p>
-  <p class="actions"><%= f.submit "Valider" %></p>
+  <% end %>
+
+  <p><%= f.text_field :name, :placeholder => "Nom" %></p>
+  <p><%= f.submit "Valider" %></p>
 <% end %>

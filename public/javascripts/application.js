@@ -18,7 +18,7 @@ jQuery(function($) {
     evt.stopPropagation();
   });
 
-  $('.popin').colorbox({
+  $('a.popin').colorbox({
     close: '',
     opacity: 0.4,
     returnFocus: false,
@@ -30,4 +30,18 @@ jQuery(function($) {
     }
   });
 
+  $('button.popin').click(function() {
+    $.colorbox({
+      href: $(this).data('href'),
+      close: '',
+      opacity: 0.4,
+      returnFocus: false,
+      scrolling: false,
+      initialWidth: 300,
+      initialHeight: 200,
+      onComplete: function() {
+        $('#cboxLoadedContent form[data-validate]').validate();
+      }
+    });
+  });
 });

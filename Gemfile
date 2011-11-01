@@ -6,13 +6,6 @@ gem 'mysql2', '~> 0.2.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
-gem 'jquery-rails'
-gem 'seedbank'
-gem 'acts_as_list', '~> 0.1.4'
-gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
-gem 'meta_search'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -28,6 +21,13 @@ gem 'meta_search'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
+
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'jquery-rails'
+gem 'seedbank'
+gem 'acts_as_list', '~> 0.1.4'
+gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
+gem 'meta_search'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

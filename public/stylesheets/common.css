@@ -21,6 +21,10 @@ a:hover {
   text-decoration: none;
 }
 
+form.button_to, form.button_to div {
+  display: inline;
+}
+
 .container_16 {
   padding-left: 30px;
   padding-right: 30px;
@@ -104,6 +108,11 @@ a:hover {
 
 #header .menu a {
   color: #fff;
+  text-decoration: none;
+}
+
+#header .menu a:hover {
+  text-decoration: underline;
 }
 
 #subheader {
@@ -121,6 +130,10 @@ a:hover {
   -moz-border-radius-bottomleft: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+#content {
+  position: relative;
 }
 
 #footer {
