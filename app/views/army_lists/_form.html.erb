@@ -2,7 +2,7 @@
   <%= render "shared/form_errors", :object => @army_list %>
 
   <% if @army_list.persisted? %>
-  <p><%= text_field_tag :army_namy, @army_list.army.name, :disabled => true %></p>
+  <p><%= text_field_tag :army_name, @army_list.army.name, :disabled => true %></p>
   <% else %>
   <p><%= f.collection_select :army_id, Army.all, :id, :name %></p>
   <% end %>

@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery-ui-1.8.16.custom.min
 //= require jquery_ujs
 //= require rails.validations
 //= require jquery.colorbox.min
@@ -38,7 +39,7 @@ jQuery(function($) {
 
   $('button.popin').click(function() {
     $.colorbox({
-      href: $(this).data('href'),
+      href: $(this).data('url'),
       close: '',
       opacity: 0.4,
       returnFocus: false,
@@ -50,4 +51,10 @@ jQuery(function($) {
       }
     });
   });
+
+  $('.army_list_choices_overview').sortable({
+    update: function(event, ui) {
+      $.post($(this).data('url'), $(this).sortable('serialize'));
+    }
+  }).disableSelection();
 });

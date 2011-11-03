@@ -1,28 +1,6 @@
 class ArmyListChoicesController < ApplicationController
   before_filter :authenticate_user!
 
-  # GET /army_list_choices
-  # GET /army_list_choices.xml
-  def index
-    @army_list_choices = ArmyListChoice.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @army_list_choices }
-    end
-  end
-
-  # GET /army_list_choices/1
-  # GET /army_list_choices/1.xml
-  def show
-    @army_list_choice = ArmyListChoice.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @army_list_choice }
-    end
-  end
-
   # GET /army_list/1/army_list_choices/new
   # GET /army_list/1/army_list_choices/new.xml
   def new
@@ -35,9 +13,10 @@ class ArmyListChoicesController < ApplicationController
     end
   end
 
-  # GET /army_list_choices/1/edit
+  # GET /army_list/1/army_list_choices/1/edit
   def edit
-    @army_list_choice = ArmyListChoice.find(params[:id])
+    @army_list = current_user.army_lists.find(params[:army_list_id])
+    @army_list_choice = @army_list.army_list_choices.find(params[:id])
   end
 
   # POST /army_list/1/army_list_choices
@@ -57,14 +36,15 @@ class ArmyListChoicesController < ApplicationController
     end
   end
 
-  # PUT /army_list_choices/1
-  # PUT /army_list_choices/1.xml
+  # PUT /army_list/1/army_list_choices/1
+  # PUT /army_list/1/army_list_choices/1.xml
   def update
-    @army_list_choice = ArmyListChoice.find(params[:id])
+    @army_list = current_user.army_lists.find(params[:army_list_id])
+    @army_list_choice = @army_list.army_list_choices.find(params[:id])
 
     respond_to do |format|
       if @army_list_choice.update_attributes(params[:army_list_choice])
-        format.html { redirect_to(@army_list_choice, :notice => 'Army list choice was successfully updated.') }
+        format.html { redirect_to(@army_list, :notice => 'Army list choice was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -73,15 +53,24 @@ class ArmyListChoicesController < ApplicationController
     end
   end
 
-  # DELETE /army_list_choices/1
-  # DELETE /army_list_choices/1.xml
+  # DELETE /army_list/1/army_list_choices/1
+  # DELETE /army_list/1/army_list_choices/1.xml
   def destroy
-    @army_list_choice = ArmyListChoice.find(params[:id])
+    @army_list = current_user.army_lists.find(params[:army_list_id])
+    @army_list_choice = @army_list.army_list_choices.find(params[:id])
     @army_list_choice.destroy
 
     respond_to do |format|
-      format.html { redirect_to(army_list_choices_url) }
+      format.html { redirect_to(@army_list) }
       format.xml  { head :ok }
     end
+  end
+
+  # POST /army_lists/1/army_list_choices/sort
+  def sort
+    params[:army_list_choices].each_with_index do |id, index|
+      ArmyListChoice.update_all({ :position => index + 1 }, { :army_list_id => params[:army_list_id], :id => id })
+    end
+    render :nothing => true
   end
 end

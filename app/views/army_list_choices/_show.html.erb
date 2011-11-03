@@ -1,0 +1,15 @@
+<li id="army_list_choices_<%= army_list_choice.id %>">
+  <div class="army_list_choice_overview">
+    <div class="name">
+      <strong><%= army_list_choice.name %></strong>
+      <%= army_list_choice.unit.name %> <em>x<%= army_list_choice.size %></em>
+    </div>
+    <div class="value_points">
+      <strong><%= value_points army_list_choice.value_points %></strong> points
+    </div>
+    <div class="actions" style="background: url(<%= image_path "/system/unit_categories/#{army_list_choice.unit_category.id}/ribbon.png" %>) 100% 100% no-repeat">
+      <button class="popin" data-url="<%= edit_army_list_army_list_choice_path army_list_choice.army_list, army_list_choice %>">Editer</button>
+      <%= button_to "Suppr.", army_list_army_list_choice_path(army_list_choice.army_list, army_list_choice), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
+    </div>
+  </div>
+</li>

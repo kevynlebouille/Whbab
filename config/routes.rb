@@ -4,7 +4,9 @@ Whbab::Application.routes.draw do
   devise_for :users
 
   resources :army_lists do
-    resources :army_list_choices
+    resources :army_list_choices do
+      post 'sort', :on => :collection
+    end
   end
 
   #get 'army_lists/:army_name/:id/:army_list_id' => 'army_list#show', :as => :army_list

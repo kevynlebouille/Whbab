@@ -5,6 +5,7 @@
   <title>Whbab • <%= content_for?(:title) ? yield(:title) : "Bienvenue" %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_tag "BASE_URL = '#{root_path}';" %>
   <%= csrf_meta_tag %>
   <%= yield(:head) %>
 </head>

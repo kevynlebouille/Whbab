@@ -7,28 +7,20 @@
 </div>
 
 <div id="subheader" class="grid_14 army_list">
-  <%= button_to "Suppr.", { :id => @army_list }, :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
-  <button class="popin" data-href="<%= edit_army_list_path @army_list %>">Editer</button>
+  <%= button_to "Suppr.", army_list_path(@army_list), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
+  <button class="popin" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
 </div>
 
-<ol class="army_list_choices_overview">
-  <% @army_list.army_list_choices.each do |army_list_choice| %>
-  <li>
-    <div class="army_list_choice_overview">
-      <%= army_list_choice.name %> (<%= value_points army_list_choice.value_points %> pts)
-    </div>
-  </li>
-  <% end %>
+<ol class="army_list_choices_overview" data-url="<%= sort_army_list_army_list_choices_path @army_list %>">
+  <%= render :partial => "army_list_choices/show", :collection => @army_list.army_list_choices, :as => :army_list_choice %>
 </ol>
 
 <div class="army_list_value_points">
   <h3><%= value_points @army_list.value_points %> points</h3>
   <ul>
-    <li><em><%= value_points 1000 %>pts</em> <strong>Seigneurs</strong> x1</li>
-    <li class="red"><em><%= value_points 1000 %>pts</em> <strong>Héros</strong> x3</li>
-    <li><em><%= value_points 1000 %>pts</em> <strong>Base</strong> x4</li>
-    <li><em><%= value_points 1000 %>pts</em> <strong>Spéciale</strong> x2</li>
-    <li class="red"><em><%= value_points 1000 %>pts</em> <strong>Rare</strong> x1</li>
+    <% @army_list.value_points_details.each do |row| %>
+    <li><em><%= value_points row["value_points"].to_f %> pts</em> <strong><%= row["name"].split.last.titleize %></strong> x<%= row["count"] %></li>
+    <% end %>
   </ul>
 </div>
 
