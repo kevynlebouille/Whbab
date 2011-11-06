@@ -9,11 +9,21 @@ class ArmyListChoice < ActiveRecord::Base
   validates_numericality_of :size, :greater_than_or_equal_to => 1
   validates_numericality_of :position, :greater_than_or_equal_to => 1, :only_integer => true, :allow_nil => true
 
-  before_validation(:on => :create) do
-    self.name = unit.name + " \#" + (army_list.army_list_choices.where(:unit_id => unit).count() + 1).to_s unless attribute_present?(:name)
+  before_validation :on => :create do
+    self.name = unit.name + " \#" + (army_list.army_list_choices.where(:unit_id => unit).count() + 1).to_s unless name?
     self.size = unit.min_size
     self.unit_category = unit.unit_category
     self.value_points = size * unit.value_points
+  end
+
+  after_save do
+    army_list.value_points = army_list.army_list_choices.sum('value_points')
+    army_list.save
+  end
+
+  after_destroy do
+    army_list.value_points = army_list.army_list_choices.sum('value_points')
+    army_list.save
   end
 
   acts_as_list :scope => :army_list
