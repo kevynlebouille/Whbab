@@ -32,7 +32,7 @@ ActiveAdmin.register UnitOption do
     f.inputs do
       f.input :unit
       f.input :parent, :collection => UnitOption.includes(:unit).where('value_points IS NULL').collect { |r| [r.unit.name + ' - ' + r.name, r.id] }
-      f.input :master, :collection => UnitOption.includes(:unit).where('value_points IS NOT NULL').collect { |r| [r.unit.name + ' - ' + r.name, r.id] }
+      f.input :depend, :collection => UnitOption.includes(:unit).where('value_points IS NOT NULL').collect { |r| [r.unit.name + ' - ' + r.name, r.id] }
       f.input :name
       f.input :value_points
       f.input :position

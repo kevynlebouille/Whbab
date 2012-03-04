@@ -12,4 +12,62 @@
       <%= button_to "Suppr.", army_list_army_list_choice_path(army_list_choice.army_list, army_list_choice), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
     </div>
   </div>
+  <div class="army_list_choice_details">
+
+    <table>
+      <tr>
+        <th>Profil</th>
+        <th>M</th>
+        <th>CC</th>
+        <th>CT</th>
+        <th>F</th>
+        <th>E</th>
+        <th>PV</th>
+        <th>I</th>
+        <th>A</th>
+        <th>Cd</th>
+        <th>Type de troupe</th>
+      </tr>
+      <% army_list_choice.unit.troops.each do |troop| %>
+      <tr>
+        <td><%= troop.name %></td>
+        <td><%= troop.M %></td>
+        <td><%= troop.WS %></td>
+        <td><%= troop.BS %></td>
+        <td><%= troop.S %></td>
+        <td><%= troop.T %></td>
+        <td><%= troop.W %></td>
+        <td><%= troop.I %></td>
+        <td><%= troop.A %></td>
+        <td><%= troop.LD %></td>
+        <td><%= troop.troop_type.name %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <strong>Equipement</strong><br />
+    <% army_list_choice.unit.equipments.each do |equipment| %>
+      • <%= equipment.name %><br />
+    <% end %>
+
+    <strong>Règles Spéciales</strong><br />
+    <% army_list_choice.unit.special_rules.each do |special_rule| %>
+      • <%= special_rule.name %><br />
+    <% end %>
+
+    <strong>Options</strong><br />
+    <% army_list_choice.unit.unit_options.where(:parent_id => nil).each do |option| %>
+      <% if option.children.any? %>
+        • <%= option.name %><br />
+        <% option.children.each do | child| %>
+        &nbsp;&nbsp;- <%= child.name %> <%= value_points(child.value_points) %>pts<br />
+        <% end %>
+      <% else %>
+        • <%= option.name %> <%= value_points(option.value_points) %>pts<br />
+      <% end %>
+    <% end %>
+
+    <strong>Magie</strong><br />
+    <%= army_list_choice.unit.magic %><br />
+  </div>
 </li>
