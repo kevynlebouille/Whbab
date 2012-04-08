@@ -1,29 +1,30 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'mysql2'
+
+
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails',   '~> 3.2.3'
-
 group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
- 
+  # gem 'therubyracer', :platform => :ruby
+
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'
-gem 'mysql2'
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'activeadmin'
 gem 'seedbank'
 gem 'acts_as_list'
-gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
+gem 'client_side_validations'
 gem 'meta_search'
 
 # To use ActiveModel has_secure_password
@@ -32,7 +33,7 @@ gem 'meta_search'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the web server
+# Use unicorn as the app server
 # gem 'unicorn'
 
 # Deploy with Capistrano
