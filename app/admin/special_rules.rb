@@ -1,6 +1,4 @@
 ActiveAdmin.register SpecialRule do
-  menu :priority => 4
-
   controller do
     def create
       create! { new_admin_special_rule_url }

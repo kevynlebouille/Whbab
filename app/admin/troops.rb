@@ -1,6 +1,4 @@
 ActiveAdmin.register Troop do
-  menu :priority => 2
-
   controller do
     def create
       create! { new_admin_troop_url }

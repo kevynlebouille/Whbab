@@ -1,6 +1,4 @@
 ActiveAdmin.register UnitOption do
-  menu :priority => 5
-
   controller do
     def create
       create! { new_admin_unit_option_url }

@@ -1,6 +1,4 @@
 ActiveAdmin.register Unit do
-  menu :priority => 1
-
   controller do
     def create
       create! { new_admin_unit_url }

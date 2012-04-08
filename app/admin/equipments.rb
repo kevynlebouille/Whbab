@@ -1,6 +1,4 @@
 ActiveAdmin.register Equipment do
-  menu :priority => 3
-
   controller do
     def create
       create! { new_admin_equipment_url }
