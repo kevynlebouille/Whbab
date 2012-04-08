@@ -11,5 +11,9 @@
 
   <p><%= f.text_field :name, :placeholder => "Nom" %></p>
 
+  <% if @army_list_choice.unit.min_size != @army_list_choice.unit.max_size %>
+  <p><%= f.number_field :size, :placeholder => "Taille" %></p>
+  <% end %>
+
   <p><%= f.submit "Valider" %></p>
 <% end %>
