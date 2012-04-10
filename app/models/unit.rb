@@ -1,7 +1,7 @@
 class Unit < ActiveRecord::Base
   belongs_to :army
   belongs_to :unit_category
-  has_many :army_list_choices, :dependent => :destroy
+  has_many :army_list_units, :dependent => :destroy
   has_many :equipments, :order => 'position', :dependent => :destroy
   has_many :special_rules, :order => 'position', :dependent => :destroy
   has_many :troops, :order => 'position', :dependent => :destroy

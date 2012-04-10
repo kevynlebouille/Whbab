@@ -1,0 +1,88 @@
+<li id="army_list_units_<%= army_list_unit.id %>">
+  <div class="army_list_unit_overview">
+    <div class="name">
+      <strong><%= army_list_unit.name %></strong>
+      <%= army_list_unit.unit.name %> <em>x<%= army_list_unit.size %></em>
+    </div>
+    <div class="value_points">
+      <strong><%= value_points army_list_unit.value_points %></strong> points
+    </div>
+    <div class="actions" style="background: url(<%= image_path "/system/unit_categories/#{army_list_unit.unit_category.id}/ribbon.png" %>) 100% 100% no-repeat">
+      <button class="popin" data-url="<%= edit_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button>
+      <%= button_to "Suppr.", army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
+    </div>
+  </div>
+
+  <div class="army_list_unit_details" style="display:none">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Profil</th>
+          <th>M</th>
+          <th>CC</th>
+          <th>CT</th>
+          <th>F</th>
+          <th>E</th>
+          <th>PV</th>
+          <th>I</th>
+          <th>A</th>
+          <th>Cd</th>
+          <th>Type de troupe</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% army_list_unit.unit.troops.each_with_index do |troop, index| %>
+        <tr>
+          <td><%= troop.name %></td>
+          <td><%= troop.M %></td>
+          <td><%= troop.WS %></td>
+          <td><%= troop.BS %></td>
+          <td><%= troop.S %></td>
+          <td><%= troop.T %></td>
+          <td><%= troop.W %></td>
+          <td><%= troop.I %></td>
+          <td><%= troop.A %></td>
+          <td><%= troop.LD %></td>
+          <td><%= troop.troop_type.name %></td>
+          <td><%= if troop.value_points then value_points(troop.value_points) + 'pts/fig.' ; elsif index == 0 then value_points(troop.unit.value_points) + 'pts/fig.' end %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div style="float:right;width:300px">
+      <strong>Options</strong><br />
+      <% army_list_unit.unit_options.each do |option| %>
+        • <%= option.name %> <%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %><br />
+      <% end %>
+      <% army_list_unit.magic_items.each do |magic_item| %>
+        • <%= magic_item.name %> <%= value_points(magic_item.value_points) %>pts<br />
+      <% end %>
+      <button class="popin" data-url="<%= army_list_army_list_unit_options_path army_list_unit.army_list, army_list_unit %>">Editer</button>
+    </div>
+
+    <strong>Equipement</strong><br />
+    <% army_list_unit.unit.equipments.each do |equipment| %>
+      • <%= equipment.name %><br />
+    <% end %>
+
+    <strong>Règles Spéciales</strong><br />
+    <% army_list_unit.unit.special_rules.each do |special_rule| %>
+      • <%= special_rule.name %><br />
+    <% end %>
+
+    <% if army_list_unit.unit.magic? %>
+    <strong>Magie</strong><br />
+    <%= army_list_unit.unit.magic %><br />
+    <% end %>
+
+    <% if army_list_unit.unit.notes? %>
+    <strong>Remarques</strong><br />
+    <%= army_list_unit.unit.notes %>
+    <% end %>
+
+    <div class="clear"></div>
+  </div>
+</li>

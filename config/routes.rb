@@ -4,8 +4,10 @@ Whbab::Application.routes.draw do
   devise_for :users
 
   resources :army_lists do
-    resources :army_list_choices do
+    resources :army_list_units do
       post 'sort', :on => :collection
+      get 'options', :on => :member
+      post 'options_update', :on => :member
     end
   end
 

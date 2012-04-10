@@ -1,7 +1,7 @@
 class ArmyList < ActiveRecord::Base
   belongs_to :army
   belongs_to :user
-  has_many :army_list_choices, :order => "position", :dependent => :destroy
+  has_many :army_list_units, :order => "position", :dependent => :destroy
 
   validates_presence_of :army_id, :user_id, :name, :value_points
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0
@@ -14,10 +14,10 @@ class ArmyList < ActiveRecord::Base
   end
 
   def value_points_details
-    connection.select_all "SELECT unit_categories.name name, COUNT(army_list_choices.id) count, SUM(army_list_choices.value_points) value_points
+    connection.select_all "SELECT unit_categories.name name, COUNT(army_list_units.id) count, SUM(army_list_units.value_points) value_points
       FROM unit_categories
-      LEFT JOIN army_list_choices ON army_list_choices.unit_category_id = unit_categories.id AND
-      army_list_choices.army_list_id = #{id}
+      LEFT JOIN army_list_units ON army_list_units.unit_category_id = unit_categories.id AND
+      army_list_units.army_list_id = #{id}
       GROUP BY unit_categories.name
       ORDER BY unit_categories.id"
   end

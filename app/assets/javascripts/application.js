@@ -52,9 +52,21 @@ jQuery(function($) {
     });
   });
 
-  $('.army_list_choices_overview').sortable({
-    update: function(event, ui) {
-      $.post($(this).data('url'), $(this).sortable('serialize'));
-    }
-  }).disableSelection();
+  $('.army_list_units_overview')
+    .sortable({
+      update: function(event, ui) {
+        $.post($(this).data('url'), $(this).sortable('serialize'));
+      }
+    })
+    .disableSelection()
+  ;
+
+  $('.army_list_unit_overview .name').click(function() {
+    $(this).closest('.army_list_unit_overview').next('.army_list_unit_details').slideToggle();
+  });
+
+  $('input[data-radio]').live('click', function() {
+    $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false);
+  });
+
 });

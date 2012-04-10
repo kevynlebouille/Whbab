@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111111221550) do
+ActiveRecord::Schema.define(:version => 20120410201924) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20111111221550) do
     t.string "name", :null => false
   end
 
-  create_table "army_list_choices", :force => true do |t|
+  create_table "army_list_units", :force => true do |t|
     t.integer  "army_list_id"
     t.integer  "unit_id"
     t.integer  "unit_category_id"
@@ -62,17 +62,25 @@ ActiveRecord::Schema.define(:version => 20111111221550) do
     t.datetime "updated_at"
   end
 
-  add_index "army_list_choices", ["army_list_id"], :name => "index_army_list_choices_on_army_list_id"
-  add_index "army_list_choices", ["unit_category_id"], :name => "index_army_list_choices_on_unit_category_id"
-  add_index "army_list_choices", ["unit_id"], :name => "index_army_list_choices_on_unit_id"
+  add_index "army_list_units", ["army_list_id"], :name => "index_army_list_units_on_army_list_id"
+  add_index "army_list_units", ["unit_category_id"], :name => "index_army_list_units_on_unit_category_id"
+  add_index "army_list_units", ["unit_id"], :name => "index_army_list_units_on_unit_id"
 
-  create_table "army_list_choices_magic_items", :id => false, :force => true do |t|
-    t.integer "army_list_choice_id", :null => false
+  create_table "army_list_units_magic_items", :id => false, :force => true do |t|
+    t.integer "army_list_unit_id", :null => false
     t.integer "magic_item_id",       :null => false
   end
 
-  add_index "army_list_choices_magic_items", ["army_list_choice_id"], :name => "index_army_list_choices_magic_items_on_army_list_choice_id"
-  add_index "army_list_choices_magic_items", ["magic_item_id"], :name => "index_army_list_choices_magic_items_on_magic_item_id"
+  add_index "army_list_units_magic_items", ["army_list_unit_id"], :name => "index_army_list_units_magic_items_on_army_list_unit_id"
+  add_index "army_list_units_magic_items", ["magic_item_id"], :name => "index_army_list_units_magic_items_on_magic_item_id"
+
+  create_table "army_list_units_unit_options", :id => false, :force => true do |t|
+    t.integer "army_list_unit_id", :null => false
+    t.integer "unit_option_id",      :null => false
+  end
+
+  add_index "army_list_units_unit_options", ["army_list_unit_id"], :name => "index_army_list_units_unit_options_on_army_list_unit_id"
+  add_index "army_list_units_unit_options", ["unit_option_id"], :name => "index_army_list_units_unit_options_on_unit_option_id"
 
   create_table "army_lists", :force => true do |t|
     t.integer  "army_id",                                    :null => false
@@ -156,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20111111221550) do
     t.integer "depend_id"
   end
 
-  add_index "unit_options", ["depend_id"], :name => "index_unit_options_on_master_id"
+  add_index "unit_options", ["depend_id"], :name => "index_unit_options_on_depend_id"
   add_index "unit_options", ["parent_id"], :name => "index_unit_options_on_parent_id"
   add_index "unit_options", ["unit_id"], :name => "index_unit_options_on_unit_id"
 

@@ -11,8 +11,8 @@
   <button class="popin" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
 </div>
 
-<ol class="army_list_choices_overview" data-url="<%= sort_army_list_army_list_choices_path @army_list %>">
-  <%= render :partial => "army_list_choices/show", :collection => @army_list.army_list_choices, :as => :army_list_choice %>
+<ol class="army_list_units_overview" data-url="<%= sort_army_list_army_list_units_path @army_list %>">
+  <%= render :partial => "army_list_units/show", :collection => @army_list.army_list_units, :as => :army_list_unit %>
 </ol>
 
 <div class="army_list_value_points">
@@ -24,4 +24,4 @@
   </ul>
 </div>
 
-<a href="<%= new_army_list_army_list_choice_path @army_list %>" class="army_list_choice_new popin">Ajouter une unité</a>
+<a href="<%= new_army_list_army_list_unit_path @army_list %>" class="army_list_unit_new popin">Ajouter une unité</a>
