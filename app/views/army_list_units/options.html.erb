@@ -11,7 +11,7 @@
         <%= option.name %>
         <ul>
           <% option.children.each do |child| %>
-          <li><label><%= check_box_tag "army_list_unit[unit_options][]", option.id, option.in?(@army_list_unit.unit_options), "data-radio" => true, "data-depend" => option.depend.try(:id), "id" => "army_list_unit_unit_options_#{option.id}" %> <%= child.name %> <%= value_points(option.is_per_model ? child.value_points * @army_list_unit.size : child.value_points) %>pts</label></li>
+          <li><label><%= check_box_tag "army_list_unit[unit_options][]", child.id, child.in?(@army_list_unit.unit_options), "data-radio" => true, "data-depend" => option.depend.try(:id), "id" => "army_list_unit_unit_options_#{child.id}" %> <%= child.name %> <%= value_points(child.is_per_model ? child.value_points * @army_list_unit.size : child.value_points) %>pts</label></li>
           <% end %>
         </ul>
       <% elsif option.is_magic_items %>

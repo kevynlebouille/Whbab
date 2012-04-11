@@ -18,7 +18,7 @@ class ArmyListUnit < ActiveRecord::Base
   end
 
   before_save do
-    options_points = 0.0
+    options_points = 0
 
     unit_options.reject{ |option| option.is_magic_standards || option.is_magic_items }.each do |option|
       factor = option.is_per_model ? size : 1
