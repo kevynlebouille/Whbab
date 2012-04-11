@@ -55,7 +55,7 @@
     <br />
 
     <div style="float:right;width:300px">
-      <strong>Options</strong> <button class="popin" data-url="<%= army_list_army_list_unit_options_path army_list_unit.army_list, army_list_unit %>">Editer</button><br />
+      <strong>Options</strong> <button class="popin" data-url="<%= options_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button><br />
       <% army_list_unit.unit_options.each do |option| %>
         • <%= option.name %> <%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %><br />
       <% end %>
