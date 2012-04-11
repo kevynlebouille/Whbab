@@ -46,7 +46,7 @@
           <td><%= troop.A %></td>
           <td><%= troop.LD %></td>
           <td><%= troop.troop_type.name %></td>
-          <td><%= if troop.value_points then value_points(troop.value_points) + 'pts/fig.' ; elsif index == 0 then value_points(troop.unit.value_points) + 'pts/fig.' end %></td>
+          <td style="text-align:right"><em><%= if troop.value_points then value_points(troop.value_points) + 'pts/fig.' ; elsif index == 0 then value_points(troop.unit.value_points) + 'pts/fig.' end %></em></td>
         </tr>
         <% end %>
       </tbody>
@@ -55,17 +55,22 @@
     <br />
 
     <div style="float:right;width:300px">
-      <strong>Options</strong> <button class="popin" data-url="<%= options_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button><br />
+      <strong>Options</strong><br />
       <% army_list_unit.unit_options.each do |option| %>
-        • <%= option.name %> <%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %><br />
+        <em style="float:right"><%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %></em>
+        • <%= option.name %><br />
       <% end %>
 
       <% if army_list_unit.magic_items.any? %>
         <br /><strong>Objet(s) magique(s)</strong><br />
         <% army_list_unit.magic_items.each do |magic_item| %>
-          • <%= magic_item.name %> <%= value_points(magic_item.value_points) %>pts<br />
+          <em style="float:right"><%= value_points(magic_item.value_points) %>pts</em>
+          • <%= magic_item.name %><br />
         <% end %>
       <% end %>
+      <p style="margin-top:5px; text-align:right">
+        <button class="popin" data-url="<%= options_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button>
+      </p>
     </div>
 
     <strong>Equipement</strong><br />
