@@ -2,7 +2,7 @@
   <div class="army_list_unit_overview">
     <div class="name">
       <strong><%= army_list_unit.name %></strong>
-      <%= army_list_unit.unit.name %> <em>x<%= army_list_unit.size %></em>
+      <%= army_list_unit.unit.name %> <% if army_list_unit.size > 1 %><em>x<%= army_list_unit.size %></em><% end %>
     </div>
     <div class="value_points">
       <strong><%= value_points army_list_unit.value_points %></strong> points
@@ -52,15 +52,20 @@
       </tbody>
     </table>
 
+    <br />
+
     <div style="float:right;width:300px">
-      <strong>Options</strong><br />
+      <strong>Options</strong> <button class="popin" data-url="<%= army_list_army_list_unit_options_path army_list_unit.army_list, army_list_unit %>">Editer</button><br />
       <% army_list_unit.unit_options.each do |option| %>
         • <%= option.name %> <%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %><br />
       <% end %>
-      <% army_list_unit.magic_items.each do |magic_item| %>
-        • <%= magic_item.name %> <%= value_points(magic_item.value_points) %>pts<br />
+
+      <% if army_list_unit.magic_items.any? %>
+        <br /><strong>Objet(s) magique(s)</strong><br />
+        <% army_list_unit.magic_items.each do |magic_item| %>
+          • <%= magic_item.name %> <%= value_points(magic_item.value_points) %>pts<br />
+        <% end %>
       <% end %>
-      <button class="popin" data-url="<%= army_list_army_list_unit_options_path army_list_unit.army_list, army_list_unit %>">Editer</button>
     </div>
 
     <strong>Equipement</strong><br />
@@ -68,19 +73,21 @@
       • <%= equipment.name %><br />
     <% end %>
 
-    <strong>Règles Spéciales</strong><br />
-    <% army_list_unit.unit.special_rules.each do |special_rule| %>
-      • <%= special_rule.name %><br />
+    <% if army_list_unit.unit.special_rules.any? %>
+      <br /><strong>Règles Spéciales</strong><br />
+      <% army_list_unit.unit.special_rules.each do |special_rule| %>
+        • <%= special_rule.name %><br />
+      <% end %>
     <% end %>
 
     <% if army_list_unit.unit.magic? %>
-    <strong>Magie</strong><br />
-    <%= army_list_unit.unit.magic %><br />
+      <br /><strong>Magie</strong><br />
+      <%= army_list_unit.unit.magic %><br />
     <% end %>
 
     <% if army_list_unit.unit.notes? %>
-    <strong>Remarques</strong><br />
-    <%= army_list_unit.unit.notes %>
+      <br /><strong>Remarques</strong><br />
+      <%= army_list_unit.unit.notes %>
     <% end %>
 
     <div class="clear"></div>

@@ -25,21 +25,11 @@ jQuery(function($) {
     evt.stopPropagation();
   });
 
-  $('a.popin').colorbox({
-    close: '',
-    opacity: 0.4,
-    returnFocus: false,
-    scrolling: false,
-    initialWidth: 300,
-    initialHeight: 200,
-    onComplete: function() {
-      $('#cboxLoadedContent form[data-validate]').validate();
-    }
-  });
+  $('.popin').click(function(evt) {
+    evt.preventDefault();
 
-  $('button.popin').click(function() {
     $.colorbox({
-      href: $(this).data('url'),
+      href: $(this).data('url') ? $(this).data('url') : $(this).attr('href'),
       close: '',
       opacity: 0.4,
       returnFocus: false,
@@ -48,6 +38,19 @@ jQuery(function($) {
       initialHeight: 200,
       onComplete: function() {
         $('#cboxLoadedContent form[data-validate]').validate();
+
+        $('#army_list_unit_unit_options_form :input[data-depend]').each(function() {
+          var $slave = $(this);
+
+          $('#army_list_unit_unit_options_' + $slave.data('depend')).change(function() {
+            if ($(this).prop('checked')) {
+              $slave.prop('disabled', false);
+            }
+            else {
+              $slave.prop('disabled', true).prop('checked', false);
+            }
+          }).change();
+        });
       }
     });
   });
