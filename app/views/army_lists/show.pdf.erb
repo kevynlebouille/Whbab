@@ -1,0 +1,22 @@
+<% title "Mes listes d'armée • #{@army_list.name}" %>
+
+<div class="army_list_portrait">
+  <%= image_tag "/system/armies/#{@army_list.army.id}/portrait.png", :size => "65x64" %>
+  <h2><%= @army_list.army.name %></h2>
+  <h1><%= @army_list.name %></h1>
+</div>
+
+<div id="subheader" class="grid_14 army_list"></div>
+
+<ol class="army_list_units_overview" data-url="<%= sort_army_list_army_list_units_path @army_list %>">
+  <%= render :partial => "army_list_units/show", :collection => @army_list.army_list_units, :as => :army_list_unit %>
+</ol>
+
+<div class="army_list_value_points">
+  <h3><%= value_points @army_list.value_points %> points</h3>
+  <ul>
+    <% @army_list.value_points_details.each do |row| %>
+    <li><em><%= value_points row["value_points"].to_f %> pts</em> <strong><%= row["name"].split.last.titleize %></strong> x<%= row["count"] %></li>
+    <% end %>
+  </ul>
+</div>

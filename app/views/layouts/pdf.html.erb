@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Whbab • <%= content_for?(:title) ? yield(:title) : "Bienvenue" %></title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+</head>
+<body>
+
+<div id="wrapper">
+  <div id="header" class="container_16">
+    <h1 class="grid_3 suffix_13">
+      <a href="<%= root_path %>">Warhammer Battle<br />
+      <em>Army Builder</em></a>
+    </h1>
+  </div>
+
+  <div id="content" class="container_16">
+    <%= yield %>
+  </div>
+
+  <div id="footer" class="container_16"></div>
+</div>
+
+</body>
+</html>

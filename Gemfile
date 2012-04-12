@@ -7,7 +7,6 @@ gem 'rails', '3.2.3'
 
 gem 'mysql2'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,6 +25,7 @@ gem 'seedbank'
 gem 'acts_as_list'
 gem 'client_side_validations'
 gem 'meta_search'
+gem 'wisepdf'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

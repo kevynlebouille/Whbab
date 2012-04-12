@@ -154,17 +154,30 @@ form.button_to, form.button_to div {
   background: image-url("bg_small_popin.png") no-repeat;
 }
 
-.small_popin h1 {
+.popin {
+  padding: 30px 40px 0 40px;
+  width: 500px;
+  height: 320px;
+  background: image-url("bg_popin.png") no-repeat;
+}
+
+.small_popin h1, .popin h1 {
   margin-bottom: 20px;
   font: 22px GodOfWar;
   font-weight: normal;
 }
 
-.small_popin p {
+.small_popin h3, .popin h3 {
+  margin-bottom: 5px;
+  font: 14px GodOfWar;
+  font-weight: normal;
+}
+
+.small_popin p, .popin p {
   margin: 10px 0;
 }
 
-.small_popin p.close {
+.small_popin p.close, .popin p.close {
   margin-top: 20px;
   text-align: center;
 }

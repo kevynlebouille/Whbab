@@ -143,6 +143,8 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
+    wisepdf (1.0.1)
+      rails (>= 3.0.0)
 
 PLATFORMS
   ruby
@@ -159,3 +161,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   seedbank
   uglifier (>= 1.0.3)
+  wisepdf

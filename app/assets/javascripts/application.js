@@ -25,7 +25,12 @@ jQuery(function($) {
     evt.stopPropagation();
   });
 
-  $('.popin').click(function(evt) {
+  $('button[data-url]:not([data-popin])').live('click', function(evt) {
+    evt.preventDefault();
+    window.location = $(this).data('url');
+  });
+
+  $('[data-popin]').live('click', function(evt) {
     evt.preventDefault();
 
     $.colorbox({
@@ -39,10 +44,10 @@ jQuery(function($) {
       onComplete: function() {
         $('#cboxLoadedContent form[data-validate]').validate();
 
-        $('#army_list_unit_unit_options_form :input[data-depend]').each(function() {
+        $('.edit_army_list_unit :input[data-depend]').each(function() {
           var $slave = $(this);
 
-          $('#army_list_unit_unit_options_' + $slave.data('depend')).change(function() {
+          $('#army_list_unit_unit_option_ids_' + $slave.data('depend')).change(function() {
             if ($(this).prop('checked')) {
               $slave.prop('disabled', false);
             }
@@ -68,8 +73,8 @@ jQuery(function($) {
     $(this).closest('.army_list_unit_overview').next('.army_list_unit_details').slideToggle();
   });
 
-  $('input[data-radio]').live('click', function() {
-    $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false);
+  $('input[data-radio]:not([data-depend])').live('click', function() {
+    $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false).change();
   });
 
 });

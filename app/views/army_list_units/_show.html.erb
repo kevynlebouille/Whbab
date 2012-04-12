@@ -8,7 +8,7 @@
       <strong><%= value_points army_list_unit.value_points %></strong> points
     </div>
     <div class="actions" style="background: url(<%= image_path "/system/unit_categories/#{army_list_unit.unit_category.id}/ribbon.png" %>) 100% 100% no-repeat">
-      <button class="popin" data-url="<%= edit_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button>
+      <button data-popin="true" data-url="<%= edit_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button>
       <%= button_to "Suppr.", army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
     </div>
   </div>
@@ -46,7 +46,13 @@
           <td><%= troop.A %></td>
           <td><%= troop.LD %></td>
           <td><%= troop.troop_type.name %></td>
-          <td style="text-align:right"><em><%= if troop.value_points then value_points(troop.value_points) + 'pts/fig.' ; elsif index == 0 then value_points(troop.unit.value_points) + 'pts/fig.' end %></em></td>
+          <td style="text-align:right"><em>
+            <% if troop.value_points %>
+              <%= value_points(troop.value_points) %>pts<%= '/fig.' if army_list_unit.size > 1 %>
+            <% elsif index == 0 %>
+              <%= value_points(troop.unit.value_points) %>pts<%= '/fig.' if army_list_unit.size > 1 %>
+            <% end %>
+          </em></td>
         </tr>
         <% end %>
       </tbody>
@@ -54,23 +60,20 @@
 
     <br />
 
-    <div style="float:right;width:300px">
+    <div class="options">
       <strong>Options</strong><br />
       <% army_list_unit.unit_options.each do |option| %>
-        <em style="float:right"><%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %></em>
+        <em><%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %></em>
         • <%= option.name %><br />
       <% end %>
 
       <% if army_list_unit.magic_items.any? %>
-        <br /><strong>Objet(s) magique(s)</strong><br />
+        <br /><strong>Objets magiques</strong><br />
         <% army_list_unit.magic_items.each do |magic_item| %>
-          <em style="float:right"><%= value_points(magic_item.value_points) %>pts</em>
+          <em><%= value_points(magic_item.value_points) %>pts</em>
           • <%= magic_item.name %><br />
         <% end %>
       <% end %>
-      <p style="margin-top:5px; text-align:right">
-        <button class="popin" data-url="<%= options_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button>
-      </p>
     </div>
 
     <strong>Equipement</strong><br />

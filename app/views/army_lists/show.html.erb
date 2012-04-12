@@ -8,7 +8,8 @@
 
 <div id="subheader" class="grid_14 army_list">
   <%= button_to "Suppr.", army_list_path(@army_list), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
-  <button class="popin" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
+  <button data-popin="true" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
+  <button data-url="<%= army_list_path(@army_list, :format => 'pdf') %>">Imprimer</button>
 </div>
 
 <ol class="army_list_units_overview" data-url="<%= sort_army_list_army_list_units_path @army_list %>">
@@ -24,4 +25,4 @@
   </ul>
 </div>
 
-<a href="<%= new_army_list_army_list_unit_path @army_list %>" class="army_list_unit_new popin">Ajouter une unité</a>
+<a href="<%= new_army_list_army_list_unit_path @army_list %>" class="army_list_unit_new" data-popin="true">Ajouter une unité</a>

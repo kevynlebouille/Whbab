@@ -274,3 +274,28 @@
   padding-bottom: 10px;
   font-weight: bold;
 }
+
+.army_list_unit_details .options {
+  float: right;
+  width: 300px;
+}
+
+.army_list_unit_details .options em, .edit_army_list_unit #army_list_unit_unit_options em, .edit_army_list_unit #army_list_unit_magic_items em {
+  float: right;
+}
+
+.edit_army_list_unit #army_list_unit_size {
+  width: 30px;
+  text-align: right;
+}
+
+.edit_army_list_unit #army_list_unit_magic_items {
+  float: right;
+  margin-left: 10px;
+  width: 240px;
+}
+
+.edit_army_list_unit #army_list_unit_unit_options > ul, .edit_army_list_unit #army_list_unit_magic_items > ul {
+  overflow: auto;
+  height: 140px;
+}

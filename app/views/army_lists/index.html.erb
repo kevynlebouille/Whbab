@@ -18,7 +18,7 @@
     <p class="thumb"><a href="<%= army_list_path(army_list) %>"><%= image_tag "/system/armies/#{army_list.army.id}/thumb.png", :size => "220x132" %></a></p>
     <p class="value_points"><%= value_points army_list.value_points %><br /><small style="font-size:20px">points</small></p>
     <p><%= army_list.name %></p>
-    <p class="actions"><button onclick="location = '<%= army_list_path(army_list, :format => 'pdf') %>'">Imprimer</button></p>
+    <p class="actions"><button data-url="<%= army_list_path(army_list, :format => 'pdf') %>">Imprimer</button></p>
   </div>
 </div>
 
@@ -26,37 +26,7 @@
 
 <div class="grid_4 <%= @army_lists.any? ? alternate_cell_class(@army_lists.length) : "suffix_6 prefix_6" %>">
   <div class="army_list_row">
-    <p><a href="<%= new_army_list_path(:army_id => @search.army_id_eq) %>" class="popin"><%= image_tag "bt_new_army_list.png", :size => "220x132" %></a></p>
+    <p><a href="<%= new_army_list_path(:army_id => @search.army_id_eq) %>" data-popin="true"><%= image_tag "bt_new_army_list.png", :size => "220x132" %></a></p>
     <p>Créer une nouvelle liste d'armée</p>
   </div>
 </div>
-
-<!-- <div class="grid_14 prefix_1 suffix_1">
-  <h1>Listing army_lists</h1>
-
-  <table>
-    <tr>
-      <th>Army</th>
-      <th>Name</th>
-      <th>Value points</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% @army_lists.each do |army_list| %>
-    <tr>
-      <td><%= army_list.army.name %></td>
-      <td><%= army_list.name %></td>
-      <td><%= army_list.value_points %></td>
-      <td><%= link_to 'Show', army_list %></td>
-      <td><%= link_to 'Edit', edit_army_list_path(army_list) %></td>
-      <td><%= link_to 'Destroy', army_list, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-  </table>
-
-  <br />
-
-  <%= link_to 'New Army list', new_army_list_path %>
-</div> -->

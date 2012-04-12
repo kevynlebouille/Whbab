@@ -73,25 +73,4 @@ class ArmyListUnitsController < ApplicationController
     end
     render :nothing => true
   end
-
-  # GET /army_lists/1/army_list_unit/1/options
-  def options
-    @army_list = current_user.army_lists.find(params[:army_list_id])
-    @army_list_unit = @army_list.army_list_units.find(params[:id])
-  end
-
-  # POST /army_list/1/army_list_units/1/options_update
-  def options_update
-    @army_list = current_user.army_lists.find(params[:army_list_id])
-    @army_list_unit = @army_list.army_list_units.find(params[:id])
-
-    @army_list_unit.unit_option_ids = params[:army_list_unit][:unit_options]
-    @army_list_unit.magic_item_ids  = params[:army_list_unit][:magic_items]
-    @army_list_unit.save
-
-    respond_to do |format|
-      format.html { redirect_to(@army_list, :notice => 'Army list unit options was successfully updated.') }
-      format.xml  { head :ok }
-    end
-  end
 end
