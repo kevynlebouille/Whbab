@@ -25,7 +25,7 @@ class ArmyListsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.pdf  { render :pdf => "file_name" } # show.pdf.erb
+      format.pdf  { render :pdf => "whbab_#{@army_list.id}" } # show.pdf.erb
       format.xml  { render :xml => @army_list }
     end
   end
