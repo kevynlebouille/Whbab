@@ -14,5 +14,6 @@
 /log/*.log
 /tmp
 
-db/seeds
-public/system
+/db/seeds
+/public/system
+/script/wkhtmltopdf
