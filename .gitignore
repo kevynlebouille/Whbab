@@ -16,4 +16,5 @@
 
 /db/seeds
 /public/system
+/public/assets/
 /script/wkhtmltopdf
