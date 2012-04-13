@@ -11,6 +11,8 @@
 
   <p><%= f.password_field :password_confirmation, :placeholder => "Confirmation du mot de passe", :validate => true %></p>
 
+  <p><%= f.collection_select :favorite_army_id, Army.all, :id, :name, :include_blank => "--Armée favorite--" %></p>
+
   <p><%= f.submit "Valider" %></p>
 <% end %>
 
