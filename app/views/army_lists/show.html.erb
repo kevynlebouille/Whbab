@@ -7,9 +7,9 @@
 </div>
 
 <div id="subheader" class="grid_14 army_list">
+  <button data-url="<%= army_list_path(@army_list, :format => 'pdf') %>" class="left">Imprimer</button>
   <%= button_to "Suppr.", army_list_path(@army_list), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
   <button data-popin="true" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
-  <button data-url="<%= army_list_path(@army_list, :format => 'pdf') %>">Imprimer</button>
 </div>
 
 <ol class="army_list_units_overview" data-url="<%= sort_army_list_army_list_units_path @army_list %>">

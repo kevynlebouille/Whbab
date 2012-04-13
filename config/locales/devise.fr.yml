@@ -4,54 +4,54 @@ fr:
   errors:
     messages:
       expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
+      not_found: "n'a pas été trouvé"
+      already_confirmed: "a déjà été validé, merci de vous connecter"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "1 erreur a empêché cet %{resource} d'être sauvegardé :"
+        other: "%{count} erreurs ont empêché cet %{resource} d'être sauvegardé :"
 
   devise:
     failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
+      already_authenticated: 'Vous êtes déjà connecté.'
+      unauthenticated: 'Vous devez vous connecter ou vous inscrire pour continuer.'
+      unconfirmed: 'Vous devez valider votre compte pour continuer.'
+      locked: 'Votre compte est verrouillé.'
+      invalid: 'Email ou mot de passe incorrect.'
+      invalid_token: "Jeton d'authentification incorrect."
+      timeout: 'Votre session est expirée, veuillez vous reconnecter pour continuer.'
+      inactive: "Votre compte n'est pas encore activé."
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: ''
+      signed_out: ''
     passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
+      send_instructions: 'Vous allez recevoir les instructions de réinitialisation du mot de passe dans quelques instants.'
+      updated: 'Votre mot de passe a été modifié avec succès, vous êtes à présent connecté.'
       updated_not_active: 'Your password was changed successfully.'
       send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
     confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      send_instructions: 'Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes.'
       send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      confirmed: 'Votre compte a été validé, vous êtes à présent connecté.'
     registrations:
-      signed_up: 'Welcome! You have signed up successfully.'
+      signed_up: 'Bienvenu ! Vous êtes connecté.'
       signed_up_but_unconfirmed: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
       signed_up_but_inactive: 'You have signed up successfully. However, we could not sign you in because your account is not yet activated.'
       signed_up_but_locked: 'You have signed up successfully. However, we could not sign you in because your account is locked.'
-      updated: 'You updated your account successfully.'
+      updated: 'Votre compte a été modifié avec succès.'
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      destroyed: 'Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt.'
     unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
+      send_instructions: 'Vous allez recevoir les instructions nécessaires au déblocage de votre compte dans quelques minutes.'
+      unlocked: 'Votre compte a été débloqué avec succès, vous êtes maintenant connecté.'
       send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
     omniauth_callbacks:
-      success: 'Successfully authenticated from %{kind} account.'
-      failure: 'Could not authenticate you from %{kind} because "%{reason}".'
+      success: 'Authentifié avec succès via %{kind}.'
+      failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: '[Whbab.com] instructions de confirmation'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: '[Whbab.com] instructions pour changer le mot de passe'
       unlock_instructions:
-        subject: 'Unlock Instructions'
+        subject: '[Whbab.com] instructions pour déverrouiller le compte'
