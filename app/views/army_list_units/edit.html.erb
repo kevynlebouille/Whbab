@@ -63,12 +63,12 @@
               <% option.children.each do |child| %>
               <li>
                  <em><%= value_points(child.is_per_model ? child.value_points * @army_list_unit.size : child.value_points) %>pts</em>
-                 <label><%= check_box_tag "army_list_unit[unit_option_ids][]", child.id, child.in?(@army_list_unit.unit_options), "data-radio" => true, "data-depend" => child.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{child.id}" %> <%= child.name %></label></li>
+                 <label><%= check_box_tag "army_list_unit[unit_option_ids][]", child.id, child.in?(@army_list_unit.unit_options.all), "data-radio" => true, "data-depend" => child.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{child.id}" %> <%= child.name %></label></li>
               <% end %>
             </ul>
           <% else %>
             <em><%= value_points(option.is_per_model ? option.value_points * @army_list_unit.size : option.value_points) %>pts</em>
-            <label><%= check_box_tag "army_list_unit[unit_option_ids][]", option.id, option.in?(@army_list_unit.unit_options), "data-depend" => option.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{option.id}" %> <%= option.name %></label>
+            <label><%= check_box_tag "army_list_unit[unit_option_ids][]", option.id, option.in?(@army_list_unit.unit_options.all), "data-depend" => option.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{option.id}" %> <%= option.name %></label>
           <% end %>
           </li>
           <% end %>
