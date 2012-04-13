@@ -2,6 +2,14 @@
 
   <h1>Ajouter<br />une unite</h1>
 
-  <%= render 'form' %>
+  <%= form_for [@army_list, @army_list_unit] do |f| %>
+    <%= render "shared/form_errors", :object => @army_list_unit %>
+
+      <p><%= f.select :unit_id, grouped_options_for_select(Unit.for_select(@army_list), @army_list_unit.unit_id) %></p>
+
+      <p><%= f.text_field :name, :placeholder => "Nom" %></p>
+
+    <p><%= f.submit "Valider" %></p>
+  <% end %>
 
 </div>

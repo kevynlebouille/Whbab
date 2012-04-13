@@ -18,7 +18,7 @@
     <p class="thumb"><a href="<%= army_list_path(army_list) %>"><%= image_tag "/system/armies/#{army_list.army.id}/thumb.png", :size => "220x132" %></a></p>
     <p class="value_points"><%= value_points army_list.value_points %><br /><small style="font-size:20px">points</small></p>
     <p><%= army_list.name %></p>
-    <p class="actions"><button data-url="<%= army_list_path(army_list, :format => 'pdf') %>">Imprimer</button></p>
+    <p class="actions"><button data-url="<%= army_list_path(army_list, :format => 'pdf') %>" data-target="_blank">Imprimer</button></p>
   </div>
 </div>
 

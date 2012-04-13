@@ -3,11 +3,11 @@
 <div class="army_list_portrait">
   <%= image_tag "/system/armies/#{@army_list.army.id}/portrait.png", :size => "65x64" %>
   <h2><%= link_to @army_list.army.name, army_lists_path({'search[army_id_eq]' => @army_list.army}) %></h2>
-  <h1><%= @army_list.name %></h1>
+  <h1 title="<%= @army_list.name %>"><%= @army_list.name.truncate 30 %></h1>
 </div>
 
 <div id="subheader" class="grid_14 army_list">
-  <button data-url="<%= army_list_path(@army_list, :format => 'pdf') %>" class="left">Imprimer</button>
+  <button data-url="<%= army_list_path(@army_list, :format => 'pdf') %>" data-target="_blank" class="left">Imprimer</button>
   <%= button_to "Suppr.", army_list_path(@army_list), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
   <button data-popin="true" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
 </div>

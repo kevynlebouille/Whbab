@@ -55,7 +55,7 @@ class ArmyListsController < ApplicationController
 
     respond_to do |format|
       if @army_list.save
-        format.html { redirect_to(@army_list, :notice => 'Army list was successfully created.') }
+        format.html { redirect_to @army_list }
         format.xml  { render :xml => @army_list, :status => :created, :location => @army_list }
       else
         format.html { render :action => "new", :layout => nil }
@@ -71,7 +71,7 @@ class ArmyListsController < ApplicationController
 
     respond_to do |format|
       if @army_list.update_attributes(params[:army_list])
-        format.html { redirect_to(@army_list, :notice => 'Army list was successfully updated.') }
+        format.html { redirect_to @army_list }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -87,7 +87,7 @@ class ArmyListsController < ApplicationController
     @army_list.destroy
 
     respond_to do |format|
-      format.html { redirect_to(army_lists_url) }
+      format.html { redirect_to army_lists_url }
       format.xml  { head :ok }
     end
   end

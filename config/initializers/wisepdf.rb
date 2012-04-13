@@ -3,6 +3,6 @@ Wisepdf::Configuration.configure do |config|
   config.options = {
     :encoding => 'utf8',
     :layout => "pdf.html",
-    # :show_as_html => true,
+    :show_as_html => Rails.env.development?,
   }
 end

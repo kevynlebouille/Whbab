@@ -12,4 +12,8 @@ class UnitOption < ActiveRecord::Base
   validates_inclusion_of :is_magic_standards, :in => [true, false]
 
   acts_as_list :scope => 'unit_id = #{unit_id} AND COALESCE(parent_id, \'\') = \'#{parent_id}\''
+
+  scope :without_magics, where(:is_magic_items => false, :is_magic_standards => false)
+  scope :only_magic_items, where(:is_magic_items => true, :is_magic_standards => false)
+  scope :only_magic_standards, where(:is_magic_items => false, :is_magic_standards => true)
 end

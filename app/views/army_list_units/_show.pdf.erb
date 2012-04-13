@@ -2,7 +2,8 @@
   <div class="army_list_unit_overview">
     <div class="name">
       <strong><%= army_list_unit.name %></strong>
-      <%= army_list_unit.unit.name %> <% if army_list_unit.size > 1 %><em>x<%= army_list_unit.size %></em><% end %>
+      <%= army_list_unit.unit.is_unique ? "<i>Unique</i>".html_safe : army_list_unit.unit.name %>
+      <%= "<em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
     </div>
     <div class="value_points">
       <strong><%= value_points army_list_unit.value_points %></strong> points
@@ -55,43 +56,45 @@
       </tbody>
     </table>
 
-    <br />
-
-    <div class="options">
-      <strong>Options</strong><br />
-      <% army_list_unit.unit_options.each do |option| %>
-        <em><%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %></em>
-        • <%= option.name %><br />
-      <% end %>
-
-      <% if army_list_unit.magic_items.any? %>
-        <br /><strong>Objets magiques</strong><br />
-        <% army_list_unit.magic_items.each do |magic_item| %>
-          <em><%= value_points(magic_item.value_points) %>pts</em>
-          • <%= magic_item.name %><br />
+    <% if army_list_unit.unit_options.any? %>
+      <div class="options">
+        <h4>Options</h4>
+        <% army_list_unit.unit_options.each do |option| %>
+          <em><%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %></em>
+          • <%= option.name %><br />
         <% end %>
-      <% end %>
-    </div>
 
-    <strong>Equipement</strong><br />
-    <% army_list_unit.unit.equipments.each do |equipment| %>
-      • <%= equipment.name %><br />
+        <% if army_list_unit.magic_items.any? %>
+          <br /><strong>Objets magiques</strong><br />
+          <% army_list_unit.magic_items.each do |magic_item| %>
+            <em><%= value_points(magic_item.value_points) %>pts</em>
+            • <%= magic_item.name %><br />
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if army_list_unit.unit.equipments.any? %>
+      <h4>Equipement</h4>
+      <% army_list_unit.unit.equipments.each do |equipment| %>
+        • <%= equipment.name %><br />
+      <% end %>
     <% end %>
 
     <% if army_list_unit.unit.special_rules.any? %>
-      <br /><strong>Règles Spéciales</strong><br />
+      <h4>Règles Spéciales</h4>
       <% army_list_unit.unit.special_rules.each do |special_rule| %>
         • <%= special_rule.name %><br />
       <% end %>
     <% end %>
 
     <% if army_list_unit.unit.magic? %>
-      <br /><strong>Magie</strong><br />
+      <h4>Magie</h4>
       <%= army_list_unit.unit.magic %><br />
     <% end %>
 
     <% if army_list_unit.unit.notes? %>
-      <br /><strong>Remarques</strong><br />
+      <h4>Remarques</h4>
       <%= army_list_unit.unit.notes %>
     <% end %>
 

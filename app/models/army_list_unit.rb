@@ -11,6 +11,7 @@ class ArmyListUnit < ActiveRecord::Base
   validates_numericality_of :position, :greater_than_or_equal_to => 1, :only_integer => true, :allow_nil => true
 
   before_validation :on => :create do
+    self.name = unit.name if unit.is_unique
     self.name = unit.name + " \#" + (army_list.army_list_units.where(:unit_id => unit).count() + 1).to_s unless name?
     self.size = unit.min_size
     self.unit_category = unit.unit_category

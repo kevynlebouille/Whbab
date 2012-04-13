@@ -2,6 +2,81 @@
 
   <h1>Editer <%= @army_list_unit.unit.name %></h1>
 
-  <%= render 'form' %>
+  <%= form_for [@army_list, @army_list_unit] do |f| %>
+    <%= render "shared/form_errors", :object => @army_list_unit %>
+
+    <p>
+      <%= f.text_field :name, :placeholder => "Nom" unless @army_list_unit.unit.is_unique  %>
+      <%= f.collection_select :unit_category_id, UnitCategory.all, :id, :name %><br />
+    </p>
+
+    <% if @army_list_unit.unit.min_size != @army_list_unit.unit.max_size %>
+      <p>
+        <%= f.label :size, @army_list_unit.unit.troops.first.name %> x
+        <%= f.text_field :size, :placeholder => "Taille" %>
+      </p>
+    <% end %>
+
+    <% if @magic_items_option %>
+      <div id="army_list_unit_magic_items">
+        <h3>Objets magiques (<%= value_points(@army_list_unit.magic_items.sum('value_points')) %>/<%= value_points(@magic_items_option.value_points) %>pts)</h3>
+        <ul>
+          <% MagicItemCategory.all.each do |magic_item_category| %>
+          <li>
+            <%= magic_item_category.name %>
+            <ul>
+              <% magic_item_category.magic_items.available_for(@army_list.army).each do |magic_item| %>
+              <li>
+                <em><%= value_points(magic_item.value_points) %>pts</em>
+                <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.all.include?(magic_item), "id" => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    <% elsif @magic_standards_option %>
+      <div id="army_list_unit_magic_items">
+        <h3>Bannière magique (<%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %>/<%= value_points(@magic_standards_option.value_points) %>pts)</h3>
+        <ul>
+          <% MagicItem.magic_standards.available_for(@army_list.army).each do |magic_item| %>
+          <li>
+            <em><%= value_points(magic_item.value_points) %>pts</em>
+            <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.all.include?(magic_item), "id" => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if @available_unit_options.any? %>
+      <div id="army_list_unit_unit_options">
+        <h3>Options</h3>
+        <ul>
+          <!-- IGNORE MAGIC ITEMS/STANTARDS -->
+          <% @available_unit_options.each do |option| %>
+          <li>
+          <% if option.children.any? %>
+            <%= option.name %>
+            <ul>
+              <% option.children.each do |child| %>
+              <li>
+                 <em><%= value_points(child.is_per_model ? child.value_points * @army_list_unit.size : child.value_points) %>pts</em>
+                 <label><%= check_box_tag "army_list_unit[unit_option_ids][]", child.id, child.in?(@army_list_unit.unit_options), "data-radio" => true, "data-depend" => child.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{child.id}" %> <%= child.name %></label></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <em><%= value_points(option.is_per_model ? option.value_points * @army_list_unit.size : option.value_points) %>pts</em>
+            <label><%= check_box_tag "army_list_unit[unit_option_ids][]", option.id, option.in?(@army_list_unit.unit_options), "data-depend" => option.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{option.id}" %> <%= option.name %></label>
+          <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p><%= f.submit "Valider" %></p>
+  <% end %>
 
 </div>

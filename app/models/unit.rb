@@ -13,9 +13,18 @@ class Unit < ActiveRecord::Base
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true
   validates_inclusion_of :is_unique, :in => [true, false]
 
-  def self.for_select(army)
+  def self.for_select(army_list)
+    used_units = army_list.army_list_units.collect { |alu| alu.unit }
+
     UnitCategory.all.map do |unit_category|
-      [unit_category.name, unit_category.units.where(:army_id => army).order("is_unique", "name").map { |u| [u.name, u.id] }]
+      [
+        unit_category.name,
+        unit_category.units
+          .where(:army_id => army_list.army)
+          .order("is_unique", "name")
+          .reject { |unit| unit.in?(used_units) if unit.is_unique }
+          .map { |u| [u.name, u.id] }
+      ]
     end
   end
 end

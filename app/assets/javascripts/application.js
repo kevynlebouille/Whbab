@@ -27,7 +27,13 @@ jQuery(function($) {
 
   $('button[data-url]:not([data-popin])').live('click', function(evt) {
     evt.preventDefault();
-    window.location = $(this).data('url');
+
+    if ($(this).data('target') == '_blank') {
+      window.open($(this).data('url'));
+    }
+    else {
+      window.location = $(this).data('url');
+    }
   });
 
   $('[data-popin]').live('click', function(evt) {
