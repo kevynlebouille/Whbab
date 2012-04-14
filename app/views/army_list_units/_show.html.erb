@@ -49,9 +49,9 @@
           <td><%= troop.troop_type.name %></td>
           <td style="text-align:right"><em>
             <% if troop.value_points %>
-              <%= value_points(troop.value_points) %>pts<%= '/fig.' if army_list_unit.size > 1 %>
+              <%= value_points(troop.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
             <% elsif index == 0 %>
-              <%= value_points(troop.unit.value_points) %>pts<%= '/fig.' if army_list_unit.size > 1 %>
+              <%= value_points(troop.unit.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
             <% end %>
           </em></td>
         </tr>
@@ -63,14 +63,14 @@
       <div class="options">
         <h4>Options</h4>
         <% army_list_unit.unit_options.each do |option| %>
-          <em><%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %></em>
+          <em><%= value_points(option.value_points) %> pts<%= '/fig.' if option.is_per_model %></em>
           • <%= option.name %><br />
         <% end %>
 
         <% if army_list_unit.magic_items.any? %>
           <br /><strong>Objets magiques</strong><br />
           <% army_list_unit.magic_items.each do |magic_item| %>
-            <em><%= value_points(magic_item.value_points) %>pts</em>
+            <em><%= value_points(magic_item.value_points) %> pts</em>
             • <%= magic_item.name %><br />
           <% end %>
         <% end %>

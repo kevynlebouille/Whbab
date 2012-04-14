@@ -15,7 +15,7 @@ class ArmyListUnit < ActiveRecord::Base
     self.name = unit.name + " \#" + (army_list.army_list_units.where(:unit_id => unit).count() + 1).to_s unless name?
     self.size = unit.min_size
     self.unit_category = unit.unit_category
-    self.value_points = size * unit.value_points
+    self.value_points = size * (unit.value_points || unit.troops.first.value_points)
   end
 
   before_save do
@@ -30,7 +30,7 @@ class ArmyListUnit < ActiveRecord::Base
       options_points = options_points + magic_item.value_points
     end
 
-    self.value_points = size * unit.value_points + options_points
+    self.value_points = size * (unit.value_points || unit.troops.first.value_points) + options_points
   end
 
   after_save do

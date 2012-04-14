@@ -19,15 +19,15 @@
 
     <% if @magic_items_option %>
       <div id="army_list_unit_magic_items">
-        <h3>Objets magiques (<%= value_points(@army_list_unit.magic_items.sum('value_points')) %>/<%= value_points(@magic_items_option.value_points) %>pts)</h3>
+        <h3>Objets magiques<br /><%= value_points(@army_list_unit.magic_items.sum('value_points')) %>/<%= value_points(@magic_items_option.value_points) %> pts</h3>
         <ul>
           <% MagicItemCategory.all.each do |magic_item_category| %>
           <li>
-            <%= magic_item_category.name %>
+            <strong><%= magic_item_category.name %></strong>
             <ul>
               <% magic_item_category.magic_items.available_for(@army_list.army).each do |magic_item| %>
               <li>
-                <em><%= value_points(magic_item.value_points) %>pts</em>
+                <em><%= value_points(magic_item.value_points) %> pts</em>
                 <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), "id" => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
               </li>
               <% end %>
@@ -38,11 +38,11 @@
       </div>
     <% elsif @magic_standards_option %>
       <div id="army_list_unit_magic_items">
-        <h3>Bannière magique (<%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %>/<%= value_points(@magic_standards_option.value_points) %>pts)</h3>
+        <h3>Bannière magique<br /><%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
         <ul>
           <% MagicItem.magic_standards.available_for(@army_list.army).each do |magic_item| %>
           <li>
-            <em><%= value_points(magic_item.value_points) %>pts</em>
+            <em><%= value_points(magic_item.value_points) %> pts</em>
             <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), "id" => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
           </li>
           <% end %>
@@ -52,22 +52,22 @@
 
     <% if @available_unit_options.any? %>
       <div id="army_list_unit_unit_options">
-        <h3>Options</h3>
+        <h3>Options<br /><%= value_points(@army_list_unit.unit_options.sum('value_points')) %> pts</h3>
         <ul>
           <!-- IGNORE MAGIC ITEMS/STANTARDS -->
           <% @available_unit_options.each do |option| %>
           <li>
           <% if option.children.any? %>
-            <%= option.name %>
+            <strong><%= option.name %></strong>
             <ul>
               <% option.children.each do |child| %>
               <li>
-                 <em><%= value_points(child.is_per_model ? child.value_points * @army_list_unit.size : child.value_points) %>pts</em>
+                 <em><%= value_points(child.is_per_model ? child.value_points * @army_list_unit.size : child.value_points) %> pts</em>
                  <label><%= check_box_tag "army_list_unit[unit_option_ids][]", child.id, @army_list_unit.unit_options.member?(child), "data-radio" => true, "data-depend" => child.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{child.id}" %> <%= child.name %></label></li>
               <% end %>
             </ul>
           <% else %>
-            <em><%= value_points(option.is_per_model ? option.value_points * @army_list_unit.size : option.value_points) %>pts</em>
+            <em><%= value_points(option.is_per_model ? option.value_points * @army_list_unit.size : option.value_points) %> pts</em>
             <label><%= check_box_tag "army_list_unit[unit_option_ids][]", option.id, @army_list_unit.unit_options.member?(option), "data-depend" => option.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{option.id}" %> <%= option.name %></label>
           <% end %>
           </li>

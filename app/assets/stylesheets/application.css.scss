@@ -293,6 +293,18 @@
   float: right;
 }
 
+.edit_army_list_unit ul {
+  list-style: none;
+}
+
+.edit_army_list_unit li ul {
+  padding-left: 15px;
+}
+
+.edit_army_list_unit h3 {
+  text-align: center;
+}
+
 .edit_army_list_unit #army_list_unit_size {
   width: 30px;
   text-align: right;
