@@ -143,37 +143,45 @@ form.button_to, form.button_to div {
   background: image-url("bg_footer.png") 50% 50% no-repeat;
 }
 
-.small_popin {
+/*.small_popin {
   padding: 30px 40px 0 40px;
   width: 268px;
   height: 298px;
   background: image-url("bg_small_popin.png") no-repeat;
-}
+}*/
 
 .popin {
-  padding: 30px 40px 0 40px;
+  /*padding: 10px 20px 0 20px;
   width: 500px;
-  height: 320px;
-  background: image-url("bg_popin.png") no-repeat;
+  height: 320px;*/
+  overflow: hidden;
+  -moz-border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
+  -webkit-border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
+  border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
+  border-width: 20px 20px 10px 20px;
 }
 
-.small_popin h1, .popin h1 {
+.popin.large {
+  min-width: 710px;
+}
+
+.popin h1 {
   margin-bottom: 20px;
   font: 22px GodOfWar;
   font-weight: normal;
 }
 
-.small_popin h3, .popin h3 {
+.popin h3 {
   margin-bottom: 5px;
   font: 14px GodOfWar;
   font-weight: normal;
 }
 
-.small_popin p, .popin p {
+.popin p {
   margin: 10px 0;
 }
 
-.small_popin p.close, .popin p.close {
+.popin p.close {
   margin-top: 20px;
   text-align: center;
 }

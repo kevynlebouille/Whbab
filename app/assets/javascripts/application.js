@@ -45,23 +45,35 @@ jQuery(function($) {
       opacity: 0.4,
       returnFocus: false,
       scrolling: false,
-      initialWidth: 300,
-      initialHeight: 200,
       onComplete: function() {
+        $('#cboxClose').css('opacity', 1);
         $('#cboxLoadedContent form[data-validate]').validate();
 
-        $('.edit_army_list_unit :input[data-depend]').each(function() {
+        $('.edit_army_list_unit [data-depend]').each(function() {
           var $slave = $(this);
 
           $('#army_list_unit_unit_option_ids_' + $slave.data('depend')).change(function() {
             if ($(this).prop('checked')) {
-              $slave.prop('disabled', false);
+              if ($slave.is('ul')) {
+                $slave.find('input').prop('disabled', false);
+              }
+              else {
+                $slave.prop('disabled', false);
+              }
             }
             else {
-              $slave.prop('disabled', true).prop('checked', false);
+              if ($slave.is('ul')) {
+                $slave.find('input').prop('disabled', true).prop('checked', false);
+              }
+              else {
+                $slave.prop('disabled', true).prop('checked', false);
+              }
             }
           }).change();
         });
+      },
+      onClosed: function() {
+        $('#cboxClose').css('opacity', 0);
       }
     });
   });
@@ -83,8 +95,9 @@ jQuery(function($) {
     $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false).change();
   });
 
-  $('#army_list_unit_magic_items h3, #army_list_unit_unit_options h3').live('click', function() {
-    $(this).next('ul').slideToggle('fast');
+  $('#army_list_unit_magic_items ul li strong').live('click', function() {
+    $('#army_list_unit_magic_items ul li ul').not($(this).next('ul')).slideUp('fast');
+    $(this).next('ul').slideToggle('fast', function() { $.colorbox.resize(); });
   });
 
 });

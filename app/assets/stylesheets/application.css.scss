@@ -278,7 +278,7 @@
 }
 
 .army_list_unit_details table thead th {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   font-weight: bold;
 }
 
@@ -304,7 +304,8 @@
 }
 
 .edit_army_list_unit h3 {
-  padding: 2px 0;
+  padding-top: 3px;
+  height: 30px;
   text-align: center;
   color: #fff;
   background: rgba(71, 11, 3, 0.8);
@@ -321,14 +322,15 @@
 .edit_army_list_unit #army_list_unit_magic_items {
   float: right;
   margin-left: 10px;
-  width: 240px;
+  width: 350px;
+  overflow: hidden;
 }
 
-.edit_army_list_unit #army_list_unit_unit_options h3, .edit_army_list_unit #army_list_unit_magic_items h3 {
+.edit_army_list_unit #army_list_unit_unit_options {
+  width: 350px;
+  overflow: hidden;
+}
+
+.edit_army_list_unit #army_list_unit_magic_items ul li strong {
   cursor: pointer;
-}
-
-.edit_army_list_unit #army_list_unit_unit_options > ul, .edit_army_list_unit #army_list_unit_magic_items > ul {
-  overflow: auto;
-  height: 140px;
 }

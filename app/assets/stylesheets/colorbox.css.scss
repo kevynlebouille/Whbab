@@ -20,9 +20,10 @@
 */
 #cboxOverlay{background:#000;}
 #colorbox{}
-    #cboxContent{margin-top:32px; overflow:visible;}
+    #cboxContent{overflow:visible;}
         #cboxError{padding:50px; border:1px solid #ccc;}
         /*#cboxLoadedContent{background:#000; padding:1px;}*/
+        #cboxLoadedContent{background: image-url("bg_popin.png") center center no-repeat; background-size: 99% 100%;}
         #cboxLoadingGraphic{background:image-url("loading.gif") no-repeat center center;}
         /*#cboxLoadingOverlay{background:#000;}*/
         #cboxTitle{position:absolute; top:-22px; left:0; color:#000;}
@@ -32,7 +33,7 @@
         #cboxPrevious.hover{background-position:0px -25px;}
         #cboxNext{background-position:-25px 0px; right:22px;}
         #cboxNext.hover{background-position:-25px -25px;}
-        #cboxClose{position:absolute; top: 6px; right: 19px; width: 28px; height: 32px;}
+        #cboxClose{opacity:0;position:absolute; top: 5px; right: 19px; width: 28px; height: 32px; background: image-url("bt_close.png") no-repeat;}
         /*#cboxClose.hover{background-position:-50px -25px;}*/
         .cboxSlideshow_on #cboxPrevious, .cboxSlideshow_off #cboxPrevious{right:66px;}
         .cboxSlideshow_on #cboxSlideshow{background-position:-75px -25px; right:44px;}

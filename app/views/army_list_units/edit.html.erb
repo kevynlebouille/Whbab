@@ -1,4 +1,4 @@
-<div class="popin">
+<div class="popin large">
 
   <h1>Editer <%= @army_list_unit.unit.name %></h1>
 
@@ -28,11 +28,11 @@
           <% MagicItemCategory.all.each do |magic_item_category| %>
           <li>
             <strong><%= magic_item_category.name %></strong>
-            <ul>
+            <ul style="display:none">
               <% magic_item_category.magic_items.available_for(@army_list.army).each do |magic_item| %>
               <li>
                 <em><%= value_points(magic_item.value_points) %> pts</em>
-                <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), "id" => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
+                <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
               </li>
               <% end %>
             </ul>
@@ -42,12 +42,12 @@
       </div>
     <% elsif @magic_standards_option %>
       <div id="army_list_unit_magic_items">
-        <h3>Bannière magique<br /><%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
-        <ul>
+        <h3>Banniere magique<br /><%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
+        <ul <%= @magic_standards_option.depend ? "data-depend=\"#{@magic_standards_option.depend.id}\"".html_safe : "" %>>
           <% MagicItem.magic_standards.available_for(@army_list.army).each do |magic_item| %>
           <li>
             <em><%= value_points(magic_item.value_points) %> pts</em>
-            <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), "id" => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
+            <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-radio" => true %> <%= magic_item.name %></label>
           </li>
           <% end %>
         </ul>
@@ -67,18 +67,20 @@
               <% option.children.each do |child| %>
               <li>
                  <em><%= value_points(child.is_per_model ? child.value_points * @army_list_unit.size : child.value_points) %> pts</em>
-                 <label><%= check_box_tag "army_list_unit[unit_option_ids][]", child.id, @army_list_unit.unit_options.member?(child), "data-radio" => true, "data-depend" => child.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{child.id}" %> <%= child.name %></label></li>
+                 <label><%= check_box_tag "army_list_unit[unit_option_ids][]", child.id, @army_list_unit.unit_options.member?(child), "data-radio" => true, "data-depend" => child.depend.try(:id), :id => "army_list_unit_unit_option_ids_#{child.id}" %> <%= child.name %></label></li>
               <% end %>
             </ul>
           <% else %>
             <em><%= value_points(option.is_per_model ? option.value_points * @army_list_unit.size : option.value_points) %> pts</em>
-            <label><%= check_box_tag "army_list_unit[unit_option_ids][]", option.id, @army_list_unit.unit_options.member?(option), "data-depend" => option.depend.try(:id), "id" => "army_list_unit_unit_option_ids_#{option.id}" %> <%= option.name %></label>
+            <label><%= check_box_tag "army_list_unit[unit_option_ids][]", option.id, @army_list_unit.unit_options.member?(option), "data-depend" => option.depend.try(:id), :id => "army_list_unit_unit_option_ids_#{option.id}" %> <%= option.name %></label>
           <% end %>
           </li>
           <% end %>
         </ul>
       </div>
     <% end %>
+
+    <div class="clear"></div>
 
     <p><%= f.submit "Valider" %></p>
   <% end %>
