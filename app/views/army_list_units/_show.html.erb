@@ -10,7 +10,7 @@
     </div>
     <div class="actions" style="background: url(<%= image_path "/system/unit_categories/#{army_list_unit.unit_category.id}/ribbon.png" %>) 100% 100% no-repeat">
       <button data-popin="true" data-url="<%= edit_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button>
-      <%= button_to "Suppr.", army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
+      <button data-popin="true" data-url="<%= delete_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Suppr.</button>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <% army_list_unit.unit.troops.each_with_index do |troop, index| %>
+        <% army_list_unit.unit.troops.each do |troop| %>
         <tr>
           <td><%= troop.name %></td>
           <td><%= troop.M %></td>
@@ -50,7 +50,7 @@
           <td style="text-align:right"><em>
             <% if troop.value_points %>
               <%= value_points(troop.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
-            <% elsif index == 0 %>
+            <% elsif troop.position == 1 %>
               <%= value_points(troop.unit.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
             <% end %>
           </em></td>

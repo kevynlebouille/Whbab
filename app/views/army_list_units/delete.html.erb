@@ -1,0 +1,11 @@
+<div class="small_popin">
+
+  <h1>Supprimer<br />une unite</h1>
+
+  <%= form_for [@army_list, @army_list_unit], :method => :delete do |f| %>
+    <p>Etes-vous certain de vouloir supprimer l'unité <strong><%= @army_list_unit.name %></strong> ?</p>
+
+    <p class="close"><%= f.submit "!!! Supprimer !!!" %></p>
+  <% end %>
+
+</div>

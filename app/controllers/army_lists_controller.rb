@@ -80,6 +80,11 @@ class ArmyListsController < ApplicationController
     end
   end
 
+  # GET /army_lists/1/delete
+  def delete
+    @army_list = current_user.army_lists.find(params[:id])
+  end
+
   # DELETE /army_lists/1
   # DELETE /army_lists/1.xml
   def destroy

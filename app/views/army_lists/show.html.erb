@@ -8,7 +8,7 @@
 
 <div id="subheader" class="grid_14 army_list">
   <button data-url="<%= army_list_path(@army_list, :format => 'pdf') %>" data-target="_blank" class="left">Imprimer</button>
-  <%= button_to "Suppr.", army_list_path(@army_list), :confirm => "Êtes-vous sûr(e) ?", :method => :delete %>
+  <button data-popin="true" data-url="<%= delete_army_list_path @army_list %>">Suppr.</button>
   <button data-popin="true" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
 </div>
 

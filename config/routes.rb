@@ -4,7 +4,10 @@ Whbab::Application.routes.draw do
   devise_for :users
 
   resources :army_lists do
+    get 'delete', :on => :member
+
     resources :army_list_units do
+      get 'delete', :on => :member
       post 'sort', :on => :collection
     end
   end

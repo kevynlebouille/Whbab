@@ -12,8 +12,12 @@
 
     <% if @army_list_unit.unit.min_size != @army_list_unit.unit.max_size %>
       <p>
-        <%= f.label :size, @army_list_unit.unit.troops.first.name %> x
-        <%= f.text_field :size, :placeholder => "Taille" %>
+        <% @army_list_unit.army_list_unit_troops.reject{ |alut| @army_list_unit.unit.value_points && alut.position > 1 }.each do |army_list_unit_troop| %>
+        <%= f.fields_for :army_list_unit_troops, army_list_unit_troop do |troop_fields| %>
+          <%= troop_fields.label :size, army_list_unit_troop.troop.name %>
+          x<%= troop_fields.text_field :size, :placeholder => "Taille", :class => "army_list_unit_troop_size" %>
+        <% end %>
+        <% end %>
       </p>
     <% end %>
 

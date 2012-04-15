@@ -27,7 +27,7 @@
     </div>
     <% if user_signed_in? %>
     <ul class="menu" style="display:none">
-      <li><%= link_to "Mes listes d'armée", army_lists_path('search[army_id_eq]' => '') %></li>
+      <li><%= link_to "Mes listes d'armée", army_lists_path("search[army_id_eq]" => "") %></li>
       <li><%= link_to "Préférence", edit_user_registration_path %></li>
       <li><a href="mailto:support@whbab.com">Aide</a></li>
       <li><%= link_to "Déconnexion", destroy_user_session_path %></li>

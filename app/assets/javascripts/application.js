@@ -76,11 +76,15 @@ jQuery(function($) {
   ;
 
   $('.army_list_unit_overview .name').click(function() {
-    $(this).closest('.army_list_unit_overview').next('.army_list_unit_details').slideToggle();
+    $(this).closest('.army_list_unit_overview').next('.army_list_unit_details').slideToggle('fast');
   });
 
   $('input[data-radio]:not([data-depend])').live('click', function() {
     $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false).change();
+  });
+
+  $('#army_list_unit_magic_items h3, #army_list_unit_unit_options h3').live('click', function() {
+    $(this).next('ul').slideToggle('fast');
   });
 
 });
