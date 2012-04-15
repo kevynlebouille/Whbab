@@ -69,6 +69,9 @@ ActiveAdmin.register Unit do
           column :LD
           column :value_points
           column :position
+          column do |troop|
+            link_to "Voir", admin_troop_path(troop)
+          end
         end
       end
     end
@@ -79,6 +82,9 @@ ActiveAdmin.register Unit do
           column :id, { :class => "azerty" }
           column :name
           column :position
+          column do |equipment|
+            link_to "Voir", admin_equipment_path(equipment)
+          end
         end
       end
     end
@@ -89,6 +95,9 @@ ActiveAdmin.register Unit do
           column :id
           column :name
           column :position
+          column do |special_rule|
+            link_to "Voir", admin_special_rule_path(special_rule)
+          end
         end
       end
     end
@@ -100,6 +109,9 @@ ActiveAdmin.register Unit do
           column :name
           column :value_points
           column :position
+          column do |unit_option|
+            link_to "Voir", admin_unit_option_path(unit_option)
+          end
         end
       end
     end

@@ -1,4 +1,4 @@
-<div class="popin large">
+<div class="popin">
 
   <h1>Editer <%= @army_list_unit.unit.name %></h1>
 
@@ -32,7 +32,7 @@
               <% magic_item_category.magic_items.available_for(@army_list.army).each do |magic_item| %>
               <li>
                 <em><%= value_points(magic_item.value_points) %> pts</em>
-                <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}" %> <%= magic_item.name %></label>
+                <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-radio" => magic_item.is_magic_standard? ? true : nil %> <%= magic_item.name %></label>
               </li>
               <% end %>
             </ul>

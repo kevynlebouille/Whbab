@@ -143,26 +143,12 @@ form.button_to, form.button_to div {
   background: image-url("bg_footer.png") 50% 50% no-repeat;
 }
 
-/*.small_popin {
-  padding: 30px 40px 0 40px;
-  width: 268px;
-  height: 298px;
-  background: image-url("bg_small_popin.png") no-repeat;
-}*/
-
 .popin {
-  /*padding: 10px 20px 0 20px;
-  width: 500px;
-  height: 320px;*/
   overflow: hidden;
   -moz-border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
   -webkit-border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
   border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
   border-width: 20px 20px 10px 20px;
-}
-
-.popin.large {
-  min-width: 710px;
 }
 
 .popin h1 {
