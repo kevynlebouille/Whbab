@@ -31,8 +31,11 @@ class ArmyListUnitsController < ApplicationController
 
     respond_to do |format|
       if @army_list_unit.save
+        @army_list.reload
+
         format.html { redirect_to @army_list }
         format.xml  { render :xml => @army_list_unit, :status => :created, :location => @army_list_unit }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @army_list_unit.errors, :status => :unprocessable_entity }

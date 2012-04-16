@@ -1,0 +1,6 @@
+<h3><%= value_points @army_list.value_points %> points</h3>
+<ul>
+  <% @army_list.value_points_details.each do |row| %>
+  <li class="<%= row['valid'] ? '' : 'red' %>"><em><%= value_points row["value_points"].to_f %> pts</em> <strong><%= row["name"].split.last.titleize %></strong> x<%= row["count"] %></li>
+  <% end %>
+</ul>

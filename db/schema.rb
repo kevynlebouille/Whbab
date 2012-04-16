@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414204316) do
+ActiveRecord::Schema.define(:version => 20120416213131) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -161,7 +161,9 @@ ActiveRecord::Schema.define(:version => 20120414204316) do
   add_index "troops", ["unit_id"], :name => "index_troops_on_unit_id"
 
   create_table "unit_categories", :force => true do |t|
-    t.string "name", :null => false
+    t.string  "name",      :null => false
+    t.integer "min_quota"
+    t.integer "max_quota"
   end
 
   create_table "unit_options", :force => true do |t|

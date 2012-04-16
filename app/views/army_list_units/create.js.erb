@@ -1,0 +1,9 @@
+$('<%=j render :partial => "show", :locals => { :army_list_unit => @army_list_unit} %>')
+  .appendTo('ol.army_list_units_overview')
+  .hide()
+  .fadeIn()
+;
+
+$('.army_list_value_points').html('<%=j render :partial => "army_lists/value_points" %>');
+
+popin('<%=j edit_army_list_army_list_unit_path @army_list, @army_list_unit %>');
