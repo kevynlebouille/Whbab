@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(:version => 20120414204316) do
     t.integer "magic_item_id",     :null => false
   end
 
-  add_index "army_list_units_magic_items", ["army_list_unit_id"], :name => "index_army_list_units_magic_items_on_army_list_choice_id"
+  add_index "army_list_units_magic_items", ["army_list_unit_id"], :name => "index_army_list_units_magic_items_on_army_list_unit_id"
   add_index "army_list_units_magic_items", ["magic_item_id"], :name => "index_army_list_units_magic_items_on_magic_item_id"
 
   create_table "army_list_units_unit_options", :id => false, :force => true do |t|
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20120414204316) do
     t.integer "unit_option_id",    :null => false
   end
 
-  add_index "army_list_units_unit_options", ["army_list_unit_id"], :name => "index_army_list_units_unit_options_on_army_list_choice_id"
+  add_index "army_list_units_unit_options", ["army_list_unit_id"], :name => "index_army_list_units_unit_options_on_army_list_unit_id"
   add_index "army_list_units_unit_options", ["unit_option_id"], :name => "index_army_list_units_unit_options_on_unit_option_id"
 
   create_table "army_lists", :force => true do |t|
