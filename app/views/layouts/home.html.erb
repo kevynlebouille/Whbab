@@ -6,7 +6,6 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
-  <%= render :partial => "layouts/ga" if Rails.env.production? %>
 </head>
 <body>
 
@@ -19,6 +18,8 @@
 </div>
 
 <%= render "shared/flash_messages" %>
+
+<%= render "layouts/ga" if Rails.env.production? %>
 
 </body>
 </html>
