@@ -9,8 +9,14 @@
       <strong><%= value_points army_list_unit.value_points %></strong> points
     </div>
     <div class="actions" style="background: url(<%= image_path "/system/unit_categories/#{army_list_unit.unit_category.id}/ribbon.png" %>) 100% 100% no-repeat">
-      <button data-popin="true" data-url="<%= edit_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Editer</button>
-      <button data-popin="true" data-url="<%= delete_army_list_army_list_unit_path army_list_unit.army_list, army_list_unit %>">Suppr.</button>
+      <%= form_tag edit_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit), :method => "get", "data-popin" => true do %>
+        <%= select_tag 'action', options_for_select([
+          ['Editer', edit_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit)],
+          ['Dupliquer', duplicate_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit)],
+          ['Supprimer', delete_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit)]
+        ]), :id => nil %>
+        <%= submit_tag '&rarr;'.html_safe %>
+      <% end %>
     </div>
   </div>
 

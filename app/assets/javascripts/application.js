@@ -36,11 +36,8 @@ jQuery(function($) {
     }
   });
 
-  $('[data-popin]').live('click', function(evt) {
-    evt.preventDefault();
-
-    popin($(this).data('url') ? $(this).data('url') : $(this).attr('href'));
-  });
+  $('a[data-popin], button[data-popin]').live('click', popinHandler);
+  $('form[data-popin]').live('submit', popinHandler);
 
   $('.army_list_units_overview')
     .sortable({
@@ -53,6 +50,10 @@ jQuery(function($) {
 
   $('.army_list_unit_overview .name').live('click', function() {
     $(this).closest('.army_list_unit_overview').next('.army_list_unit_details').slideToggle('fast');
+  });
+
+  $('.army_list_unit_overview .actions select').live('change', function() {
+    $(this).closest('form').attr('action', $(this).val());
   });
 
   $('input[data-radio]:not([data-depend])').live('click', function() {
@@ -97,6 +98,26 @@ jQuery(function($) {
   });
 
 });
+
+function popinHandler(evt)
+{
+  evt.preventDefault();
+
+  var $this = $(this),
+      url;
+
+  if ($this.is('a')) {
+    url = $this.attr('href');
+  }
+  else if ($this.is('form')) {
+    url = $(this).attr('action');
+  }
+  else if ($this.is('[data-url]')) {
+    url = $(this).data('url');
+  }
+
+  popin(url);
+}
 
 function popin(url)
 {
