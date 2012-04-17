@@ -8,6 +8,7 @@
   <%= javascript_tag "BASE_URL = '#{root_path}';" %>
   <%= csrf_meta_tag %>
   <%= yield(:head) %>
+  <%= render :partial => "layouts/ga" if Rails.env.production? %>
 </head>
 <body>
 
