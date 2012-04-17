@@ -6,11 +6,11 @@ ActiveAdmin.register Unit do
   end
 
   member_action :duplicate, :method => :post do
-    new_unit = resource.clone
-    new_unit.troops << resource.troops.collect { |troop| troop.clone }
-    new_unit.equipments << resource.equipments.collect { |equipment| equipment.clone }
-    new_unit.special_rules << resource.special_rules.collect { |special_rule| special_rule.clone }
-    new_unit.unit_options << resource.unit_options.collect { |unit_option| unit_option.clone }
+    new_unit = resource.dup
+    new_unit.troops << resource.troops.collect { |troop| troop.dup }
+    new_unit.equipments << resource.equipments.collect { |equipment| equipment.dup }
+    new_unit.special_rules << resource.special_rules.collect { |special_rule| special_rule.dup }
+    new_unit.unit_options << resource.unit_options.collect { |unit_option| unit_option.dup }
     new_unit.save
 
     redirect_to edit_admin_unit_url(new_unit)
