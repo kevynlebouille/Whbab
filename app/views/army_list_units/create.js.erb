@@ -4,6 +4,6 @@ $('<%=j render :partial => "show", :locals => { :army_list_unit => @army_list_un
   .fadeIn()
 ;
 
-$('.army_list_value_points').html('<%=j render :partial => "army_lists/value_points" %>');
+$('.army_list_value_points').html('<%=j render "army_lists/value_points" %>');
 
 popin('<%=j edit_army_list_army_list_unit_path @army_list, @army_list_unit %>');
