@@ -7,10 +7,6 @@
 
 jQuery(function($) {
 
-  $('.home .signup #user_new').change(function() {
-    $('.home .signup #user_password_confirmation').val($('.home .signup #user_password').val());
-  });
-
   $('#header .welcome strong').click(function() {
     $(this).toggleClass('over');
     $('#header .menu').css('width', $(this).css('width')).toggle();
