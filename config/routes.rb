@@ -8,7 +8,8 @@ Whbab::Application.routes.draw do
 
     resources :army_list_units do
       get 'delete', :on => :member
-      get 'duplicate', :on => :member
+      get 'new_from', :on => :member
+      post 'duplicate', :on => :member
       post 'sort', :on => :collection
     end
   end

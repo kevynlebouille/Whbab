@@ -193,9 +193,23 @@
 .army_list_unit_overview {
   position: relative;
   padding: 10px;
-  width: 705px;
+  padding-left: 15px;
+  width: 700px;
   height: 35px;
   background: image-url("bg_army_list_unit_overview.png") no-repeat;
+}
+
+.army_list_unit_overview .position {
+  position: absolute;
+  top: 15px;
+  left: -12px;
+  background: white;
+  padding: 2px 3px;
+  border: 1px solid black;
+}
+
+.army_list_unit_overview .position:hover {
+  cursor: move;
 }
 
 .army_list_unit_overview .name {

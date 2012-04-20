@@ -1,9 +1,17 @@
-$('<%=j render :partial => "show", :locals => { :army_list_unit => @army_list_unit} %>')
-  .appendTo('ol.army_list_units_overview')
-  .hide()
-  .fadeIn()
-;
+<% if defined? @base_army_list and @base_army_list.id != @army_list.id %>
 
-$('.army_list_value_points').html('<%=j render "army_lists/value_points" %>');
+  window.location = '<%=j army_list_path @army_list %>';
 
-popin('<%=j edit_army_list_army_list_unit_path @army_list, @army_list_unit %>');
+<% else %>
+
+  $('<%=j render :partial => "show", :locals => { :army_list_unit => @army_list_unit} %>')
+    .appendTo('ol.army_list_units_overview')
+    .hide()
+    .fadeIn()
+  ;
+
+  $('.army_list_value_points').html('<%=j render "army_lists/value_points" %>');
+
+  popin('<%=j edit_army_list_army_list_unit_path @army_list, @army_list_unit %>');
+
+<% end %>

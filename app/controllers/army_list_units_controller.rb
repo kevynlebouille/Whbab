@@ -23,6 +23,50 @@ class ArmyListUnitsController < ApplicationController
     @magic_standards_option = @army_list_unit.unit.unit_options.only_magic_standards.first
   end
 
+  # GET /army_list/1/army_list_units/1/new_from
+  def new_from
+    @army_list = current_user.army_lists.find(params[:army_list_id])
+    @army_list_unit = @army_list.army_list_units.find(params[:id])
+  end
+
+  # POST /army_list/1/army_list_units/1/duplicate
+  def duplicate
+    @base_army_list = current_user.army_lists.find(params[:army_list_id])
+    @base_army_list_unit = @base_army_list.army_list_units.find(params[:id])
+
+    @army_list = ArmyList.find_or_initialize_by_id(params[:army_list_unit][:army_list_id])
+    @army_list.army_id = @base_army_list.army_id
+    @army_list.user_id = current_user.id
+    @army_list.save
+
+    @army_list_unit = @army_list.army_list_units.build({
+      :unit_id => @base_army_list_unit.unit_id,
+      :unit_category_id => @base_army_list_unit.unit_category_id,
+      :value_points => @base_army_list_unit.value_points,
+      :size => @base_army_list_unit.size
+    })
+    @army_list_unit.army_list_unit_troops << @base_army_list_unit.army_list_unit_troops.collect do |alut|
+      army_list_unit_troop = alut.dup
+      army_list_unit_troop.army_list_unit = @army_list_unit
+      army_list_unit_troop
+    end
+    @army_list_unit.unit_options << @base_army_list_unit.unit_options
+    @army_list_unit.magic_items << @army_list_unit.magic_items
+
+    respond_to do |format|
+      if @army_list_unit.save
+        @army_list_unit.reload
+
+        format.html { redirect_to @army_list }
+        format.xml  { render :xml => @army_list_unit, :status => :created, :location => @army_list_unit }
+        format.js   { render :action => "create" }
+      else
+        format.html { render :action => "new_from" }
+        format.xml  { render :xml => @army_list_unit.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /army_list/1/army_list_units
   # POST /army_list/1/army_list_units.xml
   def create

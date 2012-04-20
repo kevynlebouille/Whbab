@@ -37,8 +37,13 @@ jQuery(function($) {
 
   $('.army_list_units_overview')
     .sortable({
+      handle: '.position',
       update: function(event, ui) {
-        $.post($(this).data('url'), $(this).sortable('serialize'));
+        $.post($(this).data('url'), $(this).sortable('serialize'), function() {
+          $('.army_list_units_overview .position').each(function(index) {
+            $(this).html(index < 9 ? '0' + (index+1) : index+1);
+          });
+        });
       }
     })
     .disableSelection()

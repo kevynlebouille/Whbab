@@ -1,5 +1,8 @@
 <li id="army_list_units_<%= army_list_unit.id %>">
   <div class="army_list_unit_overview">
+    <div class="position">
+      <%= "%02d" % army_list_unit.position %>
+    </div>
     <div class="name">
       <strong><%= army_list_unit.name %></strong>
       <%= army_list_unit.unit.is_unique ? "<i>Unique</i>".html_safe : army_list_unit.unit.name %>
@@ -12,7 +15,7 @@
       <%= form_tag edit_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit), :method => "get", "data-popin" => true do %>
         <%= select_tag 'action', options_for_select([
           ['Editer', edit_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit)],
-          ['Dupliquer', duplicate_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit)],
+          ['Dupliquer', new_from_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit)],
           ['Supprimer', delete_army_list_army_list_unit_path(army_list_unit.army_list, army_list_unit)]
         ]), :id => nil %>
         <%= submit_tag '&rarr;'.html_safe %>

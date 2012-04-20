@@ -1,0 +1,16 @@
+<div class="popin">
+
+  <h1>Dupliquer<br /><%= @army_list_unit.name %></h1>
+
+  <%= form_for [@army_list, @army_list_unit], :url => duplicate_army_list_army_list_unit_path, :method => :post, :remote => true, :html => { :class => "duplicate_army_list_unit", :id => "duplicate_army_list_unit_#{@army_list_unit.id}" } do |f| %>
+    <%= render "shared/form_errors", :object => @army_list_unit %>
+
+    <p>
+      <%= f.label :army_list_id, "Vers :" %>
+      <%= f.select :army_list_id, options_from_collection_for_select(current_user.army_lists.where(:army_id => @army_list.army_id).reject{ |al| al.army_list_units.collect{ |alu| alu.unit }.include?(@army_list_unit.unit) if @army_list_unit.unit.is_unique }, :id, :name, @army_list.id), { :include_blank => "Nouvelle liste #{@army_list.army.name}" } %>
+    </p>
+
+    <p><%= f.submit "Suivant" %></p>
+  <% end %>
+
+</div>
