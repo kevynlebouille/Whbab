@@ -130,6 +130,7 @@ function popin(url)
     scrolling: false,
     onComplete: function() {
       $('#cboxClose').css('opacity', 1);
+      $('#cboxLoadedContent form :input:visible:first').focus();
       $('#cboxLoadedContent form[data-validate]').validate();
 
       $('.edit_army_list_unit [data-depend]').each(function() {
