@@ -57,16 +57,18 @@ jQuery(function($) {
     $(this).closest('form').attr('action', $(this).val());
   });
 
-  $('input[data-radio]:not([data-depend])').live('click', function() {
-    $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false).change();
-  });
-
   $('#army_list_unit_magic_items ul li strong').live('click', function() {
     $('#army_list_unit_magic_items ul li ul').not($(this).next('ul')).slideUp('fast');
     $(this).next('ul').slideToggle('fast', function() { $.colorbox.resize(); });
   });
 
-  $('#army_list_unit_unit_options input, #army_list_unit_magic_items input').live('change', function() {
+  $('input[data-radio]').live('change', function(evt) {
+    if (!evt.isPropagationStopped()) {
+      $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false);
+    }
+  });
+
+  $('#army_list_unit_unit_options input, #army_list_unit_magic_items input').live('change', function(evt) {
     var total    = 0.0,
         $changed = $(this),
         $div     = $changed.closest('div');
@@ -77,11 +79,12 @@ jQuery(function($) {
       if ($div.data('value-points-limit')) {
         if (total + value_points > parseFloat($div.data('value-points-limit'))) {
           $changed.prop('checked', false);
-          return true;
+          evt.stopPropagation();
+          return false;
         }
       }
 
-      total += value_points
+      total += value_points;
     });
 
     $div.find('h3 span').html(String(total).replace('.', ','));

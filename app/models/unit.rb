@@ -13,6 +13,8 @@ class Unit < ActiveRecord::Base
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true
   validates_inclusion_of :is_unique, :in => [true, false]
 
+  scope :base_category, where(:unit_category_id => 3)
+
   def self.for_select(army_list)
     used_units = army_list.army_list_units.collect { |alu| alu.unit }
 
