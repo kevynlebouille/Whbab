@@ -68,16 +68,18 @@
       </tbody>
     </table>
 
-    <% if army_list_unit.unit_options.any? %>
+    <% if army_list_unit.unit_options.any? or army_list_unit.magic_items.any? %>
       <div class="options">
-        <h4>Options</h4>
-        <% army_list_unit.unit_options.each do |option| %>
-          <em><%= value_points(option.value_points) %> pts<%= '/fig.' if option.is_per_model %></em>
-          • <%= option.name %><br />
+        <% if army_list_unit.unit_options.any? %>
+          <h4>Options</h4>
+          <% army_list_unit.unit_options.each do |option| %>
+            <em><%= value_points(option.value_points) %> pts<%= '/fig.' if option.is_per_model %></em>
+            • <%= option.name %><br />
+          <% end %>
         <% end %>
 
         <% if army_list_unit.magic_items.any? %>
-          <br /><strong>Objets magiques</strong><br />
+          <h4>Objets magiques</h4>
           <% army_list_unit.magic_items.each do |magic_item| %>
             <em><%= value_points(magic_item.value_points) %> pts</em>
             • <%= magic_item.name %><br />
