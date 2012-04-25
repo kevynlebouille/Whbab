@@ -2,7 +2,7 @@
   font-family: "GodOfWar";
   font-style: normal;
   font-weight: normal;
-  src: local("God Of War"), local("GodOfWar"), url("../fonts/GodOfWar.ttf") format("truetype");
+  src: local("God Of War"), local("GodOfWar"), font-url("GodOfWar.ttf") format("truetype");
 }
 
 body {
