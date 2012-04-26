@@ -1,0 +1,278 @@
+/*
+*= require reset
+*= require 960
+*= require_self
+*/
+
+@font-face {
+  font-family: "GodOfWar";
+  font-style: normal;
+  font-weight: normal;
+  src: local("God Of War"), local("GodOfWar"), font-url("GodOfWar.ttf") format("truetype");
+}
+
+body {
+  font: 13px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  color: #470b03;
+}
+
+a {
+  color: #470b03;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #a01e14;
+  text-decoration: none;
+}
+
+#header {
+  position: relative;
+  height: 100px;
+  background: image-url("pdf/bg_header.png") 0 50% no-repeat;
+
+  h1 {
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+
+    strong {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;    }
+  }
+
+  h2 {
+    margin-top: 8px;
+    width: 850px;
+    font: 30px "GodOfWar";
+    text-align: right;
+
+    strong {
+      font-size: 40px;
+    }
+  }
+
+  img {
+    display: block;
+    float: right;
+  }
+}
+
+.army_list_value_points {
+  height: 40px;
+  background: #f2ead3;
+  font-size: 16px;
+  overflow: hidden;
+
+  ul {
+    padding: 0 5px;
+    list-style: none;
+
+    li {
+      float: left;
+      padding: 0 20px;
+      width: 150px;
+      line-height: 40px;
+    }
+  }
+}
+
+.army_list_value_points em {
+  float: right;
+  font-style: normal;
+}
+
+.army_list_unit_new {
+  clear: right;
+  float: right;
+  display: block;
+  margin-right: 10px;
+  padding-top: 45px;
+  padding-right: 10px;
+  width: 170px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  text-decoration: none;
+  background: image-url("bt_new_army_list_unit.png") no-repeat;
+}
+
+.army_list_units_overview {
+  float: left;
+}
+
+.army_list_units_overview li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.army_list_unit_overview {
+  position: relative;
+  padding: 10px;
+  padding-left: 15px;
+  width: 700px;
+  height: 35px;
+  background: image-url("bg_army_list_unit_overview.png") no-repeat;
+}
+
+.army_list_unit_overview .position {
+  position: absolute;
+  top: 15px;
+  left: -12px;
+  background: white;
+  padding: 2px 3px;
+  border: 1px solid black;
+}
+
+.army_list_unit_overview .position:hover {
+  cursor: move;
+}
+
+.army_list_unit_overview .name {
+  float: left;
+  width: 360px;
+  font-size: 14px;
+}
+
+.army_list_unit_overview .name strong {
+  display: block;
+  font: 18px GodOfWar;
+}
+
+.army_list_unit_overview .name em {
+  font-style: normal;
+  font-weight: bold;
+}
+
+.army_list_unit_overview .name:hover {
+  cursor: pointer;
+}
+
+.army_list_unit_overview .value_points {
+  float: left;
+  width: 110px;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.army_list_unit_overview .value_points strong {
+  display: block;
+  font-size: 20px;
+}
+
+.army_list_unit_overview .actions {
+  position: absolute;
+  top: -4px;
+  right: -7px;
+  padding-top: 20px;
+  padding-left: 60px;
+  width: 190px;
+  height: 36px;
+}
+
+.army_list_unit_overview .actions button {
+  margin-right: 5px;
+}
+
+.army_list_unit_overview .ribbon {
+  position: absolute;
+  top: -4px;
+  right: -7px;
+  width: 97px;
+  height: 54px;
+}
+
+.army_list_unit_details {
+  margin: 0 10px;
+  padding: 15px;
+  width: 675px;
+
+  background-color: rgba(71, 11, 3, 0.1);
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 2px solid rgba(71, 11, 3, 0.5);
+  border-top: none;
+
+  -moz-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.army_list_unit_details table {
+  width: 100%;
+}
+
+.army_list_unit_details table thead th {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.army_list_unit_details h4 {;
+  margin-top: 10px;
+}
+
+.army_list_unit_details .options {
+  float: right;
+  width: 300px;
+}
+
+.army_list_unit_details .options em, .edit_army_list_unit #army_list_unit_unit_options em, .edit_army_list_unit #army_list_unit_magic_items em {
+  float: right;
+}
+
+.edit_army_list_unit ul {
+  list-style: none;
+}
+
+.edit_army_list_unit li ul {
+  padding-left: 15px;
+}
+
+.edit_army_list_unit h3 {
+  padding-top: 3px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  background: rgba(71, 11, 3, 0.8);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.edit_army_list_unit table {
+  margin: 10px 0;
+}
+
+.edit_army_list_unit table td {
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+.edit_army_list_unit .army_list_unit_troop_size {
+  width: 30px;
+  text-align: right;
+}
+
+.edit_army_list_unit #army_list_unit_magic_items {
+  float: right;
+  margin-left: 10px;
+  width: 350px;
+  overflow: hidden;
+}
+
+.edit_army_list_unit #army_list_unit_unit_options {
+  width: 350px;
+  overflow: hidden;
+}
+
+.edit_army_list_unit #army_list_unit_magic_items ul li strong {
+  cursor: pointer;
+}
