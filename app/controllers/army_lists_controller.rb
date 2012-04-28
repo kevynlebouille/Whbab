@@ -1,5 +1,9 @@
 class ArmyListsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter do |controller|
+    unless controller.action_name == 'show' and request.format.pdf?
+      authenticate_user!
+    end
+  end
 
   # GET /army_lists
   # GET /army_lists.xml
@@ -19,9 +23,14 @@ class ArmyListsController < ApplicationController
   end
 
   # GET /army_lists/1
+  # GET /army_lists/1.pdf (public)
   # GET /army_lists/1.xml
   def show
-    @army_list = current_user.army_lists.find(params[:id])
+    if request.format.pdf?
+      @army_list = ArmyList.find(params[:id])
+    else
+      @army_list = current_user.army_lists.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

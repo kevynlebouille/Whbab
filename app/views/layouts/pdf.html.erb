@@ -22,7 +22,11 @@
     <%= yield %>
   </div>
 
-  <div id="footer" class="container_16"></div>
+  <div id="footer" class="container_16">
+    <div class="user_name"><%= @army_list.user.name %></div>
+    <div class="site"><%= link_to "whbab.com", @army_list %></div>
+    <div class="today"><%= @army_list.updated_at.strftime "%d/%m/%Y" %></div>
+  </div>
 </div>
 
 </body>

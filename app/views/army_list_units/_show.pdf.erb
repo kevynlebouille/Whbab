@@ -1,103 +1,95 @@
-<li id="army_list_units_<%= army_list_unit.id %>">
-  <div class="army_list_unit_overview">
-    <div class="name">
+<table class="army_list_unit">
+  <tr>
+    <th colspan="11" class="army_list_unit_overview">
+      <div class="value_points"><%= value_points army_list_unit.value_points %> <small>points</small></div>
+
       <strong><%= army_list_unit.name %></strong>
-      <%= army_list_unit.unit.is_unique ? "<i>Unique</i>".html_safe : army_list_unit.unit.name %>
-      <%= "<em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
-    </div>
-    <div class="value_points">
-      <strong><%= value_points army_list_unit.value_points %></strong> points
-    </div>
-    <div class="actions" style="background: url(<%= image_path "/system/unit_categories/#{army_list_unit.unit_category.id}/ribbon.png" %>) 100% 100% no-repeat"></div>
-  </div>
-
-  <div class="army_list_unit_details">
-
-    <table>
-      <thead>
-        <tr>
-          <th>Profil</th>
-          <th>M</th>
-          <th>CC</th>
-          <th>CT</th>
-          <th>F</th>
-          <th>E</th>
-          <th>PV</th>
-          <th>I</th>
-          <th>A</th>
-          <th>Cd</th>
-          <th>Type de troupe</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% army_list_unit.unit.troops.each do |troop| %>
-        <tr>
-          <td><%= troop.name %></td>
-          <td><%= troop.M %></td>
-          <td><%= troop.WS %></td>
-          <td><%= troop.BS %></td>
-          <td><%= troop.S %></td>
-          <td><%= troop.T %></td>
-          <td><%= troop.W %></td>
-          <td><%= troop.I %></td>
-          <td><%= troop.A %></td>
-          <td><%= troop.LD %></td>
-          <td><%= troop.troop_type.name %></td>
-          <td style="text-align:right"><em>
-            <% if troop.value_points %>
-              <%= value_points(troop.value_points) %>pts<%= '/fig.' if army_list_unit.size > 1 %>
-            <% elsif troop.position == 1 %>
-              <%= value_points(troop.unit.value_points) %>pts<%= '/fig.' if army_list_unit.size > 1 %>
-            <% end %>
-          </em></td>
-        </tr>
+      <%= army_list_unit.unit.is_unique ? "<em>Unique</em>".html_safe : army_list_unit.unit.name %>
+      • <%= army_list_unit.unit_category.name %>
+    </th>
+  </tr>
+  <tr class="army_list_unit_troops">
+    <th class="troop_name">Troupes</th>
+    <th class="odd">M</th>
+    <th>CC</th>
+    <th class="odd">CT</th>
+    <th>F</th>
+    <th class="odd">E</th>
+    <th>PV</th>
+    <th class="odd">I</th>
+    <th>A</th>
+    <th class="odd">Cd</th>
+    <th>Type</th>
+  </tr>
+  <% army_list_unit.army_list_unit_troops.each do |alut| %>
+    <tr class="army_list_unit_troops">
+      <td class="troop_name"><%= alut.troop.name %> <%= "<em>x#{alut.size}</em>".html_safe if alut.size? && alut.size > 1 %></td>
+      <td class="characteristic odd"><%= alut.troop.M %></td>
+      <td class="characteristic"><%= alut.troop.WS %></td>
+      <td class="characteristic odd"><%= alut.troop.BS %></td>
+      <td class="characteristic"><%= alut.troop.S %></td>
+      <td class="characteristic odd"><%= alut.troop.T %></td>
+      <td class="characteristic"><%= alut.troop.W %></td>
+      <td class="characteristic odd"><%= alut.troop.I %></td>
+      <td class="characteristic"><%= alut.troop.A %></td>
+      <td class="characteristic odd"><%= alut.troop.LD %></td>
+      <td class="troop_type"><%= alut.troop.troop_type.name %></td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.unit.equipments.any? %>
+    <tr class="army_list_unit_more">
+      <th>Equipements</th>
+      <td colspan="10">
+        <% army_list_unit.unit.equipments.each_with_index do |equipment, index| %>
+          <%= "•" if index > 1 %> <%= equipment.name %>
         <% end %>
-      </tbody>
-    </table>
-
-    <% if army_list_unit.unit_options.any? %>
-      <div class="options">
-        <h4>Options</h4>
-        <% army_list_unit.unit_options.each do |option| %>
-          <em><%= value_points(option.value_points) %>pts<%= '/fig.' if option.is_per_model %></em>
-          • <%= option.name %><br />
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.unit.special_rules.any? %>
+    <tr class="army_list_unit_more">
+      <th>Règles spéciales</th>
+      <td colspan="10">
+        <% army_list_unit.unit.special_rules.each_with_index do |special_rule, index| %>
+          <%= "•" if index > 1 %> <%= special_rule.name %>
         <% end %>
-
-        <% if army_list_unit.magic_items.any? %>
-          <br /><strong>Objets magiques</strong><br />
-          <% army_list_unit.magic_items.each do |magic_item| %>
-            <em><%= value_points(magic_item.value_points) %>pts</em>
-            • <%= magic_item.name %><br />
-          <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.unit_options.any? %>
+    <tr class="army_list_unit_more">
+      <th>Options</th>
+      <td colspan="10">
+        <% army_list_unit.unit_options.each_with_index do |option, index| %>
+          <%= "• " if index > 1 %> <%= option.name %>
         <% end %>
-      </div>
-    <% end %>
-
-    <% if army_list_unit.unit.equipments.any? %>
-      <h4>Equipement</h4>
-      <% army_list_unit.unit.equipments.each do |equipment| %>
-        • <%= equipment.name %><br />
-      <% end %>
-    <% end %>
-
-    <% if army_list_unit.unit.special_rules.any? %>
-      <h4>Règles Spéciales</h4>
-      <% army_list_unit.unit.special_rules.each do |special_rule| %>
-        • <%= special_rule.name %><br />
-      <% end %>
-    <% end %>
-
-    <% if army_list_unit.unit.magic? %>
-      <h4>Magie</h4>
-      <%= army_list_unit.unit.magic %><br />
-    <% end %>
-
-    <% if army_list_unit.unit.notes? %>
-      <h4>Remarques</h4>
-      <%= army_list_unit.unit.notes %>
-    <% end %>
-
-    <div class="clear"></div>
-  </div>
-</li>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.magic_items.any? %>
+    <tr class="army_list_unit_more">
+      <th>Objets magiques</th>
+      <td colspan="10">
+        <% army_list_unit.magic_items.each_with_index do |magic_item, index| %>
+          <%= "• " if index > 1 %> <%= magic_item.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.unit.magic? %>
+    <tr class="army_list_unit_more">
+      <th>Magie</th>
+      <td colspan="10">
+        <%= army_list_unit.unit.magic %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.unit.notes? %>
+    <tr class="army_list_unit_more">
+      <th>Remarques</th>
+      <td colspan="10">
+        <%= army_list_unit.unit.notes %>
+      </td>
+    </tr>
+  <% end %>
+</table>
