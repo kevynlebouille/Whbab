@@ -6,12 +6,11 @@
 
 @font-face {
     font-family: "GodOfWarRegular";
-    src: font-url("godofwar.eot");
-    src: font-url("godofwar.eot?#iefix") format("embedded-opentype"),
-         font-url("godofwar.woff") format("woff"),
-         font-url("godofwar.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+    src: font-url("godofwar.eot"),
+         font-url("godofwar.woff") format("woff"),
+         font-url("godofwar.ttf") format("truetype");
 }
 
 body {
