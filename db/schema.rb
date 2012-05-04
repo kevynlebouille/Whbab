@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416213131) do
+ActiveRecord::Schema.define(:version => 20120430212109) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120416213131) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "notes"
   end
 
   add_index "army_list_units", ["army_list_id"], :name => "index_army_list_units_on_army_list_id"
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20120416213131) do
     t.decimal  "value_points", :precision => 5, :scale => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "notes"
   end
 
   add_index "army_lists", ["army_id"], :name => "index_army_lists_on_army_id"

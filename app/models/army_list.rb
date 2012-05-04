@@ -6,7 +6,9 @@ class ArmyList < ActiveRecord::Base
   validates_presence_of :army_id, :user_id, :name, :value_points
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0
 
-  attr_accessible :army_id, :name
+  attr_accessible :army_id, :name, :notes
+
+  normalize_attributes :name, :notes
 
   before_validation(:on => :create) do
     self.name = "Liste " + army.name + " \#" + (user.army_lists.where(:army_id => army).count() + 1).to_s unless name?
@@ -22,8 +24,8 @@ class ArmyList < ActiveRecord::Base
       ORDER BY uc.id"
 
     rows.each do |row|
-      row['valid'] = row['value_points'] >= value_points * row['min_quota'] / 100 unless row['min_quota'].nil?
-      row['valid'] = row['value_points'] <= value_points * row['max_quota'] / 100 unless row['max_quota'].nil?
+      row['valid'] = row['value_points'] >= value_points * row['min_quota'] / 100 unless row['min_quota'].blank?
+      row['valid'] = row['value_points'] <= value_points * row['max_quota'] / 100 unless row['max_quota'].blank?
     end
   end
 end

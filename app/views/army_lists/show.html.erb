@@ -21,3 +21,12 @@
 </div>
 
 <a href="<%= new_army_list_army_list_unit_path @army_list %>" class="army_list_unit_new" data-popin="true">Ajouter une unité</a>
+
+<% if @army_list.notes? %>
+  <div class="army_list_value_points">
+    <h3>Remarques</h3>
+    <ul><li>
+    <%= @army_list.notes %>
+    </li></ul>
+  </div>
+<% end %>

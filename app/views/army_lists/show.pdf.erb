@@ -1,9 +1,13 @@
 <% title "Liste d'armée • #{@army_list.name}" %>
 
+<% if @army_list.notes? %>
+  <div><%= @army_list.notes %></div>
+<% end %>
+
 <div class="army_list_value_points">
   <ul>
     <% @army_list.value_points_details.each do |row| %>
-    <li><strong><%= row["name"].split.last.titleize %></strong> <%= value_points row["value_points"].to_f %> pts</li>
+      <li><strong><%= row["name"].split.last.titleize %></strong> <%= value_points row["value_points"].to_f %> pts</li>
     <% end %>
   </ul>
 </div>

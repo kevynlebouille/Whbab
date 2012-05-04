@@ -5,6 +5,7 @@
   <p><%= f.collection_select :army_id, Army.all, :id, :name %></p>
   <% end %>
 
-  <p><%= f.text_field :name, :placeholder => "Nom" %></p>
+  <p><%= f.text_field :name, :placeholder => "Nom", :class => "input_xxlarge" %></p>
+  <p><%= f.text_area :notes, :placeholder => "Remarques", :size => "" %></p>
   <p><%= f.submit "Valider" %></p>
 <% end %>

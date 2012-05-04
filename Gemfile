@@ -27,6 +27,7 @@ gem 'acts_as_list'
 gem 'client_side_validations'
 gem 'meta_search'
 gem 'wisepdf'
+gem 'attribute_normalizer'
 gem 'newrelic_rpm'
 
 # To use ActiveModel has_secure_password

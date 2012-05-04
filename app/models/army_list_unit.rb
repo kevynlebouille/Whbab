@@ -8,6 +8,8 @@ class ArmyListUnit < ActiveRecord::Base
 
   accepts_nested_attributes_for :army_list_unit_troops
 
+  normalize_attributes :name, :notes
+
   validates_presence_of :army_list_id, :unit_id, :unit_category_id, :name, :value_points, :size
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0
   validates_numericality_of :size, :greater_than_or_equal_to => 0, :only_integer => true
@@ -19,6 +21,7 @@ class ArmyListUnit < ActiveRecord::Base
     self.unit_category = unit.unit_category
     self.size = 0
     self.value_points = 0
+    self.notes = unit.notes
   end
 
   before_save do

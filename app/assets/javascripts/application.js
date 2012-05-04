@@ -1,8 +1,9 @@
 //= require jquery
-//= require jquery-ui-1.8.16.custom.min
+//= require jquery-ui
 //= require jquery_ujs
 //= require rails.validations
-//= require jquery.colorbox.min
+//= require jquery.formalize
+//= require jquery.colorbox
 //= require_self
 
 jQuery(function($) {

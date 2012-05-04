@@ -8,39 +8,6 @@
 *= require_self
 */
 
-.error_messages {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 12px;
-}
-
-.error_messages h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
-}
-
-.error_messages p {
-  margin: 8px 10px;
-}
-
-.field_with_errors {
-  display: inline;
-}
-
-.field_with_errors .message {
-  color: #D00;
-  padding-left: 5px;
-  font-size: 12px;
-}
 
 #army_list_search label {
   position: relative;
@@ -94,6 +61,10 @@
   color: #fff;
   text-align: right;
   text-shadow: -2px 0 #470b03, 0 2px #470b03, 2px 0 #470b03, 0 -2px #470b03;
+}
+
+.edit_army_list #army_list_notes {
+  min-height: 80px;
 }
 
 .army_list_portrait {

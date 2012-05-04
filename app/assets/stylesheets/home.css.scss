@@ -22,7 +22,9 @@
 }
 
 .home #user_remember_me {
-  top: -6px;
+  position: relative;
+  top: 4px;
+  height: 15px;
 }
 
 .home label[for=user_remember_me] {

@@ -112,9 +112,9 @@
       <%= army_list_unit.unit.magic %><br />
     <% end %>
 
-    <% if army_list_unit.unit.notes? %>
+    <% if army_list_unit.notes? %>
       <h4>Remarques</h4>
-      <%= army_list_unit.unit.notes %>
+      <%= simple_format army_list_unit.notes %>
     <% end %>
 
     <div class="clear"></div>

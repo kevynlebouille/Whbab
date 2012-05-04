@@ -27,11 +27,6 @@ form.button_to, form.button_to div {
   display: inline;
 }
 
-.container_16 {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
 #wrapper {
   background: image-url("bg_header.png") 50% 0 repeat-x;
 }
@@ -172,4 +167,38 @@ form.button_to, form.button_to div {
 .popin p.close {
   margin-top: 20px;
   text-align: center;
+}
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+.error_messages h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+.error_messages p {
+  margin: 8px 10px;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors .message {
+  color: #D00;
+  padding-left: 5px;
+  font-size: 12px;
 }

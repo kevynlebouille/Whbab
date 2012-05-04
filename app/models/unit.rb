@@ -7,6 +7,8 @@ class Unit < ActiveRecord::Base
   has_many :troops, :order => 'position', :dependent => :destroy
   has_many :unit_options, :order => ['parent_id', 'position'], :dependent => :destroy
 
+  normalize_attributes :magic, :notes
+
   validates_presence_of :army_id, :unit_category_id, :name, :min_size
   validates_numericality_of :min_size, :greater_than_or_equal_to => 1, :only_integer => true
   validates_numericality_of :max_size, :greater_than_or_equal_to => :min_size, :only_integer => true, :allow_nil => true
