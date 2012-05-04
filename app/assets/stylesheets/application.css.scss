@@ -102,7 +102,7 @@
   margin: 0;
 }
 
-.army_list_value_points {
+.army_list_value_points, .army_list_notes {
   float: right;
   margin-right: 10px;
   margin-bottom: 15px;
@@ -112,7 +112,7 @@
   background: image-url("bg_army_list_value_points.png") no-repeat;
 }
 
-.army_list_value_points h3 {
+.army_list_value_points h3, .army_list_notes h3 {
   margin-bottom: 15px;
   font: 20px "GodOfWar";
   text-align: center;
