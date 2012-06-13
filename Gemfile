@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'activeadmin'
-gem 'formtastic', '~> 2.1.1'
+gem 'formtastic'
 gem 'seedbank'
 gem 'acts_as_list'
 gem 'client_side_validations'
