@@ -21,7 +21,6 @@ group :assets do
 end
 
 gem 'activeadmin'
-gem 'formtastic'
 gem 'seedbank'
 gem 'acts_as_list'
 gem 'client_side_validations'
