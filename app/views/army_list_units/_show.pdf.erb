@@ -33,7 +33,7 @@
       <td class="characteristic odd"><%= alut.troop.I %></td>
       <td class="characteristic"><%= alut.troop.A %></td>
       <td class="characteristic odd"><%= alut.troop.LD %></td>
-      <td class="troop_type"><%= alut.troop.troop_type.name %></td>
+      <td class="troop_type"><%= alut.troop.troop_type.try(:name) %></td>
     </tr>
   <% end %>
   <% if army_list_unit.unit.equipments.any? %>
