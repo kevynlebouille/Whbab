@@ -1,8 +1,8 @@
 class UnitOption < ActiveRecord::Base
   belongs_to :unit
-  belongs_to :parent, :class_name => 'UnitOption'
-  belongs_to :depend, :class_name => 'UnitOption'
-  has_many :children, :class_name => 'UnitOption', :foreign_key => 'parent_id', :dependent => :nullify
+  belongs_to :parent, :class_name => "UnitOption"
+  belongs_to :depend, :class_name => "UnitOption"
+  has_many :children, :class_name => "UnitOption", :order => "position", :foreign_key => "parent_id", :dependent => :nullify
 
   validates_presence_of :unit_id, :name
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true

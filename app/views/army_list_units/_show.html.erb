@@ -60,7 +60,7 @@
           <td><%= troop.I %></td>
           <td><%= troop.A %></td>
           <td><%= troop.LD %></td>
-          <td><%= troop.troop_type.name %></td>
+          <td><%= troop.troop_type.try(:name) %></td>
           <td style="text-align:right"><em>
             <% if troop.value_points %>
               <%= value_points(troop.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>

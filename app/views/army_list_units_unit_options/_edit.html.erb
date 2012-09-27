@@ -1,0 +1,13 @@
+<li>
+  <% if option.value_points.nil? %>
+    <strong><%= option.name %></strong>
+  <% else %>
+    <em><span><%= value_points(option.is_per_model ? option.value_points * army_list_unit.size : option.value_points) %></span> pts</em>
+    <label><%= check_box_tag "army_list_unit[unit_option_ids][]", option.id, army_list_unit.unit_options.member?(option), "data-depend" => option.parent.try(:id), "data-per-model" => option.is_per_model ? true : nil, "data-value-points" => option.value_points, :id => "army_list_unit_unit_option_ids_#{option.id}" %> <%= option.name %></label>
+  <% end %>
+  <% if option.children.without_magics.any? %>
+    <ul>
+      <%= render :partial => "army_list_units_unit_options/edit", :collection => option.children.without_magics.all, :as => :option, :locals => { :army_list_unit => army_list_unit } %>
+    </ul>
+  <% end %>
+</li>

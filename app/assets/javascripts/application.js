@@ -1,10 +1,9 @@
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery-ui
 //= require rails.validations
 //= require jquery.formalize
 //= require jquery.colorbox
-//= require_self
 
 jQuery(function($) {
 
