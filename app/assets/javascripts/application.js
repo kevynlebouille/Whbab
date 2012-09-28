@@ -68,7 +68,7 @@ jQuery(function($) {
     }
   });
 
-  $('#army_list_unit_unit_options input, #army_list_unit_magic_items input').live('change', function(evt) {
+  $('#army_list_unit_unit_options input, #army_list_unit_magic_items input, #army_list_unit_magic_standards input').live('change', function(evt) {
     var total    = 0.0,
         $changed = $(this),
         $div     = $changed.closest('div');
@@ -88,13 +88,16 @@ jQuery(function($) {
     });
 
     $div.find('h3 span').html(String(total).replace('.', ','));
+    updateArmyListUnitValuePoints();
   });
 
   $('.edit_army_list_unit .army_list_unit_troop_size:first').live('keyup', function() {
-    var size = $(this).val();
+    var size = parseInt($(this).val());
+
+    if (isNaN(size)) return false;
 
     $('#army_list_unit_unit_options input[data-per-model]').each(function() {
-      var value_points = size * parseFloat($(this).data('value-points'));
+      var value_points = parseInt(size) * parseFloat($(this).data('value-points'));
 
       $(this).parent('label').prev('em').find('span').html(String(value_points).replace('.', ','));
       $(this).change();
@@ -102,6 +105,35 @@ jQuery(function($) {
   });
 
 });
+
+function updateArmyListUnitValuePoints()
+{
+  var total  = 0.0,
+      $popin = $('.popin');
+
+  if ($('#army_list_unit_troops').length) {
+    $('#army_list_unit_troops tr').each(function() {
+      total += parseInt($(this).find('.army_list_unit_troop_size').val()) * parseFloat($(this).data('value-points'))
+    });
+  }
+  else {
+    total = parseFloat($popin.find('h1').data('value-points'));
+  }
+
+  if ($('#army_list_unit_unit_options').length) {
+    total += parseFloat($('#army_list_unit_unit_options h3 span').html().replace(',', '.'));
+  }
+
+  if ($('#army_list_unit_magic_items').length) {
+    total += parseFloat($('#army_list_unit_magic_items h3 span').html().replace(',', '.'));
+  }
+  
+  if ($('#army_list_unit_magic_standards').length) {
+    total += parseFloat($('#army_list_unit_magic_standards h3 span').html().replace(',', '.'));
+  }
+
+  $popin.find('h1 span').html(String(total).replace('.', ','));
+}
 
 function popinHandler(evt)
 {
@@ -141,20 +173,10 @@ function popin(url)
 
         $('#army_list_unit_unit_option_ids_' + $slave.data('depend')).change(function() {
           if ($(this).prop('checked')) {
-            if ($slave.is('ul')) {
-              $slave.find('input').prop('disabled', false);
-            }
-            else {
-              $slave.prop('disabled', false);
-            }
+            $slave.prop('disabled', false);
           }
           else {
-            if ($slave.is('ul')) {
-              $slave.find('input').prop('disabled', true).prop('checked', false);
-            }
-            else {
-              $slave.prop('disabled', true).prop('checked', false);
-            }
+            $slave.prop('disabled', true).prop('checked', false);
           }
         }).change();
       });

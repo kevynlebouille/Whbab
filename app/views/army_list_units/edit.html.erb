@@ -1,7 +1,7 @@
 <div class="popin">
 
-  <h1>Editer<br /><%= @army_list_unit.unit.name %>
-  <span style="float:right"><%= value_points(@army_list_unit.value_points) %> pts</span></h1>
+  <h1 data-value-points="<%= @army_list_unit.unit.value_points %>">Editer<br /><%= @army_list_unit.unit.name %>
+  <div style="float:right"><span><%= value_points(@army_list_unit.value_points) %></span> pts</div></h1>
 
   <%= form_for [@army_list, @army_list_unit] do |f| %>
     <%= render "shared/form_errors", :object => @army_list_unit %>
@@ -12,9 +12,9 @@
     </p>
 
     <% if @army_list_unit.unit.min_size != @army_list_unit.unit.max_size %>
-      <table>
+      <table id="army_list_unit_troops">
         <% @army_list_unit.army_list_unit_troops.reject{ |alut| @army_list_unit.unit.value_points && alut.position > 1 }.each do |army_list_unit_troop| %>
-        <tr>
+        <tr data-value-points="<%= army_list_unit_troop.troop.value_points || @army_list_unit.unit.value_points %>">
           <%= f.fields_for :army_list_unit_troops, army_list_unit_troop do |troop_fields| %>
           <td><%= troop_fields.label :size, army_list_unit_troop.troop.name %> x</td>
           <td><%= troop_fields.text_field :size, :placeholder => "Taille", :class => "army_list_unit_troop_size" %></td>
@@ -25,25 +25,27 @@
       </table>
     <% end %>
 
+    <% if @magic_standards_option %>
+      <div id="army_list_unit_magic_standards" data-value-points-limit="<%= @magic_standards_option.value_points %>">
+        <h3>Banniere magique<br /><span><%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %></span>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
+        <ul <%= @magic_standards_option.parent ? "data-depend=\"#{@magic_standards_option.parent.id}\"".html_safe : "" %>>
+          <%= render :partial => "army_list_units_magic_items/edit", :collection =>  MagicItem.magic_standards.available_for(@army_list.army, @magic_standards_option.value_points).all, :as => :magic_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_standards_option } %>
+        </ul>
+      </div>
+    <% end %>
+
     <% if @magic_items_option %>
-      <div id="army_list_unit_magic_items" data-value-points-limit="<%= value_points(@magic_items_option.value_points) %>">
+      <div id="army_list_unit_magic_items" data-value-points-limit="<%= @magic_items_option.value_points %>">
         <h3>Objets magiques<br /><span><%= value_points(@army_list_unit.magic_items.sum('value_points')) %></span>/<%= value_points(@magic_items_option.value_points) %> pts</h3>
         <ul>
           <% MagicItemCategory.not_magic_standards.each do |magic_item_category| %>
           <li>
             <strong><%= magic_item_category.name %></strong>
             <ul style="display:none">
-              <%= render :partial => "army_list_units_magic_items/edit", :collection =>  magic_item_category.magic_items.available_for(@army_list.army).all, :as => :magic_item, :locals => { :army_list_unit => @army_list_unit } %>
+              <%= render :partial => "army_list_units_magic_items/edit", :collection =>  magic_item_category.magic_items.available_for(@army_list.army, @magic_items_option.value_points).all, :as => :magic_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
             </ul>
           </li>
           <% end %>
-        </ul>
-      </div>
-    <% elsif @magic_standards_option %>
-      <div id="army_list_unit_magic_items" data-value-points-limit="<%= value_points(@magic_standards_option.value_points) %>">
-        <h3>Banniere magique<br /><span><%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %></span>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
-        <ul <%= @magic_standards_option.parent ? "data-depend=\"#{@magic_standards_option.parent.id}\"".html_safe : "" %>>
-          <%= render :partial => "army_list_units_magic_items/edit", :collection =>  MagicItem.magic_standards.available_for(@army_list.army).all, :as => :magic_item, :locals => { :army_list_unit => @army_list_unit } %>
         </ul>
       </div>
     <% end %>

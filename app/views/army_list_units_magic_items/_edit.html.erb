@@ -1,4 +1,4 @@
 <li>
   <em><span><%= value_points(magic_item.value_points) %></span> pts</em>
-  <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-radio" => magic_item.is_magic_standard? ? true : nil %> <%= magic_item.name %></label>
+  <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, @army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-depend" => unit_option.parent.try(:id), "data-radio" => magic_item.is_magic_standard? ? true : nil %> <%= magic_item.name %></label>
 </li>

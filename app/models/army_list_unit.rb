@@ -28,7 +28,7 @@ class ArmyListUnit < ActiveRecord::Base
     if army_list_unit_troops.empty?
       unit.troops.each do |troop|
         if unit.value_points
-          army_list_unit_troops.build :troop => troop, :size => troop.position == 1 ? unit.min_size : 0, :position => troop.position
+          army_list_unit_troops.build :troop => troop, :size => troop.position == 1 ? unit.min_size : nil, :position => troop.position
         elsif troop.value_points
           army_list_unit_troops.build :troop => troop, :size => unit.min_size, :position => troop.position
         end
@@ -39,7 +39,7 @@ class ArmyListUnit < ActiveRecord::Base
     self.value_points = 0
 
     unit_options.reject{ |option| option.is_magic_standards || option.is_magic_items }.each do |option|
-      factor = option.is_per_model ? army_list_unit_troops.first.size : 1
+      factor = option.is_per_model ? army_list_unit_troops.first.size.to_i : 1
       self.value_points = self.value_points + factor * option.value_points
     end
 
@@ -48,12 +48,12 @@ class ArmyListUnit < ActiveRecord::Base
     end
 
     if unit.value_points
-      self.size = army_list_unit_troops.first.size + self.size
-      self.value_points = army_list_unit_troops.first.size * unit.value_points + self.value_points
+      self.size = army_list_unit_troops.first.size.to_i + self.size
+      self.value_points = army_list_unit_troops.first.size.to_i * unit.value_points + self.value_points
     else
       army_list_unit_troops.reject{ |alut| alut.troop.value_points.nil? }.each do |army_list_unit_troop|
-        self.size = army_list_unit_troop.size + self.size
-        self.value_points = army_list_unit_troop.size * army_list_unit_troop.troop.value_points + self.value_points
+        self.size = army_list_unit_troop.size.to_i + self.size
+        self.value_points = army_list_unit_troop.size.to_i * army_list_unit_troop.troop.value_points + self.value_points
       end
     end
   end
