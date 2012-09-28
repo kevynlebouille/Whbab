@@ -7,7 +7,7 @@ class MergeParentAndDependUnitOption < ActiveRecord::Migration
       say "UnitOption \##{unit_option.id} updated !"
     end
 
-    UnitOption.only_parents.each do |child|
+    UnitOption.without_parent.each do |child|
       child.children.each_with_index do |child, index|
         child.position = index + 1
         child.save

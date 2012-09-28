@@ -10,7 +10,7 @@ ActiveAdmin.register UnitOption do
   end
 
   filter :unit
-  filter :parent, :collection => proc { UnitOption.includes(:unit).only_parents.collect { |r| [r.unit.name + ' - ' + r.name, r.id] } }
+  filter :parent, :collection => proc { UnitOption.includes(:unit).without_parent.collect { |r| [r.unit.name + ' - ' + r.name, r.id] } }
   filter :name
   filter :value_points
 
@@ -29,8 +29,7 @@ ActiveAdmin.register UnitOption do
   form do |f|
     f.inputs do
       f.input :unit
-      f.input :parent, :collection => UnitOption.includes(:unit).where('value_points IS NULL').collect { |r| [r.unit.name + ' - ' + r.name, r.id] }
-      f.input :depend, :collection => UnitOption.includes(:unit).where('value_points IS NOT NULL').collect { |r| [r.unit.name + ' - ' + r.name, r.id] }
+      f.input :parent, :collection => UnitOption.includes(:unit).collect { |r| [r.unit.name + ' - ' + r.name, r.id] }
       f.input :name
       f.input :value_points
       f.input :position

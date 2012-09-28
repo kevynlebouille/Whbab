@@ -13,8 +13,8 @@ class UnitOption < ActiveRecord::Base
 
   acts_as_list :scope => 'unit_id = #{unit_id} AND COALESCE(parent_id, \'\') = \'#{parent_id}\''
 
-  scope :only_parents, where(:parent_id => nil)
-  scope :without_magics, where(:is_magic_items => false, :is_magic_standards => false)
+  scope :without_parent, where(:parent_id => nil)
+  scope :exclude_magics, where(:is_magic_items => false, :is_magic_standards => false)
   scope :only_magic_items, where(:is_magic_items => true, :is_magic_standards => false)
   scope :only_magic_standards, where(:is_magic_items => false, :is_magic_standards => true)
 end
