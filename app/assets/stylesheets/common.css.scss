@@ -146,6 +146,7 @@ form.button_to, form.button_to div {
   -webkit-border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
   border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
   border-width: 20px 20px 10px 20px;
+  min-width: 400px;
 }
 
 .popin h1 {

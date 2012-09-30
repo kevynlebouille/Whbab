@@ -62,16 +62,22 @@ jQuery(function($) {
     $(this).next('ul').slideToggle('fast', function() { $.colorbox.resize(); });
   });
 
-  $('input[data-radio]').live('change', function(evt) {
-    if (!evt.isPropagationStopped()) {
-      $(this).closest('ul').find('input[data-radio]').not(this).prop('checked', false);
-    }
-  });
-
   $('#army_list_unit_unit_options input, #army_list_unit_magic_items input, #army_list_unit_magic_standards input').live('change', function(evt) {
-    var total    = 0.0,
-        $changed = $(this),
-        $div     = $changed.closest('div');
+    var total     = 0.0,
+        $changed  = $(this),
+        $slaves   = $('.edit_army_list_unit input[data-depend='+$changed.val()+']'),
+        $siblings = $changed.closest('ul').find('> li > label input[data-radio]').not($changed),
+        $div      = $changed.closest('div');
+
+    // console.log($changed.parent().contents(':not(input)').text() + ' changed !');
+
+    if ($changed.data('radio')) {
+      $siblings.prop('checked', false).each(function() {
+        updateArmyListUnitDepend($(this));
+      });
+    }
+
+    updateArmyListUnitDepend($changed);
 
     $div.find('input:checked').each(function() {
       var value_points = parseFloat($(this).parent('label').prev('em').find('span').html().replace(',', '.'));
@@ -79,6 +85,7 @@ jQuery(function($) {
       if ($div.data('value-points-limit')) {
         if (total + value_points > parseFloat($div.data('value-points-limit'))) {
           $changed.prop('checked', false);
+          updateArmyListUnitDepend($changed);
           evt.stopPropagation();
           return false;
         }
@@ -87,7 +94,12 @@ jQuery(function($) {
       total += value_points;
     });
 
+    if (evt.isPropagationStopped()) {
+      return false;
+    }
+
     $div.find('h3 span').html(String(total).replace('.', ','));
+
     updateArmyListUnitValuePoints();
   });
 
@@ -97,7 +109,7 @@ jQuery(function($) {
     if (isNaN(size)) return false;
 
     $('#army_list_unit_unit_options input[data-per-model]').each(function() {
-      var value_points = parseInt(size) * parseFloat($(this).data('value-points'));
+      var value_points = size * parseFloat($(this).data('value-points'));
 
       $(this).parent('label').prev('em').find('span').html(String(value_points).replace('.', ','));
       $(this).change();
@@ -106,6 +118,20 @@ jQuery(function($) {
 
 });
 
+function updateArmyListUnitDepend($changed)
+{
+  var $slaves = $('.edit_army_list_unit input[data-depend='+$changed.val()+']');
+
+  if ($changed.prop('checked')) {
+    $slaves.attr('disabled', false);
+  }
+  else {
+    $slaves.prop('disabled', true).prop('checked', false).each(function() {
+      updateArmyListUnitDepend($(this));
+    });
+  }
+}
+
 function updateArmyListUnitValuePoints()
 {
   var total  = 0.0,
@@ -113,7 +139,12 @@ function updateArmyListUnitValuePoints()
 
   if ($('#army_list_unit_troops').length) {
     $('#army_list_unit_troops tr').each(function() {
-      total += parseInt($(this).find('.army_list_unit_troop_size').val()) * parseFloat($(this).data('value-points'))
+      var size         = parseInt($(this).find('.army_list_unit_troop_size').val()),
+          value_points = parseFloat($(this).data('value-points'));
+
+      if (isNaN(size)) return;
+
+      total += size * value_points;
     });
   }
   else {
@@ -127,7 +158,7 @@ function updateArmyListUnitValuePoints()
   if ($('#army_list_unit_magic_items').length) {
     total += parseFloat($('#army_list_unit_magic_items h3 span').html().replace(',', '.'));
   }
-  
+
   if ($('#army_list_unit_magic_standards').length) {
     total += parseFloat($('#army_list_unit_magic_standards h3 span').html().replace(',', '.'));
   }
@@ -168,18 +199,12 @@ function popin(url)
       $('#cboxLoadedContent form :input:visible:first').focus();
       $('#cboxLoadedContent form[data-validate]').validate();
 
-      $('.edit_army_list_unit [data-depend]').each(function() {
-        var $slave = $(this);
-
-        $('#army_list_unit_unit_option_ids_' + $slave.data('depend')).change(function() {
-          if ($(this).prop('checked')) {
-            $slave.prop('disabled', false);
-          }
-          else {
-            $slave.prop('disabled', true).prop('checked', false);
-          }
-        }).change();
+      var masters = [];
+      $('#army_list_unit_unit_options input[data-depend], #army_list_unit_magic_items input[data-depend], #army_list_unit_magic_standards input[data-depend]').each(function() {
+        masters.push('#army_list_unit_unit_option_ids_' + $(this).data('depend'));
       });
+
+      $(masters.join(', ')).change();
     },
     onClosed: function() {
       $('#cboxClose').css('opacity', 0);
