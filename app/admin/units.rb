@@ -70,6 +70,12 @@ ActiveAdmin.register Unit do
           column :value_points
           column :position
           column do |troop|
+            link_to "Mont.", move_higher_admin_troop_path(troop), :method => :post unless troop.first?
+          end
+          column do |troop|
+            link_to "Desc.", move_lower_admin_troop_path(troop), :method => :post unless troop.last?
+          end
+          column do |troop|
             link_to "Voir", admin_troop_path(troop)
           end
         end
@@ -82,6 +88,12 @@ ActiveAdmin.register Unit do
           column :id, { :class => "azerty" }
           column :name
           column :position
+          column do |equipment|
+            link_to "Mont.", move_higher_admin_equipment_path(equipment), :method => :post unless equipment.first?
+          end
+          column do |equipment|
+            link_to "Desc.", move_lower_admin_equipment_path(equipment), :method => :post unless equipment.last?
+          end
           column do |equipment|
             link_to "Voir", admin_equipment_path(equipment)
           end
@@ -96,6 +108,12 @@ ActiveAdmin.register Unit do
           column :name
           column :position
           column do |special_rule|
+            link_to "Mont.", move_higher_admin_special_rule_path(special_rule), :method => :post unless special_rule.first?
+          end
+          column do |special_rule|
+            link_to "Desc.", move_lower_admin_special_rule_path(special_rule), :method => :post unless special_rule.last?
+          end
+          column do |special_rule|
             link_to "Voir", admin_special_rule_path(special_rule)
           end
         end
@@ -109,6 +127,12 @@ ActiveAdmin.register Unit do
           column :name
           column :value_points
           column :position
+          column do |unit_option|
+            link_to "Mont.", move_higher_admin_unit_option_path(unit_option), :method => :post unless unit_option.first?
+          end
+          column do |unit_option|
+            link_to "Desc.", move_lower_admin_unit_option_path(unit_option), :method => :post unless unit_option.last?
+          end
           column do |unit_option|
             link_to "Voir", admin_unit_option_path(unit_option)
           end

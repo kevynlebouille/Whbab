@@ -5,6 +5,20 @@ ActiveAdmin.register Troop do
     end
   end
 
+  member_action :move_higher, :method => :post do
+    resource.move_higher
+    resource.save
+
+    redirect_to admin_unit_url(resource.unit)
+  end
+
+  member_action :move_lower, :method => :post do
+    resource.move_lower
+    resource.save
+
+    redirect_to admin_unit_url(resource.unit)
+  end
+
   action_item :only => :show do
     link_to "New Troop", new_admin_troop_path
   end
