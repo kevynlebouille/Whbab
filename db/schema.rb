@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926204248) do
+ActiveRecord::Schema.define(:version => 20121001193549) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20120926204248) do
     t.integer  "unit_id"
     t.integer  "unit_category_id"
     t.string   "name"
-    t.decimal  "value_points",     :precision => 5, :scale => 1
+    t.decimal  "value_points",     :precision => 7, :scale => 1
     t.integer  "size"
     t.integer  "position"
     t.datetime "created_at"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20120926204248) do
     t.integer  "army_id",                                    :null => false
     t.integer  "user_id",                                    :null => false
     t.string   "name",                                       :null => false
-    t.decimal  "value_points", :precision => 5, :scale => 1, :null => false
+    t.decimal  "value_points", :precision => 7, :scale => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "notes"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(:version => 20120926204248) do
     t.integer "magic_item_category_id",                               :null => false
     t.integer "army_id"
     t.string  "name",                                                 :null => false
-    t.decimal "value_points",           :precision => 5, :scale => 1, :null => false
+    t.decimal "value_points",           :precision => 7, :scale => 1, :null => false
     t.integer "override_id"
   end
 
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20120926204248) do
     t.integer "unit_id",                                                  :null => false
     t.integer "troop_type_id"
     t.string  "name",                                                     :null => false
-    t.decimal "value_points",               :precision => 5, :scale => 1
+    t.decimal "value_points",               :precision => 7, :scale => 1
     t.integer "position",                                                 :null => false
     t.string  "M",             :limit => 5
     t.string  "WS",            :limit => 5
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(:version => 20120926204248) do
     t.integer "unit_id",                                          :null => false
     t.integer "parent_id"
     t.string  "name",                                             :null => false
-    t.decimal "value_points",       :precision => 5, :scale => 1
+    t.decimal "value_points",       :precision => 7, :scale => 1
     t.integer "position",                                         :null => false
     t.boolean "is_per_model",                                     :null => false
     t.boolean "is_magic_items",                                   :null => false
@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(:version => 20120926204248) do
     t.string  "name",                                                              :null => false
     t.integer "min_size",                                       :default => 1,     :null => false
     t.integer "max_size"
-    t.decimal "value_points",     :precision => 5, :scale => 1
+    t.decimal "value_points",     :precision => 7, :scale => 1
     t.string  "magic"
     t.text    "notes"
     t.boolean "is_unique",                                      :default => false, :null => false
