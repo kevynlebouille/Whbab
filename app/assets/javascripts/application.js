@@ -71,14 +71,6 @@ jQuery(function($) {
 
     // console.log($changed.parent().contents(':not(input)').text() + ' changed !');
 
-    if ($changed.data('radio')) {
-      $siblings.prop('checked', false).each(function() {
-        updateArmyListUnitDepend($(this));
-      });
-    }
-
-    updateArmyListUnitDepend($changed);
-
     $div.find('input:checked').each(function() {
       var value_points = parseFloat($(this).parent('label').prev('em').find('span').html().replace(',', '.'));
 
@@ -98,7 +90,13 @@ jQuery(function($) {
       return false;
     }
 
-    $div.find('h3 span').html(String(total).replace('.', ','));
+    if ($changed.data('radio')) {
+      $siblings.prop('checked', false).each(function() {
+        updateArmyListUnitDepend($(this));
+      });
+    }
+
+    updateArmyListUnitDepend($changed);
 
     updateArmyListUnitValuePoints();
   });
@@ -134,6 +132,19 @@ function updateArmyListUnitDepend($changed)
 
 function updateArmyListUnitValuePoints()
 {
+  $('#army_list_unit_unit_options, #army_list_unit_magic_items, #army_list_unit_magic_standards').each(function() {
+    var total = 0.0,
+        $div  = $(this);
+
+    $div.find('input:checked').each(function() {
+      var value_points = parseFloat($(this).parent('label').prev('em').find('span').html().replace(',', '.'));
+
+      total += value_points;
+    });
+
+    $div.find('h3 span').html(String(total).replace('.', ','));
+  });
+
   var total  = 0.0,
       $popin = $('.popin');
 
