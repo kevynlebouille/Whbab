@@ -101,7 +101,7 @@ jQuery(function($) {
     updateArmyListUnitValuePoints();
   });
 
-  $('.edit_army_list_unit .army_list_unit_troop_size:first').live('keyup', function() {
+  $('.edit_army_list_unit #army_list_unit_army_list_unit_troops_attributes_0_size').live('keyup', function() {
     var size = parseInt($(this).val());
 
     if (isNaN(size)) return false;
@@ -110,8 +110,9 @@ jQuery(function($) {
       var value_points = size * parseFloat($(this).data('value-points'));
 
       $(this).parent('label').prev('em').find('span').html(String(value_points).replace('.', ','));
-      $(this).change();
     });
+
+    updateArmyListUnitValuePoints();
   });
 
 });
