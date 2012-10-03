@@ -3,6 +3,7 @@ class ArmyListUnit < ActiveRecord::Base
   belongs_to :unit
   belongs_to :unit_category
   has_and_belongs_to_many :magic_items
+  has_and_belongs_to_many :magic_standards
   has_and_belongs_to_many :unit_options
   has_many :army_list_unit_troops, :order => 'position', :dependent => :destroy
 
@@ -20,7 +21,7 @@ class ArmyListUnit < ActiveRecord::Base
     self.name = unit.name + " \#" + (army_list.army_list_units.where(:unit_id => unit).count() + 1).to_s unless name?
     self.unit_category = unit.unit_category
     self.size = 0
-    self.value_points = 0
+    self.value_points = 0.0
     self.notes = unit.notes
   end
 
@@ -36,7 +37,7 @@ class ArmyListUnit < ActiveRecord::Base
     end
 
     self.size = 0
-    self.value_points = 0
+    self.value_points = 0.0
 
     unit_options.reject{ |option| option.is_magic_standards || option.is_magic_items }.each do |option|
       factor = option.is_per_model ? army_list_unit_troops.first.size.to_i : 1
@@ -45,6 +46,10 @@ class ArmyListUnit < ActiveRecord::Base
 
     magic_items.each do |magic_item|
       self.value_points = self.value_points + magic_item.value_points
+    end
+
+    magic_standards.each do |magic_standard|
+      self.value_points = self.value_points + magic_standard.value_points
     end
 
     if unit.value_points
@@ -69,4 +74,23 @@ class ArmyListUnit < ActiveRecord::Base
   end
 
   acts_as_list :scope => :army_list
+
+  def unit_options_value_points()
+    value_points = 0
+
+    unit_options.reject{ |option| option.is_magic_standards || option.is_magic_items }.each do |option|
+      factor = option.is_per_model ? army_list_unit_troops.first.size.to_i : 1
+      value_points = value_points + factor * option.value_points
+    end
+
+    return value_points
+  end
+
+  def magic_items_value_points()
+    return magic_items.sum('value_points')
+  end
+
+  def magic_standards_value_points()
+    return magic_standards.sum('value_points')
+  end
 end

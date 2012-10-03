@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121001193549) do
+ActiveRecord::Schema.define(:version => 20121003201645) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(:version => 20121001193549) do
   add_index "army_list_units_magic_items", ["army_list_unit_id"], :name => "index_army_list_units_magic_items_on_army_list_unit_id"
   add_index "army_list_units_magic_items", ["magic_item_id"], :name => "index_army_list_units_magic_items_on_magic_item_id"
 
+  create_table "army_list_units_magic_standards", :id => false, :force => true do |t|
+    t.integer "army_list_unit_id", :null => false
+    t.integer "magic_standard_id", :null => false
+  end
+
+  add_index "army_list_units_magic_standards", ["army_list_unit_id"], :name => "index_army_list_units_magic_standards_on_army_list_unit_id"
+  add_index "army_list_units_magic_standards", ["magic_standard_id"], :name => "index_army_list_units_magic_standards_on_magic_standard_id"
+
   create_table "army_list_units_unit_options", :id => false, :force => true do |t|
     t.integer "army_list_unit_id", :null => false
     t.integer "unit_option_id",    :null => false
@@ -129,6 +137,16 @@ ActiveRecord::Schema.define(:version => 20121001193549) do
   add_index "magic_items", ["army_id"], :name => "index_magic_items_on_army_id"
   add_index "magic_items", ["magic_item_category_id"], :name => "index_magic_items_on_magic_item_category_id"
   add_index "magic_items", ["override_id"], :name => "index_magic_items_on_override_id"
+
+  create_table "magic_standards", :force => true do |t|
+    t.integer "army_id"
+    t.string  "name",         :null => false
+    t.integer "value_points", :null => false
+    t.integer "override_id"
+  end
+
+  add_index "magic_standards", ["army_id"], :name => "index_magic_standards_on_army_id"
+  add_index "magic_standards", ["override_id"], :name => "index_magic_standards_on_override_id"
 
   create_table "special_rules", :force => true do |t|
     t.integer "unit_id",  :null => false

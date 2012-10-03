@@ -12,7 +12,7 @@ class ArmyList < ActiveRecord::Base
 
   before_validation(:on => :create) do
     self.name = "Liste " + army.name + " \#" + (user.army_lists.where(:army_id => army).count() + 1).to_s unless name?
-    self.value_points = 0
+    self.value_points = 0.0
   end
 
   def value_points_details

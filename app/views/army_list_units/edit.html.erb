@@ -16,7 +16,7 @@
         <% @army_list_unit.army_list_unit_troops.reject{ |alut| @army_list_unit.unit.value_points && alut.position > 1 }.each do |army_list_unit_troop| %>
         <tr data-value-points="<%= army_list_unit_troop.troop.value_points || @army_list_unit.unit.value_points %>">
           <%= f.fields_for :army_list_unit_troops, army_list_unit_troop do |troop_fields| %>
-          <td><%= troop_fields.label :size, army_list_unit_troop.troop.name %> x</td>
+          <td><%= troop_fields.label :size, army_list_unit_troop.troop.name + " x" %></td>
           <td><%= troop_fields.text_field :size, :placeholder => "Taille", :class => "army_list_unit_troop_size" %></td>
           <td><%= value_points(army_list_unit_troop.troop.value_points || @army_list_unit.unit.value_points) %> pts/fig.</td>
           <% end %>
@@ -26,19 +26,19 @@
     <% end %>
 
     <% if @magic_standards_option %>
-      <div id="army_list_unit_magic_standards" data-value-points-limit="<%= @magic_standards_option.value_points %>">
-        <h3>Banniere magique<br /><span><%= value_points(@army_list_unit.magic_items.magic_standards.sum('value_points')) %></span>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
-        <ul <%= @magic_standards_option.parent ? "data-depend=\"#{@magic_standards_option.parent.id}\"".html_safe : "" %>>
-          <%= render :partial => "army_list_units_magic_items/edit", :collection =>  MagicItem.magic_standards.available_for(@army_list.army, @magic_standards_option.value_points).all, :as => :magic_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_standards_option } %>
+      <div id="army_list_unit_magic_standards">
+        <h3>Banniere magique<br /><span><%= value_points(@army_list_unit.magic_standards_value_points) %></span>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
+        <ul>
+          <%= render :partial => "army_list_units_magic_standards/edit", :collection =>  MagicStandard.available_for(@army_list.army, @magic_standards_option.value_points).all, :as => :magic_standard, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_standards_option } %>
         </ul>
       </div>
     <% end %>
 
     <% if @magic_items_option %>
       <div id="army_list_unit_magic_items" data-value-points-limit="<%= @magic_items_option.value_points %>">
-        <h3>Objets magiques<br /><span><%= value_points(@army_list_unit.magic_items.sum('value_points')) %></span>/<%= value_points(@magic_items_option.value_points) %> pts</h3>
+        <h3>Objets magiques<br /><span><%= value_points(@army_list_unit.magic_items_value_points) %></span>/<%= value_points(@magic_items_option.value_points) %> pts</h3>
         <ul>
-          <% MagicItemCategory.not_magic_standards.each_with_index do |magic_item_category, index| %>
+          <% MagicItemCategory.all.each_with_index do |magic_item_category, index| %>
           <li>
             <strong><%= magic_item_category.name %></strong>
             <ul style="<%= 'display:none' if index > 0 %>">
@@ -52,7 +52,7 @@
 
     <% if @available_unit_options.any? %>
       <div id="army_list_unit_unit_options">
-        <h3>Options<br /><span><%= value_points(@army_list_unit.unit_options.sum('value_points')) %></span> pts</h3>
+        <h3>Options<br /><span><%= value_points(@army_list_unit.unit_options_value_points) %></span> pts</h3>
         <ul>
           <!-- IGNORE MAGIC ITEMS/STANTARDS -->
           <%= render :partial => "army_list_units_unit_options/edit", :collection => @available_unit_options.all, :as => :option, :locals => { :army_list_unit => @army_list_unit } %>

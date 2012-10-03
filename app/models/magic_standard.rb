@@ -1,10 +1,8 @@
-class MagicItem < ActiveRecord::Base
+class MagicStandard < ActiveRecord::Base
   belongs_to :army
-  belongs_to :magic_item_category
   has_and_belongs_to_many :army_list_units
-  has_one :override, :class_name => "MagicItem", :foreign_key => "override_id"
+  has_one :override, :class_name => "MagicStandard", :foreign_key => "override_id"
 
-  validates_presence_of :magic_item_category_id, :name, :value_points
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0
 
   scope :available_for, lambda { |army, value_points_limit|

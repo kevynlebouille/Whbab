@@ -76,6 +76,14 @@
       </td>
     </tr>
   <% end %>
+  <% if army_list_unit.magic_standards.any? %>
+    <tr class="army_list_unit_more">
+      <th>Bannière magique</th>
+      <td colspan="10">
+        <%= army_list_unit.magic_standards.first.name %>
+      </td>
+    </tr>
+  <% end %>
   <% if army_list_unit.unit.magic? %>
     <tr class="army_list_unit_more">
       <th>Magie</th>

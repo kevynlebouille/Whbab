@@ -317,15 +317,19 @@
 .edit_army_list_unit #army_list_unit_magic_items, .edit_army_list_unit #army_list_unit_magic_standards, {
   float: right;
   margin-left: 10px;
-  width: 350px;
+  width: 400px;
   overflow: hidden;
 }
 
 .edit_army_list_unit #army_list_unit_unit_options {
-  width: 350px;
+  width: 400px;
   overflow: hidden;
 }
 
 .edit_army_list_unit #army_list_unit_magic_items ul li strong, .edit_army_list_unit #army_list_unit_magic_standards ul li strong {
   cursor: pointer;
+}
+
+.edit_army_list_unit #army_list_unit_troops {
+  white-space: nowrap;
 }
