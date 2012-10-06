@@ -90,7 +90,7 @@ jQuery(function($) {
       return false;
     }
 
-    if ($changed.data('radio')) {
+    if ($changed.data('radio') && $changed.prop('checked')) {
       $siblings.prop('checked', false).each(function() {
         updateArmyListUnitDepend($(this));
       });
