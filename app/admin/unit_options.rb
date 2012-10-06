@@ -36,6 +36,7 @@ ActiveAdmin.register UnitOption do
     column :is_per_model
     column :is_magic_items
     column :is_magic_standards
+    column :is_unique_choice
     column :position
     default_actions
   end
@@ -50,6 +51,7 @@ ActiveAdmin.register UnitOption do
       f.input :is_per_model
       f.input :is_magic_items
       f.input :is_magic_standards
+      f.input :is_unique_choice
     end
     f.buttons
   end
