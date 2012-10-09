@@ -41,7 +41,7 @@
       <th>Equipements</th>
       <td colspan="10">
         <% army_list_unit.unit.equipments.each_with_index do |equipment, index| %>
-          <%= "•" if index > 1 %> <%= equipment.name %>
+          <%= "•" if index > 0 %> <%= equipment.name %>
         <% end %>
       </td>
     </tr>
@@ -51,7 +51,7 @@
       <th>Règles spéciales</th>
       <td colspan="10">
         <% army_list_unit.unit.special_rules.each_with_index do |special_rule, index| %>
-          <%= "•" if index > 1 %> <%= special_rule.name %>
+          <%= "•" if index > 0 %> <%= special_rule.name %>
         <% end %>
       </td>
     </tr>
@@ -61,7 +61,7 @@
       <th>Options</th>
       <td colspan="10">
         <% army_list_unit.unit_options.each_with_index do |option, index| %>
-          <%= "• " if index > 1 %> <%= option.name %>
+          <%= "• " if index > 0 %> <%= option.name %>
         <% end %>
       </td>
     </tr>
@@ -71,7 +71,7 @@
       <th>Objets magiques</th>
       <td colspan="10">
         <% army_list_unit.magic_items.each_with_index do |magic_item, index| %>
-          <%= "• " if index > 1 %> <%= magic_item.name %>
+          <%= "• " if index > 0 %> <%= magic_item.name %>
         <% end %>
       </td>
     </tr>

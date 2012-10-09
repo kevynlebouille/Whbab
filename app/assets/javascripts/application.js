@@ -4,6 +4,7 @@
 //= require rails.validations
 //= require jquery.formalize
 //= require jquery.colorbox
+//= require jquery.ui.touch-punch
 
 jQuery(function($) {
 

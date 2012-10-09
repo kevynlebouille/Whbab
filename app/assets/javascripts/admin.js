@@ -9,7 +9,7 @@ jQuery(function($) {
     $('#unit_option_parent_id option').each(function() {
       var $option = $(this);
 
-      if ($unit.html() && $option.html() && $option.html().indexOf($unit.html()) !== 0) {
+      if ($unit.html() && $option.html() && $option.html().indexOf($unit.html() + ' -') !== 0) {
         $option.remove();
       }
     });

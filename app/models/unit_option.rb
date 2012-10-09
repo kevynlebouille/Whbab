@@ -10,6 +10,7 @@ class UnitOption < ActiveRecord::Base
   validates_inclusion_of :is_per_model, :in => [true, false]
   validates_inclusion_of :is_magic_items, :in => [true, false]
   validates_inclusion_of :is_magic_standards, :in => [true, false]
+  validates_inclusion_of :is_unique_choice, :in => [true, false]
 
   acts_as_list :scope => 'unit_id = #{unit_id} AND COALESCE(parent_id, \'\') = \'#{parent_id}\''
 
