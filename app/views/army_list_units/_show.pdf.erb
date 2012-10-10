@@ -3,7 +3,7 @@
     <th colspan="11" class="army_list_unit_overview">
       <div class="value_points"><%= value_points army_list_unit.value_points %> <small>points</small></div>
 
-      <strong><%= army_list_unit.name %></strong>
+      <strong><%=remove_accents army_list_unit.name %></strong>
       <%= army_list_unit.unit.is_unique ? "<em>Unique</em>".html_safe : army_list_unit.unit.name %>
       • <%= army_list_unit.unit_category.name %>
     </th>

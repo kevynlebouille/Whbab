@@ -1,6 +1,6 @@
 <div class="popin">
 
-  <h1 data-value-points="<%= @army_list_unit.unit.value_points %>">Editer<br /><%= @army_list_unit.unit.name %>
+  <h1 data-value-points="<%= @army_list_unit.unit.value_points %>">Editer<br /><%=remove_accents @army_list_unit.unit.name %>
   <div style="float:right"><span style="font-size:34px;line-height:17px"><%= value_points(@army_list_unit.value_points) %></span> pts</div></h1>
 
   <%= form_for [@army_list, @army_list_unit] do |f| %>

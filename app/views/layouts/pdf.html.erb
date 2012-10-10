@@ -15,7 +15,7 @@
     </h1>
     <%= image_tag "/system/armies/#{@army_list.army.id}/portrait.png", :size => "90x90" %>
     <h2><strong><%= value_points @army_list.value_points %></strong> points</h2>
-    <h2><%= @army_list.army.name %> : <%= @army_list.name %></h2>
+    <h2><%=remove_accents @army_list.army.name %> : <%=remove_accents @army_list.name %></h2>
   </div>
 
   <div id="content" class="container_16">
@@ -23,7 +23,7 @@
   </div>
 
   <div id="footer" class="container_16">
-    <div class="user_name"><%= @army_list.user.name %></div>
+    <div class="user_name"><%=remove_accents @army_list.user.name %></div>
     <div class="site"><%= link_to "whbab.com", @army_list %></div>
     <div class="today"><%= @army_list.updated_at.strftime "%d/%m/%Y" %></div>
   </div>
