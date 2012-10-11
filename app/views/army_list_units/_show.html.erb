@@ -50,16 +50,16 @@
       <tbody>
         <% army_list_unit.unit.troops.each do |troop| %>
         <tr>
-          <td><%= troop.name %></td>
-          <td><%= troop.M %></td>
-          <td><%= troop.WS %></td>
-          <td><%= troop.BS %></td>
-          <td><%= troop.S %></td>
-          <td><%= troop.T %></td>
-          <td><%= troop.W %></td>
-          <td><%= troop.I %></td>
-          <td><%= troop.A %></td>
-          <td><%= troop.LD %></td>
+          <td><%=characteristic troop.name %></td>
+          <td><%=characteristic troop.M %></td>
+          <td><%=characteristic troop.WS %></td>
+          <td><%=characteristic troop.BS %></td>
+          <td><%=characteristic troop.S %></td>
+          <td><%=characteristic troop.T %></td>
+          <td><%=characteristic troop.W %></td>
+          <td><%=characteristic troop.I %></td>
+          <td><%=characteristic troop.A %></td>
+          <td><%=characteristic troop.LD %></td>
           <td><%= troop.troop_type.try(:name) %></td>
           <td style="text-align:right"><em>
             <% if troop.value_points %>
