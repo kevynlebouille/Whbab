@@ -27,7 +27,7 @@
 
     <% if @magic_standards_option %>
       <div id="army_list_unit_magic_standards">
-        <h3>Banniere magique<br /><span><%= value_points(@army_list_unit.magic_standards_value_points) %></span>/<%= value_points(@magic_standards_option.value_points) %> pts</h3>
+        <h3>Banniere magique<br /><span><%= value_points(@army_list_unit.magic_standards_value_points) %></span><% unless @magic_standards_option.value_points.nil? %>/<%= value_points(@magic_standards_option.value_points) %><% end %> pts</h3>
         <ul>
           <%= render :partial => "army_list_units_magic_standards/edit", :collection =>  MagicStandard.available_for(@army_list.army, @magic_standards_option.value_points).all, :as => :magic_standard, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_standards_option } %>
         </ul>
