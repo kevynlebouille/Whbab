@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006121940) do
+ActiveRecord::Schema.define(:version => 20121015202637) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20121006121940) do
     t.string  "I",             :limit => 5
     t.string  "A",             :limit => 5
     t.string  "LD",            :limit => 5
+    t.integer "min_size"
   end
 
   add_index "troops", ["troop_type_id"], :name => "index_troops_on_troop_type_id"

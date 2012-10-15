@@ -13,7 +13,7 @@
 
     <% if @army_list_unit.unit.min_size != @army_list_unit.unit.max_size %>
       <table id="army_list_unit_troops">
-        <% @army_list_unit.army_list_unit_troops.reject{ |alut| @army_list_unit.unit.value_points && alut.position > 1 }.each do |army_list_unit_troop| %>
+        <% @army_list_unit.army_list_unit_troops.reject{ |alut| @army_list_unit.unit.value_points and alut.position > 1 or @army_list_unit.unit.value_points.nil? and alut.troop.value_points.nil? }.each do |army_list_unit_troop| %>
         <tr data-value-points="<%= army_list_unit_troop.troop.value_points || @army_list_unit.unit.value_points %>">
           <%= f.fields_for :army_list_unit_troops, army_list_unit_troop do |troop_fields| %>
           <td><%= troop_fields.label :size, army_list_unit_troop.troop.name + " x" %></td>
