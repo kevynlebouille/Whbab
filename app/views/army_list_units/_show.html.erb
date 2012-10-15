@@ -6,7 +6,7 @@
     <div class="name">
       <strong><%=remove_accents army_list_unit.name.truncate(32) %></strong>
         <% if army_list_unit.unit.is_unique %>
-        <%= "#{army_list_unit.unit.name} <em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
+        <%= "#{army_list_unit.unit.name.truncate(32)} <em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
         <i>Unique</i>
       <% else %>
         <%= army_list_unit.unit.name %>
