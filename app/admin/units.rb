@@ -1,4 +1,6 @@
 ActiveAdmin.register Unit do
+  menu :priority => 3
+
   controller do
     def create
       create! { new_admin_unit_url }
@@ -36,6 +38,21 @@ ActiveAdmin.register Unit do
     column :value_points
     column :is_unique
     default_actions
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :army, :collection => Army.order(:name)
+      f.input :unit_category
+      f.input :name
+      f.input :value_points
+      f.input :min_size
+      f.input :max_size
+      f.input :is_unique
+      f.input :magic
+      f.input :notes
+    end
+    f.buttons
   end
 
   show do

@@ -3,6 +3,9 @@ class UnitOption < ActiveRecord::Base
   belongs_to :parent, :class_name => "UnitOption"
   belongs_to :depend, :class_name => "UnitOption"
   has_many :children, :class_name => "UnitOption", :order => "position", :foreign_key => "parent_id", :dependent => :nullify
+  has_many :troops, :dependent => :nullify
+  has_many :equipments, :dependent => :nullify
+  has_many :special_rules, :dependent => :nullify
 
   validates_presence_of :unit_id, :name
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true

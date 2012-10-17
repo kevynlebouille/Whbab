@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015202637) do
+ActiveRecord::Schema.define(:version => 20121017200512) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -115,12 +115,14 @@ ActiveRecord::Schema.define(:version => 20121015202637) do
   add_index "army_lists", ["user_id"], :name => "index_army_lists_on_user_id"
 
   create_table "equipments", :force => true do |t|
-    t.integer "unit_id",  :null => false
-    t.string  "name",     :null => false
-    t.integer "position", :null => false
+    t.integer "unit_id",        :null => false
+    t.string  "name",           :null => false
+    t.integer "position",       :null => false
+    t.integer "unit_option_id"
   end
 
   add_index "equipments", ["unit_id"], :name => "index_equipments_on_unit_id"
+  add_index "equipments", ["unit_option_id"], :name => "index_equipments_on_unit_option_id"
 
   create_table "magic_item_categories", :force => true do |t|
     t.string "name", :null => false
@@ -149,37 +151,41 @@ ActiveRecord::Schema.define(:version => 20121015202637) do
   add_index "magic_standards", ["override_id"], :name => "index_magic_standards_on_override_id"
 
   create_table "special_rules", :force => true do |t|
-    t.integer "unit_id",  :null => false
-    t.string  "name",     :null => false
-    t.integer "position", :null => false
+    t.integer "unit_id",        :null => false
+    t.string  "name",           :null => false
+    t.integer "position",       :null => false
+    t.integer "unit_option_id"
   end
 
   add_index "special_rules", ["unit_id"], :name => "index_special_rules_on_unit_id"
+  add_index "special_rules", ["unit_option_id"], :name => "index_special_rules_on_unit_option_id"
 
   create_table "troop_types", :force => true do |t|
     t.string "name", :null => false
   end
 
   create_table "troops", :force => true do |t|
-    t.integer "unit_id",                                                  :null => false
+    t.integer "unit_id",                                                   :null => false
     t.integer "troop_type_id"
-    t.string  "name",                                                     :null => false
-    t.decimal "value_points",               :precision => 7, :scale => 1
-    t.integer "position",                                                 :null => false
-    t.string  "M",             :limit => 5
-    t.string  "WS",            :limit => 5
-    t.string  "BS",            :limit => 5
-    t.string  "S",             :limit => 5
-    t.string  "T",             :limit => 5
-    t.string  "W",             :limit => 5
-    t.string  "I",             :limit => 5
-    t.string  "A",             :limit => 5
-    t.string  "LD",            :limit => 5
+    t.string  "name",                                                      :null => false
+    t.decimal "value_points",                :precision => 7, :scale => 1
+    t.integer "position",                                                  :null => false
+    t.string  "M",              :limit => 5
+    t.string  "WS",             :limit => 5
+    t.string  "BS",             :limit => 5
+    t.string  "S",              :limit => 5
+    t.string  "T",              :limit => 5
+    t.string  "W",              :limit => 5
+    t.string  "I",              :limit => 5
+    t.string  "A",              :limit => 5
+    t.string  "LD",             :limit => 5
     t.integer "min_size"
+    t.integer "unit_option_id"
   end
 
   add_index "troops", ["troop_type_id"], :name => "index_troops_on_troop_type_id"
   add_index "troops", ["unit_id"], :name => "index_troops_on_unit_id"
+  add_index "troops", ["unit_option_id"], :name => "index_troops_on_unit_option_id"
 
   create_table "unit_categories", :force => true do |t|
     t.string  "name",      :null => false

@@ -1,4 +1,6 @@
 ActiveAdmin.register MagicItem do
+  config.sort_order = "name_asc"
+
   controller do
     def create
       create! { new_admin_magic_item_url }
@@ -20,8 +22,8 @@ ActiveAdmin.register MagicItem do
 
   form do |f|
     f.inputs do
-      f.input :army
-      f.input :magic_item_category
+      f.input :army, :collection => Army.order(:name)
+      f.input :magic_item_category, :collection => MagicItemCategory.order(:name)
       f.input :override, :collection => MagicItem.where(:army_id => nil).order(:name)
       f.input :name
       f.input :value_points

@@ -6,5 +6,5 @@ class Army < ActiveRecord::Base
 
   validates_presence_of :name
 
-  default_scope order('name')
+  scope :disabled, where('id NOT IN (SELECT DISTINCT army_id FROM units)')
 end

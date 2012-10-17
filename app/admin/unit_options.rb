@@ -1,4 +1,6 @@
 ActiveAdmin.register UnitOption do
+  menu :parent => "Units"
+
   controller do
     def create
       create! { new_admin_unit_option_url }
@@ -20,7 +22,7 @@ ActiveAdmin.register UnitOption do
   end
 
   action_item :only => :show do
-    link_to "New Unit Option", new_admin_unit_option_path
+    link_to "New Unit Option", new_admin_unit_option_path('unit_option[unit_id]' => unit_option.unit)
   end
 
   filter :unit

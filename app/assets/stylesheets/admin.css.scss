@@ -1,3 +1,7 @@
 table.index_table th {
   white-space: nowrap;
 }
+
+body.active_admin form select {
+  max-width: 78%;
+}
