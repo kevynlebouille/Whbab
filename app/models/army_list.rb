@@ -20,6 +20,7 @@ class ArmyList < ActiveRecord::Base
       FROM unit_categories uc
       LEFT JOIN army_list_units alu ON alu.unit_category_id = uc.id AND
       alu.army_list_id = #{id}
+      WHERE uc.min_quota IS NOT NULL OR uc.max_quota IS NOT NULL
       GROUP BY uc.id, uc.name, uc.min_quota, uc.max_quota
       ORDER BY uc.id"
 
