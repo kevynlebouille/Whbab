@@ -49,6 +49,10 @@ class ArmyListUnit < ActiveRecord::Base
       self.value_points = self.value_points + magic_item.value_points
     end
 
+    extra_items.each do |extra_item|
+      self.value_points = self.value_points + extra_item.value_points
+    end
+
     magic_standards.each do |magic_standard|
       self.value_points = self.value_points + magic_standard.value_points
     end
@@ -89,6 +93,10 @@ class ArmyListUnit < ActiveRecord::Base
 
   def magic_items_value_points()
     return magic_items.sum('value_points')
+  end
+
+  def extra_items_value_points()
+    return extra_items.sum('value_points')
   end
 
   def magic_standards_value_points()

@@ -36,7 +36,7 @@
 
     <% if @magic_items_option %>
       <div id="army_list_unit_magic_items" data-value-points-limit="<%= @magic_items_option.value_points %>">
-        <h3>Objets magiques<br /><span><%= value_points(@army_list_unit.magic_items_value_points) %></span>/<%= value_points(@magic_items_option.value_points) %> pts</h3>
+        <h3>Objets magiques<br /><span><%= value_points(@army_list_unit.magic_items_value_points + (@magic_items_option.is_extra_items? ? @army_list_unit.extra_items_value_points : 0)) %></span>/<%= value_points(@magic_items_option.value_points) %> pts</h3>
         <ul>
           <% MagicItemCategory.all.each_with_index do |magic_item_category, index| %>
           <li>
