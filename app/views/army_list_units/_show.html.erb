@@ -91,6 +91,14 @@
           <% end %>
         <% end %>
 
+        <% if army_list_unit.extra_items.any? %>
+          <h4><%= @army_list.army.extra_item_category.name %></h4>
+          <% army_list_unit.extra_items.each do |extra_item| %>
+            <em><%= value_points(extra_item.value_points) %> pts</em>
+            • <%= extra_item.name %><br />
+          <% end %>
+        <% end %>
+
         <% if army_list_unit.magic_standards.any? %>
           <h4>Bannière magique</h4>
           <em><%= value_points(army_list_unit.magic_standards.first.value_points) %> pts</em>

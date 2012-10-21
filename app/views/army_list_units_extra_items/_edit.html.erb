@@ -1,0 +1,12 @@
+<%
+depend = unit_option.parent
+
+while !depend.nil? and depend.value_points.nil? do
+  depend = depend.parent
+end
+
+%>
+<li>
+  <em><span><%= value_points(extra_item.value_points) %></span> pts</em>
+  <label><%= check_box_tag "army_list_unit[extra_item_ids][]", extra_item.id, army_list_unit.extra_items.member?(extra_item), :id => "army_list_unit_extra_item_ids_#{extra_item.id}", "data-depend" => depend.try(:id) %> <%= extra_item.name %></label>
+</li>

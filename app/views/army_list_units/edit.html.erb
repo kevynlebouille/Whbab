@@ -46,6 +46,14 @@
             </ul>
           </li>
           <% end %>
+          <% if @magic_items_option.is_extra_items? %>
+          <li>
+            <strong><%= @army_list.army.extra_item_category.name %></strong>
+            <ul style="display:none">
+              <%= render :partial => "army_list_units_extra_items/edit", :collection => ExtraItem.available_for(@army_list.army, @magic_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
+            </ul>
+          </li>
+          <% end %>
         </ul>
       </div>
     <% end %>

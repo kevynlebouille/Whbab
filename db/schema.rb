@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017200512) do
+ActiveRecord::Schema.define(:version => 20121021134658) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(:version => 20121017200512) do
   add_index "army_list_units", ["unit_category_id"], :name => "index_army_list_units_on_unit_category_id"
   add_index "army_list_units", ["unit_id"], :name => "index_army_list_units_on_unit_id"
 
+  create_table "army_list_units_extra_items", :id => false, :force => true do |t|
+    t.integer "army_list_unit_id", :null => false
+    t.integer "extra_item_id",     :null => false
+  end
+
+  add_index "army_list_units_extra_items", ["army_list_unit_id"], :name => "index_army_list_units_extra_items_on_army_list_unit_id"
+  add_index "army_list_units_extra_items", ["extra_item_id"], :name => "index_army_list_units_extra_items_on_extra_item_id"
+
   create_table "army_list_units_magic_items", :id => false, :force => true do |t|
     t.integer "army_list_unit_id", :null => false
     t.integer "magic_item_id",     :null => false
@@ -115,14 +123,29 @@ ActiveRecord::Schema.define(:version => 20121017200512) do
   add_index "army_lists", ["user_id"], :name => "index_army_lists_on_user_id"
 
   create_table "equipments", :force => true do |t|
-    t.integer "unit_id",        :null => false
-    t.string  "name",           :null => false
-    t.integer "position",       :null => false
-    t.integer "unit_option_id"
+    t.integer "unit_id",  :null => false
+    t.string  "name",     :null => false
+    t.integer "position", :null => false
+    t.integer "troop_id"
   end
 
+  add_index "equipments", ["troop_id"], :name => "index_equipments_on_troop_id"
   add_index "equipments", ["unit_id"], :name => "index_equipments_on_unit_id"
-  add_index "equipments", ["unit_option_id"], :name => "index_equipments_on_unit_option_id"
+
+  create_table "extra_item_categories", :force => true do |t|
+    t.integer "army_id", :null => false
+    t.string  "name",    :null => false
+  end
+
+  add_index "extra_item_categories", ["army_id"], :name => "index_extra_item_categories_on_army_id"
+
+  create_table "extra_items", :force => true do |t|
+    t.integer "extra_item_category_id",                               :null => false
+    t.string  "name",                                                 :null => false
+    t.decimal "value_points",           :precision => 7, :scale => 1, :null => false
+  end
+
+  add_index "extra_items", ["extra_item_category_id"], :name => "index_extra_items_on_extra_item_category_id"
 
   create_table "magic_item_categories", :force => true do |t|
     t.string "name", :null => false
@@ -151,14 +174,14 @@ ActiveRecord::Schema.define(:version => 20121017200512) do
   add_index "magic_standards", ["override_id"], :name => "index_magic_standards_on_override_id"
 
   create_table "special_rules", :force => true do |t|
-    t.integer "unit_id",        :null => false
-    t.string  "name",           :null => false
-    t.integer "position",       :null => false
-    t.integer "unit_option_id"
+    t.integer "unit_id",  :null => false
+    t.string  "name",     :null => false
+    t.integer "position", :null => false
+    t.integer "troop_id"
   end
 
+  add_index "special_rules", ["troop_id"], :name => "index_special_rules_on_troop_id"
   add_index "special_rules", ["unit_id"], :name => "index_special_rules_on_unit_id"
-  add_index "special_rules", ["unit_option_id"], :name => "index_special_rules_on_unit_option_id"
 
   create_table "troop_types", :force => true do |t|
     t.string "name", :null => false
@@ -203,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20121017200512) do
     t.boolean "is_magic_items",                                   :null => false
     t.boolean "is_magic_standards",                               :null => false
     t.boolean "is_unique_choice",                                 :null => false
+    t.boolean "is_extra_items",                                   :null => false
   end
 
   add_index "unit_options", ["parent_id"], :name => "index_unit_options_on_parent_id"

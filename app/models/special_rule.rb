@@ -1,6 +1,6 @@
 class SpecialRule < ActiveRecord::Base
   belongs_to :unit
-  belongs_to :unit_option
+  belongs_to :troop
 
   validates_presence_of :unit_id, :name
   validates_numericality_of :position, :greater_than_or_equal_to => 1, :only_integer => true, :allow_nil => true

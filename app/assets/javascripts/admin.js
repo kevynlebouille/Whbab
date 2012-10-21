@@ -17,7 +17,7 @@ jQuery(function($) {
 
   // EQUIPEMENT - ARMY_FILTER
   $('#equipment_unit_id').clone().attr('id', 'equipment_unit_id_clone').hide().appendTo('body');
-  $('#equipment_unit_option_id').clone().attr('id', 'equipment_unit_option_id_clone').hide().appendTo('body');
+  $('#equipment_unit_troop_id').clone().attr('id', 'equipment_unit_troop_id_clone').hide().appendTo('body');
 
   $('#equipment_army_filter').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
@@ -32,9 +32,9 @@ jQuery(function($) {
       }
     });
 
-    $('#equipment_unit_option_id').html($('#equipment_unit_option_id_clone').html());
+    $('#equipment_unit_troop_id').html($('#equipment_unit_troop_id_clone').html());
 
-    $('#equipment_unit_option_id option').each(function() {
+    $('#equipment_unit_troop_id option').each(function() {
       var $option = $(this);
 
       if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
@@ -47,9 +47,9 @@ jQuery(function($) {
   $('#equipment_unit_id').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
 
-    $('#equipment_unit_option_id').html($('#equipment_unit_option_id_clone').html());
+    $('#equipment_unit_troop_id').html($('#equipment_unit_troop_id_clone').html());
 
-    $('#equipment_unit_option_id option').each(function() {
+    $('#equipment_unit_troop_id option').each(function() {
       var $option = $(this);
 
       if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
@@ -60,7 +60,7 @@ jQuery(function($) {
 
   // SPECIAL_RULE - ARMY_FILTER
   $('#special_rule_unit_id').clone().attr('id', 'special_rule_unit_id_clone').hide().appendTo('body');
-  $('#special_rule_unit_option_id').clone().attr('id', 'special_rule_unit_option_id_clone').hide().appendTo('body');
+  $('#special_rule_troop_id').clone().attr('id', 'special_rule_troop_id_clone').hide().appendTo('body');
 
   $('#special_rule_army_filter').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
@@ -75,9 +75,9 @@ jQuery(function($) {
       }
     });
 
-    $('#special_rule_unit_option_id').html($('#special_rule_unit_option_id_clone').html());
+    $('#special_rule_troop_id').html($('#special_rule_troop_id_clone').html());
 
-    $('#special_rule_unit_option_id option').each(function() {
+    $('#special_rule_troop_id option').each(function() {
       var $option = $(this);
 
       if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
@@ -90,9 +90,9 @@ jQuery(function($) {
   $('#special_rule_unit_id').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
 
-    $('#special_rule_unit_option_id').html($('#special_rule_unit_option_id_clone').html());
+    $('#special_rule_troop_id').html($('#special_rule_troop_id_clone').html());
 
-    $('#special_rule_unit_option_id option').each(function() {
+    $('#special_rule_troop_id option').each(function() {
       var $option = $(this);
 
       if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {

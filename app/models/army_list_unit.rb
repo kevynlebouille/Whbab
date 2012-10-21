@@ -4,6 +4,7 @@ class ArmyListUnit < ActiveRecord::Base
   belongs_to :unit_category
   has_and_belongs_to_many :magic_items
   has_and_belongs_to_many :magic_standards
+  has_and_belongs_to_many :extra_items
   has_and_belongs_to_many :unit_options
   has_many :army_list_unit_troops, :order => 'position', :dependent => :destroy
 

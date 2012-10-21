@@ -2,6 +2,8 @@ class Troop < ActiveRecord::Base
   belongs_to :troop_type
   belongs_to :unit
   belongs_to :unit_option
+  has_many :equipments, :dependent => :nullify
+  has_many :special_rules, :dependent => :nullify
 
   validates_presence_of :unit_id, :name
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0, :allow_nil => true

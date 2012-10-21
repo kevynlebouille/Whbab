@@ -29,7 +29,7 @@ ActiveAdmin.register SpecialRule do
     column :id
     column :unit, :sortable => :unit_id
     column :name
-    column :unit_option, :sortable => :unit_option_id
+    column :troop, :sortable => :troop_id
     column :position
     default_actions
   end
@@ -38,7 +38,7 @@ ActiveAdmin.register SpecialRule do
     f.inputs do
       f.input :army_filter, :as => :select, :collection => Army.order(:name), :disabled => Army.disabled.pluck(:id), :label => "Army FILTER"
       f.input :unit, :collection => Unit.includes(:army).order('armies.name', 'units.name').collect { |u| [u.army.name + ' - ' + u.name, u.id] }
-      f.input :unit_option, :collection => UnitOption.includes(:unit => [:army]).order('armies.name', 'units.name', 'unit_options.parent_id', 'unit_options.position').collect { |uo| [uo.unit.army.name + ' - ' + uo.unit.name + ' - ' + uo.name, uo.id] }
+      f.input :troop, :collection => Troop.includes(:unit => [:army]).order('armies.name', 'units.name', 'troops.position').collect { |t| [t.unit.army.name + ' - ' + t.unit.name + ' - ' + t.name, t.id] }
       f.input :name
       f.input :position
     end
