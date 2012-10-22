@@ -17,7 +17,7 @@ jQuery(function($) {
 
   // EQUIPEMENT - ARMY_FILTER
   $('#equipment_unit_id').clone().attr('id', 'equipment_unit_id_clone').hide().appendTo('body');
-  $('#equipment_unit_troop_id').clone().attr('id', 'equipment_unit_troop_id_clone').hide().appendTo('body');
+  $('#equipment_troop_id').clone().attr('id', 'equipment_troop_id_clone').hide().appendTo('body');
 
   $('#equipment_army_filter').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
@@ -32,9 +32,9 @@ jQuery(function($) {
       }
     });
 
-    $('#equipment_unit_troop_id').html($('#equipment_unit_troop_id_clone').html());
+    $('#equipment_troop_id').html($('#equipment_troop_id_clone').html());
 
-    $('#equipment_unit_troop_id option').each(function() {
+    $('#equipment_troop_id option').each(function() {
       var $option = $(this);
 
       if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
@@ -43,13 +43,13 @@ jQuery(function($) {
     });
   }).change();
 
-  // EQUIPEMENT - UNIT_OPTION
+  // EQUIPEMENT - TROOP
   $('#equipment_unit_id').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
 
-    $('#equipment_unit_troop_id').html($('#equipment_unit_troop_id_clone').html());
+    $('#equipment_troop_id').html($('#equipment_troop_id_clone').html());
 
-    $('#equipment_unit_troop_id option').each(function() {
+    $('#equipment_troop_id option').each(function() {
       var $option = $(this);
 
       if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
@@ -86,7 +86,7 @@ jQuery(function($) {
     });
   }).change();
 
-  // SPECIAL_RULE - UNIT_OPTION
+  // SPECIAL_RULE - TROOP
   $('#special_rule_unit_id').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
 
