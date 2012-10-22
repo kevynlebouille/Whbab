@@ -23,7 +23,7 @@
   </tr>
   <% army_list_unit.army_list_unit_troops.each do |alut| %>
     <tr class="army_list_unit_troops">
-      <td class="troop_name"><%= alut.troop.name %> <%= "<em>x#{alut.size}</em>".html_safe if alut.size? && alut.size > 1 %></td>
+      <td class="troop_name"><%= alut.troop.name %> <%= "<em>x#{alut.size}</em>".html_safe if alut.size? && alut.size > 0 %></td>
       <td class="characteristic odd"><%=characteristic alut.troop.M %></td>
       <td class="characteristic"><%=characteristic alut.troop.WS %></td>
       <td class="characteristic odd"><%=characteristic alut.troop.BS %></td>

@@ -3,7 +3,7 @@
 <div id="subheader" class="grid_14">
   <%= form_for @search, :url => army_lists_path, :html => {:method => :get} do |f| %>
     <p>
-      <%= f.label :army_id_eq, "Filtrer par" %> <%= f.collection_select :army_id_eq, Army.all, :id, :name, :disabled => Army.disabled.pluck(:id), :include_blank => true %>
+      <%= f.label :army_id_eq, "Filtrer par" %> <%= f.collection_select :army_id_eq, Army.order(:name), :id, :name, :disabled => Army.disabled.pluck(:id), :include_blank => true %>
       <%= f.label :value_points_gte, "de" %> <%= f.text_field :value_points_gte %>
       <%= f.label :value_points_lte, "a" %> <%= f.text_field :value_points_lte %> <%= f.label :value_points_lte, "points" %>
       <%= f.submit "Valider" %>
