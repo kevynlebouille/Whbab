@@ -19,4 +19,10 @@ class UnitOption < ActiveRecord::Base
   scope :exclude_magics, where(:is_magic_items => false, :is_magic_standards => false)
   scope :only_magic_items, where(:is_magic_items => true, :is_magic_standards => false)
   scope :only_magic_standards, where(:is_magic_items => false, :is_magic_standards => true)
+
+  attr_accessor :army_filter
+
+  def army_filter
+    army_filter ||= unit.try(:army).try(:id)
+  end
 end

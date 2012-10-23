@@ -1,15 +1,57 @@
 jQuery(function($) {
-  // UNIT OPTION - PARENT_ID
+  // UNIT OPTION - ARMY_FILTER
+  $('#unit_option_unit_id').clone().attr('id', 'unit_option_unit_id_clone').hide().appendTo('body');
   $('#unit_option_parent_id').clone().attr('id', 'unit_option_parent_id_clone').hide().appendTo('body');
-  $('#unit_option_unit_id').change(function() {
-    var $unit = $(this).find('option[value=' + this.value + ']');
+
+  $('#unit_option_army_filter').change(function() {
+    var $filter = $(this).find('option[value=' + this.value + ']');
+
+    $('#unit_option_unit_id').html($('#unit_option_unit_id_clone').html());
+
+    $('#unit_option_unit_id option').each(function() {
+      var $option = $(this);
+
+      if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
+        $option.remove();
+      }
+    });
 
     $('#unit_option_parent_id').html($('#unit_option_parent_id_clone').html());
 
     $('#unit_option_parent_id option').each(function() {
       var $option = $(this);
 
-      if ($unit.html() && $option.html() && $option.html().indexOf($unit.html() + ' - ') !== 0) {
+      if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
+        $option.remove();
+      }
+    });
+  }).change();
+
+  $('#unit_option_unit_id').change(function() {
+    var $filter = $(this).find('option[value=' + this.value + ']');
+
+    $('#unit_option_parent_id').html($('#unit_option_parent_id_clone').html());
+
+    $('#unit_option_parent_id option').each(function() {
+      var $option = $(this);
+
+      if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
+        $option.remove();
+      }
+    });
+  }).change();
+  
+
+  // UNIT OPTION - PARENT
+  $('#unit_option_unit_id').change(function() {
+    var $filter = $(this).find('option[value=' + this.value + ']');
+
+    $('#unit_option_parent_id').html($('#unit_option_parent_id_clone').html());
+
+    $('#unit_option_parent_id option').each(function() {
+      var $option = $(this);
+
+      if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
         $option.remove();
       }
     });
