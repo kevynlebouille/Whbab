@@ -21,6 +21,13 @@ ActiveAdmin.register SpecialRule do
     redirect_to admin_unit_url(resource.unit)
   end
 
+  collection_action :sort, :method => :post do
+    params[:special_rule].each_with_index do |id, index|
+      SpecialRule.update_all({ :position => index + 1 }, { :unit_id => params[:unit_id], :id => id })
+    end
+    render :nothing => true
+  end
+
   action_item :only => :show do
     link_to "New Special Rule", new_admin_special_rule_path('special_rule[unit_id]' => special_rule.unit)
   end

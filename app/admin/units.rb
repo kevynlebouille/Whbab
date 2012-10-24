@@ -103,8 +103,8 @@ ActiveAdmin.register Unit do
 
     panel "Equipments Details" do
       div :class => "unit_equipments_details" do
-        table_for unit.equipments do
-          column :id, { :class => "azerty" }
+        table_for unit.equipments, "data-url" => sort_admin_equipments_path(:unit_id => unit) do
+          column :id
           column :name
           column :troop
           column :position
@@ -123,7 +123,7 @@ ActiveAdmin.register Unit do
 
     panel "Special Rules Details" do
       div :class => "unit_special_rules_details" do
-        table_for unit.special_rules do
+        table_for unit.special_rules, "data-url" => sort_admin_special_rules_path(:unit_id => unit) do
           column :id
           column :name
           column :troop

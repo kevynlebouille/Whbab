@@ -185,4 +185,41 @@ jQuery(function($) {
       }
     });
   }).change();
+
+  // UNIT SHOW - SORTABLE
+  $('.unit_equipments_details table')
+    .sortable({
+      items: 'tbody tr',
+      helper: function(e, ui) {
+        ui.children().each(function() {
+          $(this).width($(this).width());
+        });
+        return ui;
+      },
+      update: function(event, ui) {
+        $.post($(this).data('url'), $(this).sortable('serialize'), function() {
+          $('.unit_equipments_details table').load(window.location.href + ' .unit_equipments_details table > *');
+        });
+      }
+    })
+    .disableSelection()
+  ;
+
+  $('.unit_special_rules_details table')
+    .sortable({
+      items: 'tbody tr',
+      helper: function(e, ui) {
+        ui.children().each(function() {
+          $(this).width($(this).width());
+        });
+        return ui;
+      },
+      update: function(event, ui) {
+        $.post($(this).data('url'), $(this).sortable('serialize'), function() {
+          $('.unit_special_rules_details table').load(window.location.href + ' .unit_special_rules_details table > *');
+        });
+      }
+    })
+    .disableSelection()
+  ;
 });

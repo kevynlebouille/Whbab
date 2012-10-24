@@ -5,3 +5,7 @@ table.index_table th {
 body.active_admin form select {
   max-width: 78%;
 }
+
+.unit_equipments_details table tbody tr:hover, .unit_special_rules_details table tbody tr:hover {
+  cursor: move;
+}

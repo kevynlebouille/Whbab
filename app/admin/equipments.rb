@@ -19,6 +19,13 @@ ActiveAdmin.register Equipment do
     redirect_to admin_unit_url(resource.unit)
   end
 
+  collection_action :sort, :method => :post do
+    params[:equipment].each_with_index do |id, index|
+      Equipment.update_all({ :position => index + 1 }, { :unit_id => params[:unit_id], :id => id })
+    end
+    render :nothing => true
+  end
+
   action_item :only => :show do
     link_to "New Equipment", new_admin_equipment_path('equipment[unit_id]' => equipment.unit)
   end
