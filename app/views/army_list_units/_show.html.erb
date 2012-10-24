@@ -48,7 +48,7 @@
         </tr>
       </thead>
       <tbody>
-        <% army_list_unit.unit.troops.each do |troop| %>
+        <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
         <tr>
           <td><%=characteristic troop.name %></td>
           <td><%=characteristic troop.M %></td>
@@ -107,17 +107,35 @@
       </div>
     <% end %>
 
-    <% if army_list_unit.unit.equipments.any? %>
-      <h4>Equipement</h4>
-      <% army_list_unit.unit.equipments.each do |equipment| %>
+    <% if army_list_unit.unit.equipments.where(:troop_id => nil).any? %>
+      <h4>Equipements</h4>
+      <% army_list_unit.unit.equipments.where(:troop_id => nil).each do |equipment| %>
         • <%= equipment.name %><br />
       <% end %>
     <% end %>
 
-    <% if army_list_unit.unit.special_rules.any? %>
+    <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+      <% if troop.equipments.any? %>
+        <h4>Equipements (<%= troop.name %>)</h4>
+        <% troop.equipments.each do |equipment| %>
+          • <%= equipment.name %><br />
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if army_list_unit.unit.special_rules.where(:troop_id => nil).any? %>
       <h4>Règles Spéciales</h4>
-      <% army_list_unit.unit.special_rules.each do |special_rule| %>
+      <% army_list_unit.unit.special_rules.where(:troop_id => nil).each do |special_rule| %>
         • <%= special_rule.name %><br />
+      <% end %>
+    <% end %>
+
+    <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+      <% if troop.special_rules.any? %>
+        <h4>Règles Spéciales (<%= troop.name %>)</h4>
+        <% troop.special_rules.each do |special_rule| %>
+          • <%= special_rule.name %><br />
+        <% end %>
       <% end %>
     <% end %>
 

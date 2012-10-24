@@ -21,7 +21,7 @@
     <th class="odd">Cd</th>
     <th>Type</th>
   </tr>
-  <% army_list_unit.army_list_unit_troops.each do |alut| %>
+  <% army_list_unit.army_list_unit_troops.select{ |alut| alut.troop.unit_option.nil? or army_list_unit.unit_options.include?(alut.troop.unit_option) }.each do |alut| %>
     <tr class="army_list_unit_troops">
       <td class="troop_name"><%= alut.troop.name %> <%= "<em>x#{alut.size}</em>".html_safe if alut.size? && alut.size > 0 %></td>
       <td class="characteristic odd"><%=characteristic alut.troop.M %></td>
@@ -36,25 +36,49 @@
       <td class="troop_type"><%= alut.troop.troop_type.try(:name) %></td>
     </tr>
   <% end %>
-  <% if army_list_unit.unit.equipments.any? %>
+  <% if army_list_unit.unit.equipments.where(:troop_id => nil).any? %>
     <tr class="army_list_unit_more">
       <th>Equipements</th>
       <td colspan="10">
-        <% army_list_unit.unit.equipments.each_with_index do |equipment, index| %>
+        <% army_list_unit.unit.equipments.where(:troop_id => nil).each_with_index do |equipment, index| %>
           <%= "•" if index > 0 %> <%= equipment.name %>
         <% end %>
       </td>
     </tr>
   <% end %>
-  <% if army_list_unit.unit.special_rules.any? %>
+  <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+    <% if troop.equipments.any? %>
+      <tr class="army_list_unit_more">
+        <th>Equipements (<%= troop.name %>)</th>
+        <td colspan="10">
+          <% troop.equipments.each_with_index do |equipment, index| %>
+            <%= "•" if index > 0 %> <%= equipment.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  <% if army_list_unit.unit.special_rules.where(:troop_id => nil).any? %>
     <tr class="army_list_unit_more">
       <th>Règles spéciales</th>
       <td colspan="10">
-        <% army_list_unit.unit.special_rules.each_with_index do |special_rule, index| %>
+        <% army_list_unit.unit.special_rules.where(:troop_id => nil).each_with_index do |special_rule, index| %>
           <%= "•" if index > 0 %> <%= special_rule.name %>
         <% end %>
       </td>
     </tr>
+  <% end %>
+  <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+    <% if troop.special_rules.any? %>
+      <tr class="army_list_unit_more">
+        <th>Règles spéciales (<%= troop.name %>)</th>
+        <td colspan="10">
+          <% troop.special_rules.each_with_index do |special_rule, index| %>
+            <%= "•" if index > 0 %> <%= special_rule.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
   <% if army_list_unit.unit_options.any? %>
     <tr class="army_list_unit_more">

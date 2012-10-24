@@ -31,8 +31,8 @@ class ArmyListUnit < ActiveRecord::Base
       unit.troops.each do |troop|
         if unit.value_points
           army_list_unit_troops.build :troop => troop, :size => troop.position == 1 ? unit.min_size : nil, :position => troop.position
-        elsif troop.value_points
-          army_list_unit_troops.build :troop => troop, :size => troop.min_size, :position => troop.position
+        else
+          army_list_unit_troops.build :troop => troop, :size => troop.value_points ? troop.min_size : nil, :position => troop.position
         end
       end
     end
