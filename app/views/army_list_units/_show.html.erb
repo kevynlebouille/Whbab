@@ -114,7 +114,7 @@
       <% end %>
     <% end %>
 
-    <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+    <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
       <% if troop.equipments.any? %>
         <h4>Equipements (<%= troop.name %>)</h4>
         <% troop.equipments.each do |equipment| %>
@@ -130,7 +130,7 @@
       <% end %>
     <% end %>
 
-    <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+    <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
       <% if troop.special_rules.any? %>
         <h4>Règles Spéciales (<%= troop.name %>)</h4>
         <% troop.special_rules.each do |special_rule| %>

@@ -46,7 +46,7 @@
       </td>
     </tr>
   <% end %>
-  <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+  <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
     <% if troop.equipments.any? %>
       <tr class="army_list_unit_more">
         <th>Equipements (<%= troop.name %>)</th>
@@ -68,7 +68,7 @@
       </td>
     </tr>
   <% end %>
-  <% army_list_unit.unit.troops.select{ |t| army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+  <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
     <% if troop.special_rules.any? %>
       <tr class="army_list_unit_more">
         <th>Règles spéciales (<%= troop.name %>)</th>
