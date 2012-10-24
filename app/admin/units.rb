@@ -86,6 +86,7 @@ ActiveAdmin.register Unit do
           column :LD
           column :value_points
           column :min_size
+          column :unit_option
           column :position
           column do |troop|
             link_to "Mont.", move_higher_admin_troop_path(troop), :method => :post unless troop.first?
