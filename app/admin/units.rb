@@ -85,6 +85,7 @@ ActiveAdmin.register Unit do
           column :A
           column :LD
           column :value_points
+          column :min_size
           column :position
           column do |troop|
             link_to "Mont.", move_higher_admin_troop_path(troop), :method => :post unless troop.first?
@@ -104,6 +105,7 @@ ActiveAdmin.register Unit do
         table_for unit.equipments do
           column :id, { :class => "azerty" }
           column :name
+          column :troop
           column :position
           column do |equipment|
             link_to "Mont.", move_higher_admin_equipment_path(equipment), :method => :post unless equipment.first?
@@ -123,6 +125,7 @@ ActiveAdmin.register Unit do
         table_for unit.special_rules do
           column :id
           column :name
+          column :troop
           column :position
           column do |special_rule|
             link_to "Mont.", move_higher_admin_special_rule_path(special_rule), :method => :post unless special_rule.first?
@@ -143,6 +146,11 @@ ActiveAdmin.register Unit do
           column :id
           column :name
           column :value_points
+          column :is_per_model
+          column :is_magic_items
+          column :is_magic_standards
+          column :is_extra_items
+          column :is_unique_choice
           column :position
           column do |unit_option|
             link_to "Mont.", move_higher_admin_unit_option_path(unit_option), :method => :post unless unit_option.first?
