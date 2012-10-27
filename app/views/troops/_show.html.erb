@@ -13,7 +13,7 @@
   <td style="text-align:right"><em>
     <% if troop.value_points %>
       <%= value_points(troop.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
-    <% elsif troop.position == 1 %>
+    <% elsif troop.unit.value_points and troop.position == 1 %>
       <%= value_points(troop.unit.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
     <% end %>
   </em></td>
