@@ -146,6 +146,7 @@ ActiveAdmin.register Unit do
         table_for unit.unit_options do
           column :id
           column :name
+          column :mount
           column :value_points
           column :is_per_model
           column :is_magic_items

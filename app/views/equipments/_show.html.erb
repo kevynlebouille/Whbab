@@ -1,0 +1,6 @@
+<% if equipments.any? %>
+  <h4>Equipements <%= "(#{troop.name})" unless troop.nil? %></h4>
+  <% equipments.each do |equipment| %>
+    • <%= equipment.name %><br />
+  <% end %>
+<% end %>

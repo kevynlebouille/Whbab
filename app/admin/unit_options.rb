@@ -33,6 +33,7 @@ ActiveAdmin.register UnitOption do
   index do
     column :id
     column :unit, :sortable => :unit_id
+    column :mount, :sortable => :mount_id
     column :name
     column :value_points
     column :is_per_model
@@ -49,6 +50,7 @@ ActiveAdmin.register UnitOption do
       f.input :army_filter, :as => :select, :collection => Army.order(:name), :disabled => Army.disabled.pluck(:id), :label => "Army FILTER"
       f.input :unit, :collection => Unit.includes(:army).order('armies.name', 'units.name').collect { |u| [u.army.name + ' - ' + u.name, u.id] }
       f.input :parent, :collection => UnitOption.includes(:unit => [:army]).order('armies.name', 'units.name', 'unit_options.position').collect { |uo| [uo.unit.army.name + ' - ' + uo.unit.name + ' - ' + uo.name, uo.id] }
+      f.input :mount, :collection => Unit.includes(:army).mount_category.order('armies.name', 'units.name').collect { |u| [u.army.name + ' - ' + u.name, u.id] }
       f.input :name
       f.input :value_points
       f.input :position

@@ -2,6 +2,7 @@ class UnitOption < ActiveRecord::Base
   belongs_to :unit
   belongs_to :parent, :class_name => "UnitOption"
   belongs_to :depend, :class_name => "UnitOption"
+  belongs_to :mount, :class_name => "Unit"
   has_many :children, :class_name => "UnitOption", :order => "position", :foreign_key => "parent_id", :dependent => :nullify
   has_one :troop, :dependent => :nullify
 
@@ -19,6 +20,7 @@ class UnitOption < ActiveRecord::Base
   scope :exclude_magics, where(:is_magic_items => false, :is_magic_standards => false)
   scope :only_magic_items, where(:is_magic_items => true, :is_magic_standards => false)
   scope :only_magic_standards, where(:is_magic_items => false, :is_magic_standards => true)
+  scope :only_mounts, where("mount_id IS NOT NULL")
 
   attr_accessor :army_filter
 

@@ -1,0 +1,20 @@
+<tr>
+  <td><%=characteristic troop.name %></td>
+  <td><%=characteristic troop.M %></td>
+  <td><%=characteristic troop.WS %></td>
+  <td><%=characteristic troop.BS %></td>
+  <td><%=characteristic troop.S %></td>
+  <td><%=characteristic troop.T %></td>
+  <td><%=characteristic troop.W %></td>
+  <td><%=characteristic troop.I %></td>
+  <td><%=characteristic troop.A %></td>
+  <td><%=characteristic troop.LD %></td>
+  <td><%= troop.troop_type.try(:name) %></td>
+  <td style="text-align:right"><em>
+    <% if troop.value_points %>
+      <%= value_points(troop.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
+    <% elsif troop.position == 1 %>
+      <%= value_points(troop.unit.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
+    <% end %>
+  </em></td>
+</tr>

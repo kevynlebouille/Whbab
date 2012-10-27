@@ -2,6 +2,7 @@ jQuery(function($) {
   // UNIT OPTION - ARMY_FILTER
   $('#unit_option_unit_id').clone().attr('id', 'unit_option_unit_id_clone').hide().appendTo('body');
   $('#unit_option_parent_id').clone().attr('id', 'unit_option_parent_id_clone').hide().appendTo('body');
+  $('#unit_option_mount_id').clone().attr('id', 'unit_option_mount_id_clone').hide().appendTo('body');
 
   $('#unit_option_army_filter').change(function() {
     var $filter = $(this).find('option[value=' + this.value + ']');
@@ -25,6 +26,16 @@ jQuery(function($) {
         $option.remove();
       }
     });
+
+    $('#unit_option_mount_id').html($('#unit_option_mount_id_clone').html());
+
+    $('#unit_option_mount_id option').each(function() {
+      var $option = $(this);
+
+      if ($filter.html() && $option.html() && $option.html().indexOf($filter.html() + ' - ') !== 0) {
+        $option.remove();
+      }
+    });
   }).change();
 
   $('#unit_option_unit_id').change(function() {
@@ -40,7 +51,6 @@ jQuery(function($) {
       }
     });
   }).change();
-  
 
   // UNIT OPTION - PARENT
   $('#unit_option_unit_id').change(function() {

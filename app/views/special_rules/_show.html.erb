@@ -1,0 +1,6 @@
+<% if special_rules.any? %>
+  <h4>Règles Spéciales <%= "(#{troop.name})" unless troop.nil? %></h4>
+  <% special_rules.each do |special_rule| %>
+    • <%= special_rule.name %><br />
+  <% end %>
+<% end %>

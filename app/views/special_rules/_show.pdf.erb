@@ -1,0 +1,11 @@
+<% if special_rules.any? %>
+  <tr class="army_list_unit_more">
+    <th>Règles spéciales <%= "(#{troop.name})" unless troop.nil? %></th>
+    <td colspan="10">
+      <% special_rules.each_with_index do |special_rule, index| %>
+        <%= "•" if index > 0 %> <%= special_rule.name %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+  

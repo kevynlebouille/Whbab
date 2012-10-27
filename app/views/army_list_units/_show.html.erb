@@ -1,3 +1,4 @@
+<% mounts_option = army_list_unit.unit.unit_options.only_mounts.first %>
 <li id="army_list_units_<%= army_list_unit.id %>">
   <div class="army_list_unit_overview">
     <div class="position">
@@ -30,6 +31,7 @@
 
   <div class="army_list_unit_details" style="display:none">
 
+    <!-- TROOPS -->
     <table>
       <thead>
         <tr>
@@ -48,31 +50,14 @@
         </tr>
       </thead>
       <tbody>
-        <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
-        <tr>
-          <td><%=characteristic troop.name %></td>
-          <td><%=characteristic troop.M %></td>
-          <td><%=characteristic troop.WS %></td>
-          <td><%=characteristic troop.BS %></td>
-          <td><%=characteristic troop.S %></td>
-          <td><%=characteristic troop.T %></td>
-          <td><%=characteristic troop.W %></td>
-          <td><%=characteristic troop.I %></td>
-          <td><%=characteristic troop.A %></td>
-          <td><%=characteristic troop.LD %></td>
-          <td><%= troop.troop_type.try(:name) %></td>
-          <td style="text-align:right"><em>
-            <% if troop.value_points %>
-              <%= value_points(troop.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
-            <% elsif troop.position == 1 %>
-              <%= value_points(troop.unit.value_points) %> pts<%= '/fig.' if army_list_unit.size > 1 %>
-            <% end %>
-          </em></td>
-        </tr>
+        <%= render :partial => "troops/show", :collection => army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }, :as => :troop, :locals => { :army_list_unit => army_list_unit } %>
+        <% if army_list_unit.unit_options.include?(mounts_option) %>
+          <%= render :partial => "troops/show", :collection => mounts_option.mount.troops.all, :as => :troop, :locals => { :army_list_unit => army_list_unit } %>
         <% end %>
       </tbody>
     </table>
 
+    <!-- OPTIONS, MAGIC ITEMS, MAGIC STANDARDS, EXTRA ITEMS -->
     <% if army_list_unit.unit_options.any? or army_list_unit.magic_items.any? %>
       <div class="options">
         <% if army_list_unit.unit_options.any? %>
@@ -107,43 +92,35 @@
       </div>
     <% end %>
 
-    <% if army_list_unit.unit.equipments.where(:troop_id => nil).any? %>
-      <h4>Equipements</h4>
-      <% army_list_unit.unit.equipments.where(:troop_id => nil).each do |equipment| %>
-        • <%= equipment.name %><br />
-      <% end %>
-    <% end %>
+    <!-- EQUIPMENTS -->
+    <%= render :partial => "equipments/show", :locals => { :equipments => army_list_unit.unit.equipments.where(:troop_id => nil), :troop => nil } %>
 
     <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
-      <% if troop.equipments.any? %>
-        <h4>Equipements (<%= troop.name %>)</h4>
-        <% troop.equipments.each do |equipment| %>
-          • <%= equipment.name %><br />
-        <% end %>
-      <% end %>
+      <%= render :partial => "equipments/show", :locals => { :equipments => troop.equipments, :troop => troop } %>
     <% end %>
 
-    <% if army_list_unit.unit.special_rules.where(:troop_id => nil).any? %>
-      <h4>Règles Spéciales</h4>
-      <% army_list_unit.unit.special_rules.where(:troop_id => nil).each do |special_rule| %>
-        • <%= special_rule.name %><br />
-      <% end %>
+    <% if army_list_unit.unit_options.include?(mounts_option) %>
+      <%= render :partial => "equipments/show", :locals => { :equipments => mounts_option.mount.equipments, :troop => mounts_option.mount.troops.first } %>
     <% end %>
+
+    <!-- SPECIAL RULES -->
+    <%= render :partial => "special_rules/show", :locals => { :special_rules => army_list_unit.unit.special_rules.where(:troop_id => nil), :troop => nil } %>
 
     <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
-      <% if troop.special_rules.any? %>
-        <h4>Règles Spéciales (<%= troop.name %>)</h4>
-        <% troop.special_rules.each do |special_rule| %>
-          • <%= special_rule.name %><br />
-        <% end %>
-      <% end %>
+      <%= render :partial => "special_rules/show", :locals => { :special_rules => troop.special_rules, :troop => troop } %>
     <% end %>
 
+    <% if army_list_unit.unit_options.include?(mounts_option) %>
+      <%= render :partial => "special_rules/show", :locals => { :special_rules => mounts_option.mount.special_rules, :troop => mounts_option.mount.troops.first } %>
+    <% end %>
+
+    <!-- MAGIC -->
     <% if army_list_unit.unit.magic? %>
       <h4>Magie</h4>
       <%= army_list_unit.unit.magic %><br />
     <% end %>
 
+    <!-- NOTES -->
     <% if army_list_unit.notes? %>
       <h4>Remarques</h4>
       <%= simple_format army_list_unit.notes %>

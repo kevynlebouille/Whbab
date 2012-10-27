@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021134658) do
+ActiveRecord::Schema.define(:version => 20121027093955) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -227,8 +227,10 @@ ActiveRecord::Schema.define(:version => 20121021134658) do
     t.boolean "is_magic_standards",                               :null => false
     t.boolean "is_unique_choice",                                 :null => false
     t.boolean "is_extra_items",                                   :null => false
+    t.integer "mount_id"
   end
 
+  add_index "unit_options", ["mount_id"], :name => "index_unit_options_on_mount_id"
   add_index "unit_options", ["parent_id"], :name => "index_unit_options_on_parent_id"
   add_index "unit_options", ["unit_id"], :name => "index_unit_options_on_unit_id"
 
