@@ -20,8 +20,9 @@ class ArmyListUnitsController < ApplicationController
     @army_list = current_user.army_lists.find(params[:army_list_id])
     @army_list_unit = @army_list.army_list_units.find(params[:id])
 
-    @available_unit_options = @army_list_unit.unit.unit_options.without_parent.exclude_magics
+    @available_unit_options = @army_list_unit.unit.unit_options.without_parent.exclude_magics_and_extra
     @magic_items_option = @army_list_unit.unit.unit_options.only_magic_items.first
+    @extra_items_option = @army_list_unit.unit.unit_options.only_extra_items.first
     @magic_standards_option = @army_list_unit.unit.unit_options.only_magic_standards.first
   end
 
@@ -103,8 +104,9 @@ class ArmyListUnitsController < ApplicationController
         format.html { redirect_to @army_list }
         format.xml  { head :ok }
       else
-        @available_unit_options = @army_list_unit.unit.unit_options.without_parent.exclude_magics
+        @available_unit_options = @army_list_unit.unit.unit_options.without_parent.exclude_magics_and_extra
         @magic_items_option = @army_list_unit.unit.unit_options.only_magic_items.first
+        @extra_items_option = @army_list_unit.unit.unit_options.only_extra_items.first
         @magic_standards_option = @army_list_unit.unit.unit_options.only_magic_standards.first
 
         format.html { render :action => "edit" }

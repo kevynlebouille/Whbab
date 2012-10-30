@@ -278,7 +278,7 @@
   width: 320px;
 }
 
-.army_list_unit_details .options em, .edit_army_list_unit #army_list_unit_unit_options em, .edit_army_list_unit #army_list_unit_magic_items em, .edit_army_list_unit #army_list_unit_magic_standards em {
+.army_list_unit_details .options em, .edit_army_list_unit #army_list_unit_unit_options em, .edit_army_list_unit #army_list_unit_magic_items em, .edit_army_list_unit #army_list_unit_magic_standards em, .edit_army_list_unit #army_list_unit_extra_items em {
   float: right;
 }
 
@@ -315,10 +315,10 @@
   text-align: right;
 }
 
-.edit_army_list_unit #army_list_unit_magic_items, .edit_army_list_unit #army_list_unit_magic_standards, {
+.edit_army_list_unit #army_list_unit_magic_items, .edit_army_list_unit #army_list_unit_magic_standards, .edit_army_list_unit #army_list_unit_extra_items{
   float: right;
   margin-left: 10px;
-  width: 450px;
+  width: 300px;
   overflow: hidden;
 }
 
