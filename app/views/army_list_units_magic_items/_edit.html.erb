@@ -6,8 +6,14 @@ while !depend.nil? and depend.value_points.nil? do
   depend = depend.parent
 end
 
+data_radio = true
+
+if magic_item.name.match(/^Fragment de Malepierre/i) or magic_item.army.try(:id) == 3
+    data_radio = nil
+end
+
 %>
 <li>
   <em><span><%= value_points(magic_item.value_points) %></span> pts</em>
-  <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-depend" => depend.try(:id), "data-radio" => magic_item.name.match(/^Fragment de Malepierre/i) ? nil : true %> <%= magic_item.name %></label>
+  <label><%= check_box_tag "army_list_unit[magic_item_ids][]", magic_item.id, army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-depend" => depend.try(:id), "data-radio" => data_radio %> <%= magic_item.name %></label>
 </li>
