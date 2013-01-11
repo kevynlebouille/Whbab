@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -23,7 +23,9 @@ end
 gem 'activeadmin'
 gem 'seedbank'
 gem 'acts_as_list'
+gem 'formtastic'
 gem 'client_side_validations'
+gem 'client_side_validations-formtastic'
 gem 'meta_search'
 gem 'wisepdf'
 gem 'attribute_normalizer'
