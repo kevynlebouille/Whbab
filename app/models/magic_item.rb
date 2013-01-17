@@ -8,7 +8,7 @@ class MagicItem < ActiveRecord::Base
   validates_numericality_of :value_points, :greater_than_or_equal_to => 0
 
   scope :available_for, lambda { |army, value_points_limit|
-    if army.id == 3
+    if army.id == 3 or army.id == 8
       if value_points_limit.nil?
         where("army_id = :army_id", {:army_id => army}).order("value_points DESC", "name")
       else
