@@ -54,7 +54,7 @@ class ArmyListUnitsController < ApplicationController
       army_list_unit_troop
     end
     @army_list_unit.unit_options << @base_army_list_unit.unit_options
-    @army_list_unit.magic_items << @army_list_unit.magic_items
+    @army_list_unit.magic_items << @base_army_list_unit.magic_items
 
     respond_to do |format|
       if @army_list_unit.save
