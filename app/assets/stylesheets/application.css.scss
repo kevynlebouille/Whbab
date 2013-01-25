@@ -316,7 +316,6 @@
 }
 
 .edit_army_list_unit #army_list_unit_magic_items, .edit_army_list_unit #army_list_unit_magic_standards, .edit_army_list_unit #army_list_unit_extra_items{
-  float: right;
   margin-left: 10px;
   width: 300px;
   overflow: hidden;
@@ -333,4 +332,8 @@
 
 .edit_army_list_unit #army_list_unit_troops {
   white-space: nowrap;
+}
+
+.edit_army_list_unit #army_list_unit_all_options td {
+  vertical-align: top;
 }
