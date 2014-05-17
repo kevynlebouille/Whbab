@@ -31,7 +31,8 @@ ActiveAdmin.register Troop do
   filter :value_points
 
   index do
-    column :id
+    selectable_column
+    id_column
     column :unit, :sortable => :unit_id
     column :troop_type, :sortable => :troop_type_id
     column :name

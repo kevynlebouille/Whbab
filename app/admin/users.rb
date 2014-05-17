@@ -1,9 +1,12 @@
 ActiveAdmin.register User do
+  menu :priority => 9
+
   filter :email
   filter :name
 
   index do
-    column :id
+    selectable_column
+    id_column
     column :email
     column :name
     column :favorite_army, :sortable => :favorite_army_id

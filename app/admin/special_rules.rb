@@ -32,8 +32,12 @@ ActiveAdmin.register SpecialRule do
     link_to "New Special Rule", new_admin_special_rule_path('special_rule[unit_id]' => special_rule.unit)
   end
 
+  filter :unit
+  filter :name
+
   index do
-    column :id
+    selectable_column
+    id_column
     column :unit, :sortable => :unit_id
     column :name
     column :troop, :sortable => :troop_id

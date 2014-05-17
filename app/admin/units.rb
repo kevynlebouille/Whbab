@@ -21,7 +21,10 @@ ActiveAdmin.register Unit do
 
   action_item :only => :show do
     link_to "New Unit", new_admin_unit_path
-    link_to "Duplicate Unit", duplicate_admin_unit_path, :method => :post
+  end
+
+  action_item :only => :show do
+    link_to "Duplicate Unit", duplicate_admin_unit_path(unit), :method => :post
   end
 
   filter :army
@@ -30,7 +33,8 @@ ActiveAdmin.register Unit do
   filter :value_points
 
   index do
-    column :id
+    selectable_column
+    id_column
     column :army, :sortable => :army_id
     column :unit_category, :sortable => :unit_category_id
     column :name
@@ -167,7 +171,5 @@ ActiveAdmin.register Unit do
         end
       end
     end
-
-    active_admin_comments_for unit
   end
 end

@@ -25,13 +25,14 @@ ActiveAdmin.register UnitOption do
     link_to "New Unit Option", new_admin_unit_option_path('unit_option[unit_id]' => unit_option.unit)
   end
 
-  filter :unit
-  filter :parent, :collection => proc { UnitOption.includes(:unit).without_parent.collect { |r| [r.unit.name + ' - ' + r.name, r.id] } }
+  filter :unit, :collection => proc { Unit.includes(:army).order('armies.name', 'units.name').collect { |r| [r.army.name + ' - ' + r.name, r.id] } }
+  # filter :parent, :collection => proc { UnitOption.includes(:unit).without_parent.collect { |r| [r.unit.name + ' - ' + r.name, r.id] } }
   filter :name
   filter :value_points
 
   index do
-    column :id
+    selectable_column
+    id_column
     column :unit, :sortable => :unit_id
     column :mount, :sortable => :mount_id
     column :name
@@ -41,7 +42,7 @@ ActiveAdmin.register UnitOption do
     column :is_magic_standards
     column :is_extra_items
     column :is_unique_choice
-    column :position
+    # column :position
     default_actions
   end
 

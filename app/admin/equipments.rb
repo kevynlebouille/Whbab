@@ -1,4 +1,6 @@
 ActiveAdmin.register Equipment do
+  menu :priority => 5
+
   controller do
     def create
       create! { new_admin_equipment_url }
@@ -30,8 +32,12 @@ ActiveAdmin.register Equipment do
     link_to "New Equipment", new_admin_equipment_path('equipment[unit_id]' => equipment.unit)
   end
 
+  filter :unit
+  filter :name
+
   index do
-    column :id
+    selectable_column
+    id_column
     column :unit, :sortable => :unit_id
     column :name
     column :troop, :sortable => :troop_id

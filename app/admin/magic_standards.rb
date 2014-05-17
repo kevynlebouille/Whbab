@@ -13,8 +13,13 @@ ActiveAdmin.register MagicStandard do
     link_to "New Magic Standard", new_admin_magic_standard_url
   end
 
+  filter :army
+  filter :name
+  filter :value_points
+
   index do
-    column :id
+    selectable_column
+    id_column
     column :army, :sortable => :army_id
     column :name
     column :value_points
