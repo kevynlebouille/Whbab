@@ -1,8 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require rails.validations
-//= require rails.validations.formtastic
 //= require jquery.formalize
 //= require jquery.colorbox
 //= require jquery.ui.touch-punch
