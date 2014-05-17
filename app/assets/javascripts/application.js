@@ -21,7 +21,7 @@ jQuery(function($) {
     evt.stopPropagation();
   });
 
-  $('button[data-url]:not([data-popin])').live('click', function(evt) {
+  $('body').on('click', 'button[data-url]:not([data-popin])', function(evt) {
     evt.preventDefault();
 
     if ($(this).data('target') == '_blank') {
@@ -32,8 +32,8 @@ jQuery(function($) {
     }
   });
 
-  $('a[data-popin], button[data-popin]').live('click', popinHandler);
-  $('form[data-popin]').live('submit', popinHandler);
+  $('body').on('click', 'a[data-popin], button[data-popin]', popinHandler);
+  $('body').on('submit', 'form[data-popin]', popinHandler);
 
   $('.army_list_units_overview')
     .sortable({
@@ -49,20 +49,20 @@ jQuery(function($) {
     .disableSelection()
   ;
 
-  $('.army_list_unit_overview .name').live('click', function() {
+  $('body').on('click', '.army_list_unit_overview .name', function() {
     $(this).closest('.army_list_unit_overview').next('.army_list_unit_details').slideToggle('fast');
   });
 
-  $('.army_list_unit_overview .actions select').live('change', function() {
+  $('body').on('change', '.army_list_unit_overview .actions select', function() {
     $(this).closest('form').attr('action', $(this).val());
   });
 
-  $('#army_list_unit_magic_items ul li strong').live('click', function() {
+  $('body').on('click', '#army_list_unit_magic_items ul li strong', function() {
     $('#army_list_unit_magic_items ul li ul').not($(this).next('ul')).slideUp('fast');
     $(this).next('ul').slideToggle('fast', function() { $.colorbox.resize(); });
   });
 
-  $('#army_list_unit_unit_options input, #army_list_unit_magic_items input, #army_list_unit_extra_items input, #army_list_unit_magic_standards input').live('change', function(evt) {
+  $('body').on('change', '#army_list_unit_unit_options input, #army_list_unit_magic_items input, #army_list_unit_extra_items input, #army_list_unit_magic_standards input', function(evt) {
     var total     = 0.0,
         $changed  = $(this),
         $slaves   = $('.edit_army_list_unit input[data-depend='+$changed.val()+']'),
@@ -101,7 +101,7 @@ jQuery(function($) {
     updateArmyListUnitValuePoints();
   });
 
-  $('.edit_army_list_unit #army_list_unit_troops .army_list_unit_troop_size').live('keyup', function() {
+  $('body').on('keyup', '.edit_army_list_unit #army_list_unit_troops .army_list_unit_troop_size', function() {
     var size = parseInt($(this).val());
 
     if (isNaN(size)) return false;
