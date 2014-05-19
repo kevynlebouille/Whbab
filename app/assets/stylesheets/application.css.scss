@@ -8,6 +8,11 @@
 *= require_self
 */
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 #army_list_search label {
   position: relative;

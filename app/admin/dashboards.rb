@@ -12,31 +12,31 @@ ActiveAdmin.register_page "Dashboard" do
     @special_rules = []
     @unit_options = []
 
-    Unit.all.each do |unit|
-      unit.troops.includes(:unit_option).each do |troop|
-        unless troop.unit_option.nil?
-          @troops.push troop unless troop.unit_option.unit.id == unit.id
-        end
-      end
+    # Unit.all.each do |unit|
+    #   unit.troops.includes(:unit_option).each do |troop|
+    #     unless troop.unit_option.nil?
+    #       @troops.push troop unless troop.unit_option.unit.id == unit.id
+    #     end
+    #   end
 
-      unit.equipments.includes(:troop).each do |equipment|
-        unless equipment.troop.nil?
-          @equipments.push equipment unless equipment.troop.unit.id == unit.id
-        end
-      end
+    #   unit.equipments.includes(:troop).each do |equipment|
+    #     unless equipment.troop.nil?
+    #       @equipments.push equipment unless equipment.troop.unit.id == unit.id
+    #     end
+    #   end
 
-      unit.special_rules.includes(:troop).each do |special_rule|
-        unless special_rule.troop.nil?
-          @special_rules.push special_rule unless special_rule.troop.unit.id == unit.id
-        end
-      end
+    #   unit.special_rules.includes(:troop).each do |special_rule|
+    #     unless special_rule.troop.nil?
+    #       @special_rules.push special_rule unless special_rule.troop.unit.id == unit.id
+    #     end
+    #   end
 
-      unit.unit_options.includes(:parent).each do |unit_option|
-        unless unit_option.parent.nil?
-          @unit_options.push unit_option unless unit_option.parent.unit.id == unit.id
-        end
-      end
-    end
+    #   unit.unit_options.includes(:parent).each do |unit_option|
+    #     unless unit_option.parent.nil?
+    #       @unit_options.push unit_option unless unit_option.parent.unit.id == unit.id
+    #     end
+    #   end
+    # end
 
     columns do
 
@@ -127,11 +127,14 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
         panel "Top 10 users" do
-          ol do
-            @users[0..9].each do |user|
-              li link_to user.name, admin_user_path(user)
+          table_for @users[0..9] do
+              column "Name" do |user|
+                link_to user.name, admin_user_path(user)
+              end
+              column "Army lists count" do |user|
+                user.army_lists.size.to_s
+              end
             end
-          end
         end
       end # column
 

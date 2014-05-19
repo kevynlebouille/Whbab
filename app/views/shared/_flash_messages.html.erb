@@ -15,6 +15,10 @@
       href: "#flash_messages",
       close: '',
       opacity: 0.4,
+      onComplete: function() {
+        $('#cboxClose').css('opacity', 1);
+        $('#cboxLoadedContent :input:visible:first').focus();
+      }
     });
   })
 </script>

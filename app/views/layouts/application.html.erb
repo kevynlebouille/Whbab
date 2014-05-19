@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Whbab • <%= content_for?(:title) ? yield(:title) : "Bienvenue" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Bienvenue" %> • Whbab</title>
   <%= stylesheet_link_tag "application", :media => :all %>
   <%= javascript_include_tag "application" %>
   <%= javascript_tag "BASE_URL = '#{root_path}';" %>
