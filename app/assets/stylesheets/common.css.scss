@@ -1,13 +1,12 @@
 @font-face {
-    font-family: "godofwarregular";
-    src: font-url("godofwar-webfont.eot");
-    src: font-url("godofwar-webfont.eot?#iefix") format("embedded-opentype"),
-         font-url("godofwar-webfont.woff") format("woff"),
-         font-url("godofwar-webfont.ttf") format("truetype"),
-         font-url("godofwar-webfont.svg#godofwarregular") format("svg");
+    font-family: 'godofwarregular';
+    src: url('godofwar-webfont.eot');
+    src: url('godofwar-webfont.eot?#iefix') format('embedded-opentype'),
+         url('godofwar-webfont.woff') format('woff'),
+         url('godofwar-webfont.ttf') format('truetype'),
+         url('godofwar-webfont.svg#godofwarregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 body {
@@ -149,7 +148,7 @@ form.button_to, form.button_to div {
   -webkit-border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
   border-image: image-url("border_popin.png") 20 20 10 20 stretch stretch;
   border-width: 20px 20px 10px 20px;
-  min-width: 450px;
+  border-style: solid;
 }
 
 .popin h1 {

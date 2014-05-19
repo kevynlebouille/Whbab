@@ -46,7 +46,6 @@ jQuery(function($) {
         });
       }
     })
-    .disableSelection()
   ;
 
   $('body').on('click', '.army_list_unit_overview .name', function() {
