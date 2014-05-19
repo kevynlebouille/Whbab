@@ -72,7 +72,7 @@
           <h4>Objets magiques</h4>
           <% army_list_unit.magic_items.each do |magic_item| %>
             <em><%= value_points(magic_item.value_points) %> pts</em>
-            • <%= magic_item.name %><br />
+            • <%= magic_item.name %><%= magic_item.quantity > 1 ? " (x#{magic_item.quantity})" : '' %><br />
           <% end %>
         <% end %>
 

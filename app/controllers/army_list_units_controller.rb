@@ -94,13 +94,17 @@ class ArmyListUnitsController < ApplicationController
   # PUT /army_list/1/army_list_units/1.xml
   def update
     params[:army_list_unit][:unit_option_ids] ||= []
-    params[:army_list_unit][:magic_item_ids] ||= []
 
     @army_list = current_user.army_lists.find(params[:army_list_id])
     @army_list_unit = @army_list.army_list_units.find(params[:id])
 
     respond_to do |format|
       if @army_list_unit.update_attributes(params[:army_list_unit])
+
+        # FORCE VALUE POINTS BEFORE_SAVE
+        @army_list_unit.magic_items(true)
+        @army_list_unit.save
+
         format.html { redirect_to @army_list }
         format.xml  { head :ok }
       else

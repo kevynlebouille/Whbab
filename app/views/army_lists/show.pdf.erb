@@ -7,7 +7,8 @@
 <div class="army_list_value_points">
   <ul>
     <% @army_list.value_points_details.each do |row| %>
-      <li><strong><%= row["name"].split.last.titleize %></strong> <%= value_points row["value_points"].to_f %> pts</li>
+      <li class="<%= row['valid'] ? '' : 'red' %>"><strong><%= row["name"].split.last.titleize %></strong> <%= value_points row["value_points"].to_f %> pts
+      <small>(<%= number_to_percentage(row["value_points"].to_f / @army_list.value_points * 100, :precision => 0) %>)</small></li>
     <% end %>
   </ul>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027093955) do
+ActiveRecord::Schema.define(:version => 20140503132508) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -85,9 +85,10 @@ ActiveRecord::Schema.define(:version => 20121027093955) do
   add_index "army_list_units_extra_items", ["army_list_unit_id"], :name => "index_army_list_units_extra_items_on_army_list_unit_id"
   add_index "army_list_units_extra_items", ["extra_item_id"], :name => "index_army_list_units_extra_items_on_extra_item_id"
 
-  create_table "army_list_units_magic_items", :id => false, :force => true do |t|
-    t.integer "army_list_unit_id", :null => false
-    t.integer "magic_item_id",     :null => false
+  create_table "army_list_units_magic_items", :force => true do |t|
+    t.integer "army_list_unit_id",                :null => false
+    t.integer "magic_item_id",                    :null => false
+    t.integer "quantity",          :default => 1, :null => false
   end
 
   add_index "army_list_units_magic_items", ["army_list_unit_id"], :name => "index_army_list_units_magic_items_on_army_list_unit_id"
@@ -152,11 +153,12 @@ ActiveRecord::Schema.define(:version => 20121027093955) do
   end
 
   create_table "magic_items", :force => true do |t|
-    t.integer "magic_item_category_id",                               :null => false
+    t.integer "magic_item_category_id",                                                  :null => false
     t.integer "army_id"
-    t.string  "name",                                                 :null => false
-    t.decimal "value_points",           :precision => 7, :scale => 1, :null => false
+    t.string  "name",                                                                    :null => false
+    t.decimal "value_points",           :precision => 7, :scale => 1,                    :null => false
     t.integer "override_id"
+    t.boolean "is_multiple",                                          :default => false, :null => false
   end
 
   add_index "magic_items", ["army_id"], :name => "index_magic_items_on_army_id"

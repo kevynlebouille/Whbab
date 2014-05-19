@@ -1,7 +1,8 @@
 class MagicItem < ActiveRecord::Base
   belongs_to :army
   belongs_to :magic_item_category
-  has_and_belongs_to_many :army_list_units
+  has_many :army_list_unit_magic_items, :dependent => :destroy
+  has_many :army_list_units, :through => :army_list_unit_magic_items
   has_one :override, :class_name => "MagicItem", :foreign_key => "override_id"
 
   validates_presence_of :magic_item_category_id, :name, :value_points

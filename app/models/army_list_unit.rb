@@ -2,13 +2,15 @@ class ArmyListUnit < ActiveRecord::Base
   belongs_to :army_list
   belongs_to :unit
   belongs_to :unit_category
-  has_and_belongs_to_many :magic_items
+  has_many :army_list_unit_magic_items, :dependent => :destroy
+  has_many :magic_items, :through => :army_list_unit_magic_items, :select => 'magic_items.*, army_list_units_magic_items.quantity'
   has_and_belongs_to_many :magic_standards
   has_and_belongs_to_many :extra_items
   has_and_belongs_to_many :unit_options
   has_many :army_list_unit_troops, :order => 'position', :dependent => :destroy
 
   accepts_nested_attributes_for :army_list_unit_troops
+  accepts_nested_attributes_for :army_list_unit_magic_items, :allow_destroy => true
 
   normalize_attributes :name, :notes
 
@@ -46,7 +48,7 @@ class ArmyListUnit < ActiveRecord::Base
     end
 
     magic_items.each do |magic_item|
-      self.value_points = self.value_points + magic_item.value_points
+      self.value_points = self.value_points + magic_item.value_points * magic_item.quantity
     end
 
     extra_items.each do |extra_item|
@@ -92,14 +94,14 @@ class ArmyListUnit < ActiveRecord::Base
   end
 
   def magic_items_value_points()
-    return magic_items.sum('value_points')
+    magic_items.sum('quantity * value_points').to_i
   end
 
   def extra_items_value_points()
-    return extra_items.sum('value_points')
+    extra_items.sum('value_points')
   end
 
   def magic_standards_value_points()
-    return magic_standards.sum('value_points')
+    magic_standards.sum('value_points')
   end
 end

@@ -69,14 +69,28 @@ jQuery(function($) {
         $siblings = $changed.closest('ul').find('> li > label input[data-radio]').not($changed),
         $div      = $changed.closest('div');
 
-    // console.log($changed.parent().contents(':not(input)').text() + ' changed !');
+    $div.find('input[type=number]').prop('disabled', true);
+
+    if ($div.attr('id') == 'army_list_unit_magic_items') {
+      $div.find('strong').css('opacity', 0.5);
+    }
 
     $div.find('input:checked').each(function() {
+      $(this).parent('label').next('input').prop('disabled', false);
+      $(this).closest('ul').prev('strong').css('opacity', 1);
+
       var value_points = parseFloat($(this).parent('label').prev('em').find('span').html().replace(',', '.'));
+
+      var $quantity = $(this).parent('label').next('input[type=number]');
+
+      if ($quantity.length) {
+        value_points = value_points * parseInt($quantity.val());
+      }
 
       if ($div.data('value-points-limit')) {
         if (total + value_points > parseFloat($div.data('value-points-limit'))) {
           $changed.prop('checked', false);
+          $quantity.val('');
           updateArmyListUnitDepend($changed);
           evt.stopPropagation();
           return false;
@@ -141,6 +155,16 @@ function updateArmyListUnitValuePoints()
 
     $div.find('input:checked').each(function() {
       var value_points = parseFloat($(this).parent('label').prev('em').find('span').html().replace(',', '.'));
+
+      var $quantity = $(this).parent('label').next('input[type=number]');
+
+      if ($quantity.length) {
+        var value_points = value_points * parseInt($quantity.val());
+
+        if (isNaN(value_points)) {
+          return true;
+        }
+      }
 
       total += value_points;
     });
@@ -215,7 +239,6 @@ function popin(url)
     onComplete: function() {
       $('#cboxClose').css('opacity', 1);
       $('#cboxLoadedContent form :input:visible:first').focus();
-      $('#cboxLoadedContent form[data-validate]').validate();
 
       var masters = [];
       $('#army_list_unit_unit_options input[data-depend], #army_list_unit_magic_items input[data-depend], #army_list_unit_extra_items input[data-depend], #army_list_unit_magic_standards input[data-depend]').each(function() {
@@ -223,6 +246,8 @@ function popin(url)
       });
 
       $(masters.join(', ')).change();
+
+      $('#army_list_unit_magic_items input:first').change();
     },
     onClosed: function() {
       $('#cboxClose').css('opacity', 0);
