@@ -63,7 +63,7 @@
       <th>Objets magiques</th>
       <td colspan="10">
         <% army_list_unit.magic_items.each_with_index do |magic_item, index| %>
-          <%= "• " if index > 0 %> <%= magic_item.name %>
+          <%= "• " if index > 0 %> <%= magic_item.name %><% if magic_item.quantity > 1 %> (x<%= magic_item.quantity %>)<% end %>
         <% end %>
       </td>
     </tr>
