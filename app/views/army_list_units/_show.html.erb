@@ -5,7 +5,7 @@
       <%= "%02d" % army_list_unit.position %>
     </div>
     <div class="name">
-      <strong><%=remove_accents army_list_unit.name.truncate(32) %></strong>
+      <strong><%=transliterate army_list_unit.name.truncate(32) %></strong>
         <% if army_list_unit.unit.is_unique %>
         <%= "#{army_list_unit.unit.name.truncate(32)} <em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
         <i>Unique</i>
@@ -58,7 +58,7 @@
     </table>
 
     <!-- OPTIONS, MAGIC ITEMS, MAGIC STANDARDS, EXTRA ITEMS -->
-    <% if army_list_unit.unit_options.any? or army_list_unit.magic_items.any? %>
+    <% if army_list_unit.unit_options.any? or army_list_unit.magic_items.any? or army_list_unit.extra_items.any? or army_list_unit.magic_standards.any? %>
       <div class="options">
         <% if army_list_unit.unit_options.any? %>
           <h4>Options</h4>
@@ -77,7 +77,7 @@
         <% end %>
 
         <% if army_list_unit.extra_items.any? %>
-          <h4><%= @army_list.army.extra_item_category.name %></h4>
+          <h4><%= @army_list.army.extra_item_categories.first.name %></h4>
           <% army_list_unit.extra_items.each do |extra_item| %>
             <em><%= value_points(extra_item.value_points) %> pts</em>
             • <%= extra_item.name %><br />
