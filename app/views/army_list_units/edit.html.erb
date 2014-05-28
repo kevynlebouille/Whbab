@@ -50,12 +50,14 @@
           </li>
           <% end %>
           <% if @magic_items_option.is_extra_items? %>
+          <% @army_list.army.extra_item_categories.each do |extra_item_category| %>
           <li>
-            <strong><%= @army_list.army.extra_item_category.name %></strong>
+            <strong><%= extra_item_category.name %></strong>
             <ul style="display:none">
-              <%= render :partial => "army_list_units_extra_items/edit", :collection => ExtraItem.available_for(@army_list.army, @magic_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
+              <%= render :partial => "army_list_units_extra_items/edit", :collection => ExtraItem.available_for(extra_item_category, @magic_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
             </ul>
           </li>
+          <% end %>
           <% end %>
         </ul>
       </div></td>
@@ -63,10 +65,24 @@
 
     <% if @extra_items_option %>
       <td><div id="army_list_unit_extra_items" data-value-points-limit="<%= @extra_items_option.value_points %>">
-        <h3><%=remove_accents @army_list.army.extra_item_category.name %><br /><span><%= value_points(@army_list_unit.extra_items_value_points) %></span><% unless @extra_items_option.value_points.nil? %>/<%= value_points(@extra_items_option.value_points) %><% end %> pts</h3>
+        <% if @army_list.army.extra_item_categories.length > 1 %>
+        <h3>Speciale</h3>
         <ul>
-          <%= render :partial => "army_list_units_extra_items/edit", :collection =>  ExtraItem.available_for(@army_list.army, @extra_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @extra_items_option } %>
+          <% @army_list.army.extra_item_categories.each_with_index do |extra_item_category| %>
+          <li>
+            <strong><%= extra_item_category.name %></strong>
+            <ul style="display:none">
+              <%= render :partial => "army_list_units_extra_items/edit", :collection => ExtraItem.available_for(extra_item_category, @magic_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
+            </ul>
+          </li>
+          <% end %>
         </ul>
+        <% else %>
+        <h3><%=transliterate @army_list.army.extra_item_categories.first.name %><br /><span><%= value_points(@army_list_unit.extra_items_value_points) %></span><% unless @extra_items_option.value_points.nil? %>/<%= value_points(@extra_items_option.value_points) %><% end %> pts</h3>
+        <ul>
+          <%= render :partial => "army_list_units_extra_items/edit", :collection =>  ExtraItem.available_for(@army_list.army.extra_item_categories.first, @extra_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @extra_items_option } %>
+        </ul>
+        <% end %>
       </div></td>
     <% end %>
 
