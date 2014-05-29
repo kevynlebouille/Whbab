@@ -66,13 +66,13 @@
     <% if @extra_items_option %>
       <td><div id="army_list_unit_extra_items" data-value-points-limit="<%= @extra_items_option.value_points %>">
         <% if @army_list.army.extra_item_categories.length > 1 %>
-        <h3>Speciale</h3>
+        <h3>Speciale<br /><span><%= value_points(@army_list_unit.extra_items_value_points) %></span><% unless @extra_items_option.value_points.nil? %>/<%= value_points(@extra_items_option.value_points) %><% end %> pts</h3>
         <ul>
-          <% @army_list.army.extra_item_categories.each_with_index do |extra_item_category| %>
+          <% @army_list.army.extra_item_categories.each_with_index do |extra_item_category, index| %>
           <li>
             <strong><%= extra_item_category.name %></strong>
-            <ul style="display:none">
-              <%= render :partial => "army_list_units_extra_items/edit", :collection => ExtraItem.available_for(extra_item_category, @magic_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
+            <ul style="<%= 'display:none' if index > 0 %>">
+              <%= render :partial => "army_list_units_extra_items/edit", :collection => ExtraItem.available_for(extra_item_category, @extra_items_option.value_points).all, :as => :extra_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @extra_items_option } %>
             </ul>
           </li>
           <% end %>

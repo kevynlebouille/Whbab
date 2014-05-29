@@ -61,6 +61,11 @@ jQuery(function($) {
     $(this).next('ul').slideToggle('fast', function() { $.colorbox.resize(); });
   });
 
+  $('body').on('click', '#army_list_unit_extra_items ul li strong', function() {
+    $('#army_list_unit_extra_items ul li ul').not($(this).next('ul')).slideUp('fast');
+    $(this).next('ul').slideToggle('fast', function() { $.colorbox.resize(); });
+  });
+
   $('body').on('change', '#army_list_unit_unit_options input, #army_list_unit_magic_items input, #army_list_unit_extra_items input, #army_list_unit_magic_standards input', function(evt) {
     var total     = 0.0,
         $changed  = $(this),
@@ -71,6 +76,10 @@ jQuery(function($) {
     $div.find('input[type=number]').prop('disabled', true);
 
     if ($div.attr('id') == 'army_list_unit_magic_items') {
+      $div.find('strong').css('opacity', 0.5);
+    }
+
+    if ($div.attr('id') == 'army_list_unit_extra_items') {
       $div.find('strong').css('opacity', 0.5);
     }
 
