@@ -42,10 +42,12 @@
         <h3>Objets magiques<br /><span><%= value_points(@army_list_unit.magic_items_value_points + (@magic_items_option.is_extra_items? ? @army_list_unit.extra_items_value_points : 0)) %></span>/<%= value_points(@magic_items_option.value_points) %> pts</h3>
         <ul>
           <% MagicItemCategory.all.each_with_index do |magic_item_category, index| %>
+          <%- magic_items = magic_item_category.magic_items.available_for(@army_list.army, @magic_items_option.value_points).all %>
+          <%- next if magic_items.empty? %>
           <li>
             <strong><%= magic_item_category.name %></strong>
             <ul style="<%= 'display:none' if index > 0 %>">
-              <%= render :partial => "army_list_units_magic_items/edit", :collection =>  magic_item_category.magic_items.available_for(@army_list.army, @magic_items_option.value_points).all, :as => :magic_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
+              <%= render :partial => "army_list_units_magic_items/edit", :collection => magic_items, :as => :magic_item, :locals => { :army_list_unit => @army_list_unit, :unit_option => @magic_items_option } %>
             </ul>
           </li>
           <% end %>
