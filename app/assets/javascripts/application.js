@@ -256,6 +256,7 @@ function popin(url)
       $(masters.join(', ')).change();
 
       $('#army_list_unit_magic_items input:first').change();
+      $('#army_list_unit_extra_items input:first').change();
     },
     onClosed: function() {
       $('#cboxClose').css('opacity', 0);

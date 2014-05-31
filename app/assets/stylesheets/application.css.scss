@@ -331,7 +331,7 @@ input[type=number]::-webkit-outer-spin-button {
   overflow: hidden;
 }
 
-.edit_army_list_unit #army_list_unit_magic_items ul li strong, .edit_army_list_unit #army_list_unit_magic_standards ul li strong {
+.edit_army_list_unit #army_list_unit_magic_items ul li strong, .edit_army_list_unit #army_list_unit_magic_standards ul li strong, .edit_army_list_unit #army_list_unit_extra_items ul li strong {
   cursor: pointer;
 }
 

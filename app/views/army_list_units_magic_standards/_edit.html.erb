@@ -9,5 +9,5 @@ end
 %>
 <li>
   <em><span><%= value_points(magic_standard.value_points) %></span> pts</em>
-  <label><%= check_box_tag "army_list_unit[magic_standard_ids][]", magic_standard.id, army_list_unit.magic_standards.member?(magic_standard), :id => "army_list_unit_magic_standard_ids_#{magic_standard.id}", "data-depend" => depend.try(:id), "data-radio" => true %> <%= magic_standard.name %></label>
+  <label><%= check_box_tag "army_list_unit[magic_standard_ids][]", magic_standard.id, army_list_unit.magic_standards.member?(magic_standard), :id => "army_list_unit_magic_standard_ids_#{magic_standard.id}", "data-depend" => depend.try(:id), "data-radio" => army_list_unit.army_list.army.id != 22 %> <%= magic_standard.name %></label>
 </li>
