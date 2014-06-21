@@ -136,10 +136,20 @@ form.button_to, form.button_to div {
 }
 
 #footer {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  height: 80px;
-  background: image-url("bg_footer.png") 50% 50% no-repeat;
+  padding: 20px 0;
+  // height: 30px;
+  // background: image-url("bg_footer.png") 50% 100% no-repeat;
+}
+
+#footer .links {
+  color: #470b03;
+  text-align: center;
+}
+
+#footer .links img {
+  position: relative;
+  top: -2px;
+  margin: 0 10px;
 }
 
 .popin {
