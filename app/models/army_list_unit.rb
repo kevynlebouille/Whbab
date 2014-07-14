@@ -47,8 +47,8 @@ class ArmyListUnit < ActiveRecord::Base
       self.value_points = self.value_points + factor * option.value_points
     end
 
-    magic_items.each do |magic_item|
-      self.value_points = self.value_points + magic_item.value_points * magic_item.quantity
+    army_list_unit_magic_items.each do |army_list_unit_magic_item|
+      self.value_points = self.value_points + army_list_unit_magic_item.magic_item.value_points * army_list_unit_magic_item.quantity
     end
 
     extra_items.each do |extra_item|

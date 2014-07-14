@@ -53,8 +53,14 @@ class ArmyListUnitsController < ApplicationController
       army_list_unit_troop.army_list_unit = @army_list_unit
       army_list_unit_troop
     end
+    @army_list_unit.army_list_unit_magic_items << @base_army_list_unit.army_list_unit_magic_items.collect do |alumi|
+      army_list_unit_magic_item = alumi.dup
+      army_list_unit_magic_item.army_list_unit = @army_list_unit
+      army_list_unit_magic_item
+    end
     @army_list_unit.unit_options << @base_army_list_unit.unit_options
-    @army_list_unit.magic_items << @base_army_list_unit.magic_items
+    @army_list_unit.magic_standards << @base_army_list_unit.magic_standards
+    @army_list_unit.extra_items << @base_army_list_unit.extra_items
 
     respond_to do |format|
       if @army_list_unit.save
@@ -94,15 +100,13 @@ class ArmyListUnitsController < ApplicationController
   # PUT /army_list/1/army_list_units/1.xml
   def update
     params[:army_list_unit][:unit_option_ids] ||= []
+    params[:army_list_unit][:extra_item_ids] ||= []
 
     @army_list = current_user.army_lists.find(params[:army_list_id])
     @army_list_unit = @army_list.army_list_units.find(params[:id])
 
     respond_to do |format|
       if @army_list_unit.update_attributes(params[:army_list_unit])
-
-        # FORCE VALUE POINTS BEFORE_SAVE
-        @army_list_unit.magic_items(true)
         @army_list_unit.save
 
         format.html { redirect_to @army_list }
