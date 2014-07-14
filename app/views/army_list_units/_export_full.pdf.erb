@@ -1,0 +1,105 @@
+<% mounts_option = army_list_unit.unit_options.only_mounts.first %>
+<table class="army_list_unit">
+  <tr>
+    <th colspan="11" class="army_list_unit_overview">
+      <div class="value_points"><%= value_points army_list_unit.value_points %> <small>points</small></div>
+
+      <strong><%=transliterate army_list_unit.name %></strong>
+      <%= army_list_unit.unit.is_unique ? "<em>Unique</em>".html_safe : army_list_unit.unit.name %>
+      • <%= army_list_unit.unit_category.name %>
+    </th>
+  </tr>
+  <tr class="army_list_unit_troops">
+    <th class="troop_name">Troupes</th>
+    <th class="odd">M</th>
+    <th>CC</th>
+    <th class="odd">CT</th>
+    <th>F</th>
+    <th class="odd">E</th>
+    <th>PV</th>
+    <th class="odd">I</th>
+    <th>A</th>
+    <th class="odd">Cd</th>
+    <th>Type</th>
+  </tr>
+
+  <!-- TROOPS -->
+  <%= render :partial => "army_list_unit_troops/export", :collection => army_list_unit.army_list_unit_troops.select{ |alut| alut.troop.unit_option.nil? or army_list_unit.unit_options.include?(alut.troop.unit_option) }, :as => :alut %>
+  <% if army_list_unit.unit_options.include?(mounts_option) %>
+    <%= render :partial => "troops/export", :collection => mounts_option.mount.troops.all, :as => :troop %>
+  <% end %>
+
+  <!-- EQUIPMENTS -->
+  <%= render :partial => "equipments/export", :locals => { :equipments => army_list_unit.unit.equipments.where(:troop_id => nil), :troop => nil } %>
+  <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+    <%= render :partial => "equipments/export", :locals => { :equipments => troop.equipments, :troop => troop } %>
+  <% end %>
+  <% if army_list_unit.unit_options.include?(mounts_option) %>
+    <%= render :partial => "equipments/export", :locals => { :equipments => mounts_option.mount.equipments, :troop => mounts_option.mount.troops.first } %>
+  <% end %>
+
+  <!-- SPECIAL RULES -->
+  <%= render :partial => "special_rules/export", :locals => { :special_rules => army_list_unit.unit.special_rules.where(:troop_id => nil), :troop => nil } %>
+  <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
+    <%= render :partial => "special_rules/export", :locals => { :special_rules => troop.special_rules, :troop => troop } %>
+  <% end %>
+  <% if army_list_unit.unit_options.include?(mounts_option) %>
+    <%= render :partial => "special_rules/export", :locals => { :special_rules => mounts_option.mount.special_rules, :troop => mounts_option.mount.troops.first } %>
+  <% end %>
+
+  <!-- OPTIONS, MAGIC ITEMS, MAGIC STANDARDS, EXTRA ITEMS -->
+  <% if army_list_unit.unit_options.any? %>
+    <tr class="army_list_unit_more">
+      <th>Options</th>
+      <td colspan="10">
+        <% army_list_unit.unit_options.each_with_index do |option, index| %>
+          <%= "• " if index > 0 %> <%= option.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.magic_items.any? %>
+    <tr class="army_list_unit_more">
+      <th>Objets magiques</th>
+      <td colspan="10">
+        <% army_list_unit.magic_items.each_with_index do |magic_item, index| %>
+          <%= "• " if index > 0 %> <%= magic_item.name %><% if magic_item.quantity > 1 %> (x<%= magic_item.quantity %>)<% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.extra_items.any? %>
+    <tr class="army_list_unit_more">
+      <th><%= @army_list.army.extra_item_categories.first.name %></th>
+      <td colspan="10">
+        <% army_list_unit.extra_items.each_with_index do |extra_item, index| %>
+          <%= "• " if index > 0 %> <%= extra_item.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.magic_standards.any? %>
+    <tr class="army_list_unit_more">
+      <th>Bannière magique</th>
+      <td colspan="10">
+        <%= army_list_unit.magic_standards.first.name %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.unit.magic? %>
+    <tr class="army_list_unit_more">
+      <th>Magie</th>
+      <td colspan="10">
+        <%= army_list_unit.unit.magic %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.notes? %>
+    <tr class="army_list_unit_more">
+      <th>Remarques</th>
+      <td colspan="10">
+        <%= simple_format army_list_unit.notes %>
+      </td>
+    </tr>
+  <% end %>
+</table>

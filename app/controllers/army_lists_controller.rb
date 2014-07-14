@@ -1,6 +1,6 @@
 class ArmyListsController < ApplicationController
   before_filter do |controller|
-    unless controller.action_name == 'show' and request.format.pdf?
+    unless controller.action_name == 'export'
       authenticate_user!
     end
   end
@@ -23,19 +23,30 @@ class ArmyListsController < ApplicationController
   end
 
   # GET /army_lists/1
-  # GET /army_lists/1.pdf (public)
   # GET /army_lists/1.xml
   def show
     if request.format.pdf?
-      @army_list = ArmyList.find(params[:id])
-    else
-      @army_list = current_user.army_lists.find(params[:id])
+      # @army_list = ArmyList.find(params[:id])
     end
+
+    @army_list = current_user.army_lists.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.pdf  { render :pdf => "whbab_#{@army_list.id}" } # show.pdf.erb
       format.xml  { render :xml => @army_list }
+    end
+  end
+
+  # GET /army_lists/1/export
+  # GET /army_lists/1/export_:verbosity.html
+  # GET /army_lists/1/export_:verbosity.pdf
+  def export
+    @army_list = ArmyList.find(params[:id])
+    @verbosity = params[:verbosity]
+
+    respond_to do |format|
+      format.html { render :template => @verbosity.nil? ? "army_lists/export" : "army_lists/export_#{@verbosity}", :layout => @verbosity.nil? ? nil : "pdf.html.erb" }
+      format.pdf  { render :template => "army_lists/export_#{@verbosity}", :pdf => "whbab_#{@verbosity}_#{@army_list.id}" }
     end
   end
 
@@ -53,6 +64,11 @@ class ArmyListsController < ApplicationController
 
   # GET /army_lists/1/edit
   def edit
+    @army_list = current_user.army_lists.find(params[:id])
+  end
+
+  # GET /army_list/1/new_from
+  def new_from
     @army_list = current_user.army_lists.find(params[:id])
   end
 

@@ -1,9 +1,9 @@
 <div class="popin">
 
-  <h1>Supprimer<br />une liste d'armee</h1>
+  <h1>Exporter<br />liste <%= @army_list.army.name %></h1>
 
   <%= form_for @army_list, :method => :delete do |f| %>
-    <p>Etes-vous certain de vouloir supprimer la liste <strong><%= @army_list.name %></strong> ?</p>
+    <p>Etes-vous certain de vouloir supprimer la liste :<br /><strong><%= @army_list.name %></strong> ?</p>
 
     <p class="close"><%= f.submit "!!! Supprimer !!!" %></p>
   <% end %>

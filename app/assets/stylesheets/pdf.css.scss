@@ -52,6 +52,7 @@ a {
     text-align: right;
 
     strong {
+      margin-left: 10px;
       font-size: 40px;
     }
   }
@@ -83,6 +84,10 @@ a {
   .today {
     text-align: right;
   }
+}
+
+.army_list_value_notes {
+  margin-bottom: 10px;
 }
 
 .army_list_value_points {
@@ -204,6 +209,12 @@ a {
   .army_list_unit_more {
     th {
       border-right: 1px solid #470b03;
+    }
+
+    &.lite {
+      th {
+        width: 125px;
+      }
     }
   }
 }

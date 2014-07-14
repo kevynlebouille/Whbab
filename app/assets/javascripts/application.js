@@ -52,7 +52,7 @@ jQuery(function($) {
     $(this).closest('.army_list_unit_overview').next('.army_list_unit_details').slideToggle('fast');
   });
 
-  $('body').on('change', '.army_list_unit_overview .actions select', function() {
+  $('body').on('change', '.army_list_unit_overview .actions select, #subheader .actions select', function() {
     $(this).closest('form').attr('action', $(this).val());
   });
 
@@ -246,7 +246,7 @@ function popin(url)
     scrolling: false,
     onComplete: function() {
       $('#cboxClose').css('opacity', 1);
-      $('#cboxLoadedContent form :input:visible:first').focus();
+      // $('#cboxLoadedContent form :input:visible:first').focus();
 
       var masters = [];
       $('#army_list_unit_unit_options input[data-depend], #army_list_unit_magic_items input[data-depend], #army_list_unit_extra_items input[data-depend], #army_list_unit_magic_standards input[data-depend]').each(function() {

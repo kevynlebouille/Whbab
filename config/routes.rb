@@ -3,8 +3,14 @@ Whbab::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
+  get 'army_lists/:id.pdf', :to => redirect('/army_lists/%{id}/export_full.pdf')
+  get 'army_lists/:id/export(_:verbosity)' => 'army_lists#export', :as => :export_army_list
+
   resources :army_lists do
     get 'delete', :on => :member
+    get 'export', :on => :member
+    get 'new_from', :on => :member
+    post 'duplicate', :on => :member
 
     resources :army_list_units do
       get 'delete', :on => :member

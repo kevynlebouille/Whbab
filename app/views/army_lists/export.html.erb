@@ -1,0 +1,14 @@
+<div class="popin">
+
+  <h1>Exporter<br />liste <%= @army_list.army.name %></h1>
+
+  <p>Choisissez le format pour exporter la liste :<br /><strong><%= @army_list.name %></strong></p>
+
+  <p>
+    <button data-url="<%= export_army_list_path @army_list, :verbosity => 'full', :format => 'pdf' %>" data-target="_blank">PDF complet</button>
+    <button data-url="<%= export_army_list_path @army_list, :verbosity => 'lite', :format => 'pdf' %>" data-target="_blank">PDF tournoi</button>
+    <button data-url="<%= export_army_list_path @army_list, :verbosity => 'full', :format => 'hmtl' %>" data-target="_blank">HTML complet</button>
+    <button data-url="<%= export_army_list_path @army_list, :verbosity => 'lite', :format => 'html' %>" data-target="_blank">HTML tournoi</button>
+  </p>
+
+</div>

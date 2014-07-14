@@ -1,0 +1,13 @@
+<tr class="army_list_unit_troops">
+  <td class="troop_name"><%= alut.troop.name %> <%= "<em>x#{alut.size}</em>".html_safe if alut.size? && (alut.size > 1 or alut.troop.value_points) %></td>
+  <td class="characteristic odd"><%=characteristic alut.troop.M %></td>
+  <td class="characteristic"><%=characteristic alut.troop.WS %></td>
+  <td class="characteristic odd"><%=characteristic alut.troop.BS %></td>
+  <td class="characteristic"><%=characteristic alut.troop.S %></td>
+  <td class="characteristic odd"><%=characteristic alut.troop.T %></td>
+  <td class="characteristic"><%=characteristic alut.troop.W %></td>
+  <td class="characteristic odd"><%=characteristic alut.troop.I %></td>
+  <td class="characteristic"><%=characteristic alut.troop.A %></td>
+  <td class="characteristic odd"><%=characteristic alut.troop.LD %></td>
+  <td class="troop_type"><%= alut.troop.troop_type.try(:name) %></td>
+</tr>

@@ -1,0 +1,64 @@
+<% army_list_unit_troops = army_list_unit.army_list_unit_troops.select{ |alut| alut.size.to_i > 1 } %>
+<table class="army_list_unit">
+  <tr>
+    <th colspan="11" class="army_list_unit_overview">
+      <div class="value_points"><%= value_points army_list_unit.value_points %> <small>points</small></div>
+
+      <strong><%=transliterate army_list_unit.name %></strong>
+      <%= army_list_unit.unit.is_unique ? "<em>Unique</em>".html_safe : army_list_unit.unit.name %>
+      • <%= army_list_unit.unit_category.name %>
+    </th>
+  </tr>
+
+  <!-- TROOPS -->
+  <% if army_list_unit_troops.any? %>
+  <tr class="army_list_unit_more lite">
+    <th>Troupes</th>
+    <td colspan="10">
+      <% army_list_unit_troops.each_with_index do |alut, index| %>
+        <%= "• " if index > 0 %> <%= alut.troop.name %> <em>x<%= alut.size %></em>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+
+  <!-- OPTIONS, MAGIC ITEMS, MAGIC STANDARDS, EXTRA ITEMS -->
+  <% if army_list_unit.unit_options.any? %>
+    <tr class="army_list_unit_more lite">
+      <th>Options</th>
+      <td colspan="10">
+        <% army_list_unit.unit_options.each_with_index do |option, index| %>
+          <%= "• " if index > 0 %> <%= option.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.magic_items.any? %>
+    <tr class="army_list_unit_more lite">
+      <th>Objets magiques</th>
+      <td colspan="10">
+        <% army_list_unit.magic_items.each_with_index do |magic_item, index| %>
+          <%= "• " if index > 0 %> <%= magic_item.name %><% if magic_item.quantity > 1 %> (x<%= magic_item.quantity %>)<% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.extra_items.any? %>
+    <tr class="army_list_unit_more lite">
+      <th><%= @army_list.army.extra_item_categories.first.name %></th>
+      <td colspan="10">
+        <% army_list_unit.extra_items.each_with_index do |extra_item, index| %>
+          <%= "• " if index > 0 %> <%= extra_item.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if army_list_unit.magic_standards.any? %>
+    <tr class="army_list_unit_more lite">
+      <th>Bannière magique</th>
+      <td colspan="10">
+        <%= army_list_unit.magic_standards.first.name %>
+      </td>
+    </tr>
+  <% end %>
+</table>

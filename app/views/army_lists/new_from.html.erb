@@ -1,0 +1,11 @@
+<div class="popin">
+
+  <h1>Dupliquer<br />liste <%= @army_list.army.name %></h1>
+
+  <%= form_for @army_list, :url => duplicate_army_list_path, :method => :post do |f| %>
+    <p>Etes-vous certain de vouloir dupliquer la liste :<br /><strong><%= @army_list.name %></strong> ?</p>
+
+    <p><%= f.submit "Suivant" %></p>
+  <% end %>
+
+</div>

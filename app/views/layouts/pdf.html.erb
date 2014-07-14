@@ -14,8 +14,8 @@
       Army Builder
     </h1>
     <%= image_tag "/system/armies/#{@army_list.army.id}/portrait.png", :size => "90x90" %>
-    <h2><strong><%= value_points @army_list.value_points %></strong> points</h2>
-    <h2><%=transliterate @army_list.army.name %> : <%=transliterate @army_list.name %></h2>
+    <h2><%=transliterate @army_list.army.name %> -<strong><%= value_points @army_list.value_points %></strong> points</h2>
+    <h2><%=transliterate @army_list.name.truncate(50) %></h2>
   </div>
 
   <div id="content" class="container_16">

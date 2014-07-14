@@ -24,27 +24,27 @@
   </tr>
 
   <!-- TROOPS -->
-  <%= render :partial => "army_list_unit_troops/show", :collection => army_list_unit.army_list_unit_troops.select{ |alut| alut.troop.unit_option.nil? or army_list_unit.unit_options.include?(alut.troop.unit_option) }, :as => :alut %>
+  <%= render :partial => "army_list_unit_troops/export", :collection => army_list_unit.army_list_unit_troops.select{ |alut| alut.troop.unit_option.nil? or army_list_unit.unit_options.include?(alut.troop.unit_option) }, :as => :alut %>
   <% if army_list_unit.unit_options.include?(mounts_option) %>
-    <%= render :partial => "troops/show", :collection => mounts_option.mount.troops.all, :as => :troop %>
+    <%= render :partial => "troops/export", :collection => mounts_option.mount.troops.all, :as => :troop %>
   <% end %>
 
   <!-- EQUIPMENTS -->
-  <%= render :partial => "equipments/show", :locals => { :equipments => army_list_unit.unit.equipments.where(:troop_id => nil), :troop => nil } %>
+  <%= render :partial => "equipments/export", :locals => { :equipments => army_list_unit.unit.equipments.where(:troop_id => nil), :troop => nil } %>
   <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
-    <%= render :partial => "equipments/show", :locals => { :equipments => troop.equipments, :troop => troop } %>
+    <%= render :partial => "equipments/export", :locals => { :equipments => troop.equipments, :troop => troop } %>
   <% end %>
   <% if army_list_unit.unit_options.include?(mounts_option) %>
-    <%= render :partial => "equipments/show", :locals => { :equipments => mounts_option.mount.equipments, :troop => mounts_option.mount.troops.first } %>
+    <%= render :partial => "equipments/export", :locals => { :equipments => mounts_option.mount.equipments, :troop => mounts_option.mount.troops.first } %>
   <% end %>
 
   <!-- SPECIAL RULES -->
-  <%= render :partial => "special_rules/show", :locals => { :special_rules => army_list_unit.unit.special_rules.where(:troop_id => nil), :troop => nil } %>
+  <%= render :partial => "special_rules/export", :locals => { :special_rules => army_list_unit.unit.special_rules.where(:troop_id => nil), :troop => nil } %>
   <% army_list_unit.unit.troops.select{ |t| t.unit_option.nil? or army_list_unit.unit_options.include?(t.unit_option) }.each do |troop| %>
-    <%= render :partial => "special_rules/show", :locals => { :special_rules => troop.special_rules, :troop => troop } %>
+    <%= render :partial => "special_rules/export", :locals => { :special_rules => troop.special_rules, :troop => troop } %>
   <% end %>
   <% if army_list_unit.unit_options.include?(mounts_option) %>
-    <%= render :partial => "special_rules/show", :locals => { :special_rules => mounts_option.mount.special_rules, :troop => mounts_option.mount.troops.first } %>
+    <%= render :partial => "special_rules/export", :locals => { :special_rules => mounts_option.mount.special_rules, :troop => mounts_option.mount.troops.first } %>
   <% end %>
 
   <!-- OPTIONS, MAGIC ITEMS, MAGIC STANDARDS, EXTRA ITEMS -->

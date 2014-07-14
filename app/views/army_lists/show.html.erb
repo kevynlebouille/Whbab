@@ -3,13 +3,20 @@
 <div class="army_list_portrait">
   <%= image_tag "/system/armies/#{@army_list.army.id}/portrait.png", :size => "65x64" %>
   <h2><%= link_to transliterate(@army_list.army.name), army_lists_path({'search[army_id_eq]' => @army_list.army}) %></h2>
-  <h1 title="<%= @army_list.name %>"><%=transliterate @army_list.name.truncate(30) %></h1>
+  <h1 title="<%= @army_list.name %>"><%=transliterate @army_list.name.truncate(35) %></h1>
 </div>
 
 <div id="subheader" class="grid_14 army_list">
-  <button data-url="<%= army_list_path @army_list, :format => 'pdf' %>" data-target="_blank" class="left">Imprimer</button>
-  <button data-popin="true" data-url="<%= delete_army_list_path @army_list %>">Suppr.</button>
-  <button data-popin="true" data-url="<%= edit_army_list_path @army_list %>">Editer</button>
+  <%= form_tag edit_army_list_path(@army_list), :method => 'get', 'data-popin' => true, 'class' => 'actions' do %>
+    <%= submit_tag '&rarr;'.html_safe %>
+    <%= select_tag 'action', options_for_select([
+      ['Editer', edit_army_list_path(@army_list)],
+      ['Exporter', export_army_list_path(@army_list)],
+      ['Dupliquer', new_from_army_list_path(@army_list)],
+      ['Supprimer', delete_army_list_path(@army_list)]
+    ]), :id => nil %>
+  <% end %>
+  <button data-url="<%= export_army_list_path @army_list, :verbosity => 'full', :format => 'pdf' %>" data-target="_blank" class="left">Imprimer</button>
 </div>
 
 <ol class="army_list_units_overview" data-url="<%= sort_army_list_army_list_units_path @army_list %>">
