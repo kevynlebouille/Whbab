@@ -101,6 +101,7 @@ class ArmyListUnitsController < ApplicationController
   def update
     params[:army_list_unit][:unit_option_ids] ||= []
     params[:army_list_unit][:extra_item_ids] ||= []
+    params[:army_list_unit][:magic_standard_ids] ||= []
 
     @army_list = current_user.army_lists.find(params[:army_list_id])
     @army_list_unit = @army_list.army_list_units.find(params[:id])
