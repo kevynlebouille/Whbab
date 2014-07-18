@@ -7,7 +7,7 @@
     <%= render "shared/form_errors", :object => @army_list_unit %>
 
     <p>
-      <%= f.text_field :name, :placeholder => "Nom" unless @army_list_unit.unit.is_unique  %>
+      <%= f.text_field :name, :placeholder => "Nom" %>
       <%= f.collection_select :unit_category_id, UnitCategory.all, :id, :name %><br />
     </p>
 

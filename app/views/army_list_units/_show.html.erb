@@ -6,13 +6,12 @@
     </div>
     <div class="name">
       <strong><%=transliterate army_list_unit.name.truncate(32) %></strong>
-        <% if army_list_unit.unit.is_unique %>
-        <%= "#{army_list_unit.unit.name.truncate(32)} <em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
-        <i>Unique</i>
-      <% else %>
+        <% if army_list_unit.unit.is_unique? %>
+        <i><%= army_list_unit.unit.unit_category.name %> Unique</i>
+        <% else %>
         <%= army_list_unit.unit.name %>
         <%= "<em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
-      <% end %>
+        <% end %>
     </div>
     <div class="value_points">
       <strong><%= value_points army_list_unit.value_points %></strong> points
