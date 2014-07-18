@@ -14,9 +14,9 @@ class MagicStandard < ActiveRecord::Base
       end
     else
       if value_points_limit.nil?
-        where("army_id = :army_id OR (army_id IS NULL AND id NOT IN (SELECT override_id FROM magic_items WHERE army_id = :army_id AND override_id IS NOT NULL))", {:army_id => army}).order("value_points DESC", "name")
+        where("army_id = :army_id OR (army_id IS NULL AND id NOT IN (SELECT override_id FROM magic_standards WHERE army_id = :army_id AND override_id IS NOT NULL))", {:army_id => army}).order("value_points DESC", "name")
       else
-        where("army_id = :army_id OR (army_id IS NULL AND id NOT IN (SELECT override_id FROM magic_items WHERE army_id = :army_id AND override_id IS NOT NULL))", {:army_id => army}).where("value_points <= ?", value_points_limit).order("value_points DESC", "name")
+        where("army_id = :army_id OR (army_id IS NULL AND id NOT IN (SELECT override_id FROM magic_standards WHERE army_id = :army_id AND override_id IS NOT NULL))", {:army_id => army}).where("value_points <= ?", value_points_limit).order("value_points DESC", "name")
       end
     end
   }
