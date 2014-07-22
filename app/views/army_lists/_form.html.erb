@@ -2,7 +2,7 @@
   <%= render "shared/form_errors", :object => @army_list %>
 
   <% unless @army_list.persisted? %>
-  <p><%= f.collection_select :army_id, Army.order(:name), :id, :name, :disabled => Army.disabled.pluck(:id) %></p>
+  <p><%= f.collection_select :army_id, Army.order(:name), :id, :name, :disabled => Army.disabled_or_obsolete.pluck(:id) %></p>
   <% end %>
 
   <p><%= f.text_field :name, :placeholder => "Nom", :class => "input_xxlarge" %></p>

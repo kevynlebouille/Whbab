@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Army < ActiveRecord::Base
   has_many :army_lists, :dependent => :destroy
   has_many :magic_items, :dependent => :destroy
@@ -8,4 +10,5 @@ class Army < ActiveRecord::Base
   validates_presence_of :name
 
   scope :disabled, where('id NOT IN (SELECT DISTINCT army_id FROM units)')
+  scope :disabled_or_obsolete, where('id NOT IN (SELECT DISTINCT army_id FROM units) OR name LIKE \'%obsolète%\'')
 end
