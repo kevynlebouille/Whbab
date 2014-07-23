@@ -10,8 +10,8 @@
         <i><%= army_list_unit.unit.unit_category.name %> Unique</i>
         <% else %>
         <%= army_list_unit.unit.name %>
-        <%= "<em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
         <% end %>
+        <%= "<em>x#{army_list_unit.size}</em>".html_safe if army_list_unit.size > 1 %>
     </div>
     <div class="value_points">
       <strong><%= value_points army_list_unit.value_points %></strong> points
