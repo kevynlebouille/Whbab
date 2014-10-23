@@ -13,7 +13,7 @@ army_list_unit_magic_item = army_list_unit.army_list_unit_magic_items.detect { |
   <%= hidden_field_tag "army_list_unit[army_list_unit_magic_items_attributes][#{magic_item.id}][_destroy]", 1 %>
   <em><span><%= value_points(magic_item.value_points) %></span> pts</em>
   <label>
-    <%= check_box_tag "army_list_unit[army_list_unit_magic_items_attributes][#{magic_item.id}][_destroy]", false, army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-depend" => depend.try(:id), "data-radio" => true %>
+    <%= check_box_tag "army_list_unit[army_list_unit_magic_items_attributes][#{magic_item.id}][_destroy]", false, army_list_unit.magic_items.member?(magic_item), :id => "army_list_unit_magic_item_ids_#{magic_item.id}", "data-depend" => depend.try(:id), "data-radio" => magic_item.id != 155 ? true : nil  %>
     <%= magic_item.name %>
   </label>
 
