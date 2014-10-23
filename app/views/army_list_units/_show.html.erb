@@ -85,8 +85,10 @@
 
         <% if army_list_unit.magic_standards.any? %>
           <h4>Bannière magique</h4>
-          <em><%= value_points(army_list_unit.magic_standards.first.value_points) %> pts</em>
-          • <%= army_list_unit.magic_standards.first.name %><br />
+          <% army_list_unit.magic_standards.each do |magic_standard| %>
+            <em><%= value_points(magic_standard.value_points) %> pts</em>
+            • <%= magic_standard.name %><br />
+          <% end %>
         <% end %>
       </div>
     <% end %>

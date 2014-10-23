@@ -57,7 +57,9 @@
     <tr class="army_list_unit_more lite">
       <th>Bannière magique</th>
       <td colspan="10">
-        <%= army_list_unit.magic_standards.first.name %>
+        <% army_list_unit.magic_standards.each_with_index do |magic_standard, index| %>
+          <%= "• " if index > 0 %> <%= magic_standard.name %>
+        <% end %>
       </td>
     </tr>
   <% end %>
