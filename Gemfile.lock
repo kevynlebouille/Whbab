@@ -99,6 +99,8 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.4)
+    puma (2.9.2)
+      rack (>= 1.1, < 2.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -164,6 +166,7 @@ DEPENDENCIES
   meta_search
   mysql2
   newrelic_rpm
+  puma
   rails (= 3.2.18)
   sass-rails (~> 3.2.3)
   seedbank
