@@ -101,6 +101,10 @@
 
     <div class="clear"></div>
 
+    <% if @army_list_unit.unit.magic? %>
+      <p><%= f.text_area :magic, :placeholder => "Magie", :size => "" %></p>
+    <% end %>
+
     <p><%= f.text_area :notes, :placeholder => "Remarques", :size => "" %></p>
 
     <p><%= f.submit "Valider" %></p>

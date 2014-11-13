@@ -26,6 +26,7 @@ class ArmyListUnit < ActiveRecord::Base
     self.size = 0
     self.value_points = 0.0
     self.notes = unit.notes
+    self.magic = unit.magic
   end
 
   before_save do

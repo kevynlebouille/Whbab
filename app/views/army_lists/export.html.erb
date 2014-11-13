@@ -4,6 +4,8 @@
 
   <p>Choisissez le format pour exporter la liste :<br /><strong><%= @army_list.name %></strong></p>
 
+  <p><label><%= check_box_tag :include_magics, 1, @include_magics %> Inclure objets/étendards magiques ?</label></p>
+
   <p>
     <button data-url="<%= export_army_list_path @army_list, :verbosity => 'full', :format => 'pdf' %>" data-target="_blank">PDF complet</button>
     <button data-url="<%= export_army_list_path @army_list, :verbosity => 'lite', :format => 'pdf' %>" data-target="_blank">PDF tournoi</button>
