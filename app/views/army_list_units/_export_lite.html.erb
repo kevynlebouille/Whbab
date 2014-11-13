@@ -33,7 +33,7 @@
       </td>
     </tr>
   <% end %>
-  <% if army_list_unit.magic_items.any? %>
+  <% if include_magics and army_list_unit.magic_items.any? %>
     <tr class="army_list_unit_more lite">
       <th>Objets magiques</th>
       <td colspan="10">
@@ -43,7 +43,7 @@
       </td>
     </tr>
   <% end %>
-  <% if army_list_unit.extra_items.any? %>
+  <% if include_magics and army_list_unit.extra_items.any? %>
     <tr class="army_list_unit_more lite">
       <th><%= @army_list.army.extra_item_categories.first.name %></th>
       <td colspan="10">
@@ -53,7 +53,7 @@
       </td>
     </tr>
   <% end %>
-  <% if army_list_unit.magic_standards.any? %>
+  <% if include_magics and army_list_unit.magic_standards.any? %>
     <tr class="army_list_unit_more lite">
       <th>Bannière magique</th>
       <td colspan="10">

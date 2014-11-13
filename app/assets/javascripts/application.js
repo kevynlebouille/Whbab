@@ -24,16 +24,31 @@ jQuery(function($) {
   $('body').on('click', 'button[data-url]:not([data-popin])', function(evt) {
     evt.preventDefault();
 
+    var url = $(this).data('url'),
+        params = $(this).data('params') || null;
+
+    if (params) {
+      url = url + '?' + params;
+    }
+
     if ($(this).data('target') == '_blank') {
-      window.open($(this).data('url'));
+      window.open(url);
     }
     else {
-      window.location = $(this).data('url');
+      window.location = url;
     }
   });
 
   $('body').on('click', 'a[data-popin], button[data-popin]', popinHandler);
   $('body').on('submit', 'form[data-popin]', popinHandler);
+  $('body').on('change', 'input[name=include_magics]', function() {
+    var checked = $(this).prop('checked'),
+        $popin  = $(this).closest('.popin');
+
+    $popin.find('button[data-url]').each(function() {
+      $(this).data('params', checked ? 'include_magics=1' : null);
+    });
+  });
 
   $('.army_list_units_overview')
     .sortable({
