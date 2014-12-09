@@ -33,4 +33,23 @@ class Unit < ActiveRecord::Base
       ]
     end
   end
+
+  def duplicate()
+    new_troops = {}
+    new_unit_options = {}
+
+    new_unit = dup
+    new_unit.name = "Copie de #{new_unit.name}"
+    new_unit.troops << troops.collect { |troop| new_troops[troop.id] = troop.dup }
+    new_unit.equipments << equipments.collect { |equipment| equipment.dup }
+    new_unit.special_rules << special_rules.collect { |special_rule| special_rule.dup }
+    new_unit.unit_options << unit_options.collect { |unit_option| new_unit_options[unit_option.id] = unit_option.dup }
+
+    new_unit.unit_options.map do |unit_option|
+      unit_option.parent = new_unit_options[unit_option.parent.id] unless unit_option.parent.nil?
+      unit_option.troop = new_troops[unit_option.troop.id] unless unit_option.troop.nil?
+    end
+
+    new_unit
+  end
 end

@@ -28,14 +28,4 @@ class UnitOption < ActiveRecord::Base
   def army_filter
     army_filter ||= unit.try(:army).try(:id)
   end
-
-  def dup_with_associations(unit)
-    new_unit_option = self.dup
-    self.children.each do |child|
-      new_child = child.dup_with_associations(unit)
-      new_child.unit = unit
-      new_unit_option.children << new_child
-    end
-    new_unit_option
-  end
 end

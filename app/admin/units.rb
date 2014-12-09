@@ -8,12 +8,7 @@ ActiveAdmin.register Unit do
   end
 
   member_action :duplicate, :method => :post do
-    new_unit = resource.dup
-    new_unit.troops << resource.troops.collect { |troop| troop.dup }
-    new_unit.equipments << resource.equipments.collect { |equipment| equipment.dup }
-    new_unit.special_rules << resource.special_rules.collect { |special_rule| special_rule.dup }
-    # new_unit.unit_options << resource.unit_options.collect { |unit_option| unit_option.dup }
-    new_unit.unit_options << resource.unit_options.without_parent.collect { |unit_option| unit_option.dup_with_associations(new_unit) }
+    new_unit = resource.duplicate
     new_unit.save
 
     redirect_to edit_admin_unit_url(new_unit)
