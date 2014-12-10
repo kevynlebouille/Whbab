@@ -45,9 +45,12 @@ class Unit < ActiveRecord::Base
     new_unit.special_rules << special_rules.collect { |special_rule| special_rule.dup }
     new_unit.unit_options << unit_options.collect { |unit_option| new_unit_options[unit_option.id] = unit_option.dup }
 
+    new_unit.troops.map do |troop|
+      troop.unit_option = new_unit_options[troop.unit_option.id] unless troop.unit_option.nil?
+    end
+
     new_unit.unit_options.map do |unit_option|
       unit_option.parent = new_unit_options[unit_option.parent.id] unless unit_option.parent.nil?
-      unit_option.troop = new_troops[unit_option.troop.id] unless unit_option.troop.nil?
     end
 
     new_unit
