@@ -16,7 +16,7 @@
       ['Supprimer', delete_army_list_path(@army_list)]
     ]), :id => nil %>
   <% end %>
-  <button data-url="<%= export_army_list_path @army_list, :verbosity => 'full', :format => 'pdf' %>" data-target="_blank" class="left">Imprimer</button>
+  <button data-url="<%= export_army_list_path @army_list, :verbosity => 'full', :format => 'pdf', :include_magics => true %>" data-target="_blank" class="left">Imprimer</button>
 </div>
 
 <ol class="army_list_units_overview" data-url="<%= sort_army_list_army_list_units_path @army_list %>">
