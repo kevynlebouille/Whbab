@@ -20,7 +20,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'dotenv-rails'
 gem 'activeadmin'
 gem 'seedbank'
 gem 'acts_as_list'
