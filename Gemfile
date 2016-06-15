@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'dotenv-rails'
 gem 'activeadmin'
 gem 'seedbank'
 gem 'acts_as_list'
@@ -34,8 +35,7 @@ gem 'attribute_normalizer'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use Puma as the app server
 gem 'puma'
 
 # Deploy with Capistrano

@@ -63,6 +63,9 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     erubis (2.7.0)
     execjs (2.0.2)
     formtastic (2.2.1)
@@ -160,6 +163,7 @@ DEPENDENCIES
   acts_as_list
   attribute_normalizer
   coffee-rails (~> 3.2.1)
+  dotenv-rails
   formtastic
   jquery-rails
   meta_search
@@ -170,3 +174,6 @@ DEPENDENCIES
   seedbank
   uglifier (>= 1.0.3)
   wisepdf
+
+BUNDLED WITH
+   1.12.5
