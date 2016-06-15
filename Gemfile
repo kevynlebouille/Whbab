@@ -27,7 +27,6 @@ gem 'formtastic'
 gem 'meta_search'
 gem 'wisepdf'
 gem 'attribute_normalizer'
-gem 'newrelic_rpm'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
