@@ -1,12 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '3.2.22.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', '~> 0.3.0'
-gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,14 +19,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'activeadmin'
-gem 'seedbank'
-gem 'acts_as_list'
-gem 'formtastic'
-gem 'meta_search'
-gem 'wisepdf'
-gem 'attribute_normalizer'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -35,10 +26,16 @@ gem 'attribute_normalizer'
 # gem 'jbuilder'
 
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '3.11.4'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'activeadmin', '0.6.6'
+gem 'seedbank', '0.4.0'
+gem 'acts_as_list', '0.4.0'
+gem 'wisepdf', '1.4.0'
+gem 'attribute_normalizer', '1.1.0'
