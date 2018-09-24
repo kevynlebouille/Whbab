@@ -5,7 +5,7 @@ class Army < ActiveRecord::Base
   has_many :magic_items, :dependent => :destroy
   has_many :extra_item_categories, :dependent => :destroy
   has_many :units, :order => "name", :dependent => :destroy
-  has_many :favorite_users, :foreign_key => "favorite_army_id", :dependent => :nullify
+  has_many :favorite_users, :class_name => 'User', :dependent => :nullify, :foreign_key => "favorite_army_id"
 
   validates_presence_of :name
 
