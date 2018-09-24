@@ -93,7 +93,7 @@ GEM
       polyamorous (~> 0.5.0)
     mime-types (1.25.1)
     multi_json (1.10.0)
-    mysql2 (0.3.16)
+    mysql2 (0.3.21)
     orm_adapter (0.5.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -162,7 +162,7 @@ DEPENDENCIES
   formtastic
   jquery-rails
   meta_search
-  mysql2
+  mysql2 (~> 0.3.0)
   puma
   rails (= 3.2.18)
   sass-rails (~> 3.2.3)
@@ -171,4 +171,4 @@ DEPENDENCIES
   wisepdf
 
 BUNDLED WITH
-   1.12.5
+   1.16.4
